@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Newspaper.Models.Route>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+
+    #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+    }
+
+    #myTable tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+        #myTable tr.header, #myTable tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+<div class="module">
+
+    <div class="module-body">
+        <br />
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>रुटहरु  </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="panel-body">
+                    @if (TempData["message"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["message"]</div>
+                    }
+
+                    @Html.ActionLink("रुट थप्नुहोस", "Create", "Routes", new { @class = "btn btn-primary", title = "Create route" })
+
+                    <div style="padding-top:10px;">
+                        <table class="table table-bordered" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        रुट Id
+                                    </th>
+                                    <th>
+                                        रुटको नाम
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="nepalifont", style="font-size:20px;">
+                                        @Html.DisplayFor(modelItem => item.RouteId)
+                                    </td>
+                                    <td class="nepalifont", style="font-size:20px;">
+                                        @Html.DisplayFor(modelItem => item.RouteName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("सच्याउनुहोस", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", title = "Edit route" })|
+                                        @Html.ActionLink("थप हेर्नुहोस", "Details", new { id = item.Id }, new { @class = "btn btn-success", title = "Show Route Detail" })
+
+                                    </td>
+                                </tr>
+                            }
+
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

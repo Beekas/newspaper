@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Newspaper.Models.SalesMan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+        
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4> वितरक   </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>
+                          वितरक  नम्बर 
+                        </th>
+                        <th>
+                            वितरकको  नाम 
+                        </th>
+                        <th>
+                            इमेल 
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.AltEmail)
+                            </th>*@
+                        <th>
+                            फोन नम्बर 
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Phone2)
+                            </th>*@
+                        <th>कार्य </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+            {
+                    <tr>
+                        <td class="nepalifont" style="font-size:20px;">
+                            @Html.DisplayFor(modelItem => item.SalesManId)
+                        </td>
+                        <td class="nepalifont" style="font-size:20px;">
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                        <td class="nepalifont" style="font-size:20px;">
+                            @Html.DisplayFor(modelItem => item.Phone1)
+                        </td>
+                        @*<td>
+            @Html.DisplayFor(modelItem => item.Phone2)
+        </td>*@
+                        <td>
+                            @Html.ActionLink("अद्यावधिक", "Edit", new { id = item.Id }, new { @class = "btn btn-success", title = "Edit Distributor" }) |
+                            @Html.ActionLink("पुरा हेर्नुहोस ", "Details", new { id = item.Id }, new { @class = "btn btn-warning", title = "Show Disributor Details" })
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "remove(" + item.Id + ");" })*@
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you wish to delete this article?');" })*@
+
+
+                        </td>
+                    </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        
+<div class="col-md-offset-5">
+    @Html.ActionLink("नया  वितरक ", "Create", "SalesMan", FormMethod.Post, new { @class = "btn btn-primary", title = "Create New Distributor" })
+</div>
+<br/>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/jqueryval")
+            <link href="~/css/jquery-ui.css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
+            <script src=" https//cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"> </script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script type="text/javascript">
+
+                // function sweetAlert() {
+                //     swal({
+                //         title: "Are you sure?",
+                //         text: "Your will not be able to recover this imaginary file!",
+                //         type: "warning",
+                //         showCancelButton: true,
+                //         confirmButtonClass: "btn-danger",
+                //         confirmButtonText: "Yes, delete it!",
+                //         closeOnConfirm: false
+                //     },
+                //function (isConfirm) {
+                //    if (isConfirm) {
+                //        swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                //    } else {
+                //        swal("Cancelled", "Your imaginary file is safe :)", "error");
+                //    }
+                //});
+                //  }
+
+
+                function remove(clientId) {
+
+                    if (confirm("Do you want to Delete?")) {
+                        $.ajax({
+                            type: "POST",
+                            data: "{'id':'" + clientId + "' }",
+                            url: RootUrl + "SalesMan/DeleteSalesMan",
+                            dataType: "json",
+                            success: function (response) {
+                                if (response.data == "success") {
+                                    alert("Record Deleted Successfully.");
+                                }
+                            }
+                        });
+                    }
+                    else {
+
+                    }
+                }
+
+
+
+            </script>
+        }
+
+

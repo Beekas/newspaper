@@ -1,0 +1,106 @@
+﻿@model List<Newspaper.Models.ViewModel.SelectSalesManVM>
+@{
+    ViewBag.Title = "NewspaperToPrint";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid black;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+<br />
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title"><center><h4>पत्रिका प्रकासन अनुमान </h4></center></h1>
+        </div>
+
+        <div class="panel-body ">
+            <label style="text-align:left;">पत्रिका प्रकासन गर्नुपर्ने <u> @StringToUnicode(Model[0].NepDate.ToString())</u>  मितिका लागि :-</label>
+            <br />
+            @*<label>Branch Name : @Model[0].branch</label>*@
+            <table class="table table-bordered">
+                <tr>
+                    <th>पत्रिकाको नाम</th>
+
+                    <th>परिमाण</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="nepalifont" style="font-size:20px;">@item.NewsPaperName</td>
+                        <td>@StringToUnicode(item.Count.ToString())</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}

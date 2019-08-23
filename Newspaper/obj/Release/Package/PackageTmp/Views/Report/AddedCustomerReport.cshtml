@@ -1,0 +1,227 @@
+﻿@model List<Newspaper.Models.ViewModel.AddedCustomerVM>
+@{
+    ViewBag.Title = "AddedCustomerReport";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+   
+
+    .btn {
+       background-color: mediumblue;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+    /*body
+    {
+        counter-reset: Serial;
+    }
+        table.auto-index td:first-child:before
+    {
+      counter-increment: Serial;
+      content:  counter(Serial);
+    }*/
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+
+    <div id="ExpReport">
+
+        <img src="~/img/patrika logo.jpg" align="left" height="150" width="150" />
+
+        <br />
+        <h5 style="text-align:right">चलानी न:-..................</h5>
+
+
+        <h1 style="margin-left:275px;"><b> गोरखापत्र संस्थान </b></h1>
+
+
+
+
+
+        <h5 style="text-align:right;">मिति :-@StringToUnicode(Model[0].NepaliDate.ToString())</h5>
+        @*<b>Branch Name : @Model[0].branch</b>*@
+        <h3 style="margin-left:350px;"><b><u>बढेको  ग्राहकहरु   </u></b></h3><br />
+        @*<h3 style="text-align:center;"><b><u>बन्द ग्राहकहरु   </u></b></h3><br />*@
+        <h4 style="text-align:left">श्री बितरण शाखा,</h4>
+        <h5 style="margin-left:112px">निम्न लिखित ग्राहकहरु मिति :-@StringToUnicode(Model[0].NepaliDate.ToString()) मा <font class="nepalifont" style="font-size:20px;">@Model[0].NewsPaperName</font> पत्रिकामा बढेको बेहोरा जानकारी गरिन्छ । </h5>
+        @{ int i = 1;}
+        @*<table class="auto-index" border="1px solid black">*@
+        <table class="table table-bordered" id="myTable">
+
+            <tr>
+                <th rowspan="2" width="20">क.स </th>
+                <th rowspan="2" width="330"> ग्राहकको नाम , ठेगाना </th>
+                <th rowspan="2" width="80">कार्ड न:</th>
+                @*<th rowspan="2">NewspaperName</th>
+                    <th rowspan="2">Address</th>
+                    <th rowspan="2">Phone</th>*@
+                <th colspan="2" width="200" height="5"><center>अवधि</center></th>
+                <th rowspan="2" width="100">कैफियत</th>
+            </tr>
+            <tr>
+                <th width="100">देखि</th>
+                <th width="100">सम्म</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@StringToUnicode(i.ToString()) </td>
+
+                    <td style="font-size:20px;" class="nepalifont">@item.FirstName  &nbsp;,&nbsp;@item.Address </td>
+                    <td style="font-size:20px;" class="nepalifont">@item.CustomerId</td>
+                    @*<td>@item.NewsPaperName</td>
+                        <td>@item.Address</td>
+                        <td>@item.MPhone</td>*@
+                    <td>@StringToUnicode(item.dispatch.ToString())</td>
+                    <td>@StringToUnicode(item.enddate.ToString())</td>
+                    <td class="nepalifont" style="font-size:20px;">@item.SalesMan</td>
+
+                </tr>
+                i = i + 1;
+            }
+
+        </table>
+
+
+        <br />
+        <br />
+        <div style="width:100%;">
+            <span style="width:50%;  float:left;">
+                <label><br />.......................<br />बुझिलिनेको सही  <br /> बितरण शाखा</label>
+            </span>
+            <span style="width:50%; text-align:right; float:right;">
+                <label>भवदिय<br /><br />.......................<br />सुल्क  शाखा</label>
+            </span>
+        </div>
+    </div>
+
+    <br />
+    <center><button class="btn" id="btnPrint"><i class="fa fa-print"></i> Print</button></center>
+
+
+
+
+    @helper StringToUnicode(string data)
+    {
+        string uni = "";
+        foreach (char c in data)
+        {
+            var charCode = "U+" + ((int)c).ToString("X4");
+            switch (charCode)
+            {
+                case "U+0030":
+                    uni += "०";
+                    break;
+                case "U+0031":
+                    uni += "१";
+                    break;
+                case "U+0032":
+                    uni += "२";
+                    break;
+                case "U+0033":
+                    uni += "३";
+                    break;
+                case "U+0034":
+                    uni += "४";
+                    break;
+                case "U+0035":
+                    uni += "५";
+                    break;
+                case "U+0036":
+                    uni += "६";
+                    break;
+                case "U+0037":
+                    uni += "७";
+                    break;
+                case "U+0038":
+                    uni += "८";
+                    break;
+                case "U+0039":
+                    uni += "९";
+                    break;
+                default:
+                    uni += c;
+                    break;
+            }
+        }
+        @uni
+    }
+    @helper CheckZero(decimal data)
+    {
+        if (data == 0)
+        {
+            @StringToUnicode("0.00")
+        }
+        else
+        {
+            @StringToUnicode(data.ToString())
+        }
+    }
+
+
+
+
+    <script src="~/Scripts/jQuery.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $("#btnPrint").click(function (e) {
+                PrintElem("ExpReport");
+            });
+        });
+
+        function PrintElem(elem) {
+            var mywindow = window.open('', 'PRINT', 'height=842,width=590');
+
+            mywindow.document.write('<html><head><style>.nepalifont{font-family:Preeti}  table {border-collapse: collapse;width: 100%;border: 1px solid ;}th, td {text-align: left;padding: 8px; border: 1px solid ;}tr:nth-child(even){background-color: #f2f2f2;}</style><title></title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(document.getElementById(elem).innerHTML);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            mywindow.close();
+
+            return true;
+        }
+
+    </script>
+
+
+
+</body>
+</html>

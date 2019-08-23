@@ -1,0 +1,175 @@
+﻿@model Newspaper.Models.Admin
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id) @Html.HiddenFor(model => model.Password)
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title"><center><h4>अद्यावधिक</h4></center></h1>
+        </div>
+
+        <div class="panel-body">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>कर्मचारी आइडी</label>
+                 @Html.ValidationMessageFor(model => model.EmployeeId)
+
+                    @Html.TextBoxFor(model => model.EmployeeId, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>पुरा नाम</label>
+                  @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>इमेल</label>
+                  @Html.ValidationMessageFor(model => model.Email)
+
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>प्रयोगकर्ताको नाम</label>
+                   @Html.ValidationMessageFor(model => model.UserName)
+
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                <
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                </div>*@
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>प्रकार</label>
+                   @Html.ValidationMessageFor(model => model.Category)
+
+
+                    @Html.DropDownList("Category", new List<SelectListItem>() { new SelectListItem() { Text = "--Select Category--", Value = "" }, new SelectListItem() { Text = "Super Admin", Value = "SuperAdmin" }, new SelectListItem() { Text = "Supervisor", Value = "Supervisor" }, new SelectListItem() { Text = "Admin", Value = "Admin" }, new SelectListItem() { Text = "Accountant", Value = "Accountant" }, new SelectListItem() { Text = "Counter", Value = "Counter" } }, new { id = "ddlCategory", @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>फोन नम्बर</label>
+                    @Html.ValidationMessageFor(model => model.Phone)
+
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                   <label>कार्यालयको नम्बर</label>
+                    @Html.ValidationMessageFor(model => model.WorkPhone)
+
+                    @Html.TextBoxFor(model => model.WorkPhone, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.URL) 
+                    @Html.ValidationMessageFor(model => model.URL)
+
+                    @Html.TextBoxFor(model => model.URL, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>pp आकारको फोटो</label>
+                    @Html.ValidationMessageFor(model => model.PPSizePhoto)
+
+                    @*<img src="@Url.Content(Model.PPSizePhoto)" width="150" height="150" />
+                        <input type="file" name="ImageFile" id="ImageFile" />*@
+                    <input type="file" name="ImageFile" id="ImageFile" onchange="readURL(this)" class="form-control" />
+                    <img id="blah" src="@Url.Content(Model.PPSizePhoto)" alt="image" width="100" height="100" />
+
+
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status)  @Html.ValidationMessageFor(model => model.Status)
+
+                    &nbsp;
+                    @Html.CheckBoxFor(model => model.Status, new { style = "width: 20px; height: 20px;", @class="form-control" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-10">
+                    <input type="submit" value="अद्यावधिक" class="btn btn-primary" title="Update Admin"/>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+            }
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/jqueryval")
+                <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+
+                <link href="~/css/jquery-ui.css" rel="stylesheet" />
+                <script type="text/javascript">
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+
+                            reader.onload = function (e) {
+
+                                $('#blah')
+                                    .attr('src', e.target.result);
+                            };
+
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+
+
+
+                    $(document).ready(function () {
+
+
+                    });
+                </script>
+
+            }

@@ -1,0 +1,66 @@
+﻿@model Newspaper.Models.PrakashanGroup
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-6 col-md-offset-2">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <br />
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">
+                    <center>
+                        <h4>
+                            वितरक ग्रुप सच्याउनुहोस
+                        </h4>
+                    </center>
+                </h1>
+            </div>
+
+            <div class="panel-body">
+                @if (ViewBag.message != null)
+                {
+                    <div class="sucess">@ViewBag.message</div>
+                }
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>प्रोडक्सन ID</label>
+                   
+                        @Html.TextBoxFor(model => model.GroupId, new{ @class = "form-control nepalifont", style = "font-size:20px;" })
+                        @Html.ValidationMessageFor(model => model.GroupId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label>प्रोडक्सन नाम</label>
+
+                        @Html.TextBoxFor(model => model.GroupName,new { @class = "form-control nepalifont", style = "font-size:20px;" })
+                        @Html.ValidationMessageFor(model => model.GroupName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-10">
+                        <input type="submit" value="अद्यावधिक" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

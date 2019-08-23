@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+
+</style>
+<label style="padding:2px"></label>
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <center><h4>प्रिन्ट रिपोर्ट </h4>  @*<i class="fa fa-print fa-4x" , style="color:#000000" text-Center"></i>*@</center>
+
+        </div>
+
+        <div class="panel-body">
+            @*For Daywise Count Report*@
+            <br />
+
+            <div class="col-lg-3 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-calendar-alt fa-4x" aria-hidden="false"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+
+                                <div> दैनिक बितरकको रीपोर्ट</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("SelectSalesMan", "DayWiseCount")" class="viewDetails" data-type="customers">
+                        <div class="panel-footer">
+                            <span class="pull-left">प्रीन्ट दैनिक रीपोर्ट</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+
+
+                </div>
+            </div>
+
+
+            @*Print Expired Customer Report*@
+            <div class="col-lg-3 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-user-times fa-4x" aria-hidden="false"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+
+                                <div class="text-align:center;">मितिका <br />आधारमा समाप्त  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("SelectDate", "Report")" class="viewDetails" data-type="customers">
+                        <div class="panel-footer">
+                            <span class="pull-left">समय समाप्त ग्राहकहरु  </span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+
+
+                </div>
+            </div>
+
+
+
+            @*Print all Expired Customer till now*@
+            <div class="col-lg-3 col-md-4">
+
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+
+
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-user-times fa-4x" aria-hidden="false" style="color:red"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div>समय समाप्त <br /> भएका सबै ग्राहकहरु </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (TempData["message"] != null)
+                    {
+
+                        <label class="bg-danger">@TempData["message"] </label>
+
+
+                    }
+
+                    <a href="@Url.Action("ExpiredReport", "Report")" class="viewDetails" data-type="customers">
+                        <div class="panel-footer">
+                            <span class="pull-left">समप्त भएका सबै ग्राहकहरु</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+
+
+                </div>
+            </div>
+
+            @*Print Added Customer Report*@
+            <div class="col-lg-3 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-user-plus fa-4x" aria-hidden="false"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+
+                                <div>थप ग्राहकहरु </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("SelectNewspaper", "Report")" class="viewDetails" data-type="customers">
+                        <div class="panel-footer">
+                            <span class="pull-left">प्रिन्ट थप ग्राहक </span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+
+
+                </div>
+            </div>
+
+            @*Dainik Bibaran*@
+            <div class="col-lg-3 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-calendar-check fa-4x" aria-hidden="false"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+
+                                <div class="text-align:center;">दैनिक वितरणको बिवरण</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("SelectDistributorDate", "Report")" class="viewDetails" data-type="customers">
+                        <div class="panel-footer">
+                            <span class="pull-left">प्रीन्ट दैनिक वितरणको बिवरण</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+
+
+                </div>
+            </div>
+
+            @*production report*@
+            <div class="col-lg-3 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-clone fa-4x" aria-hidden="false"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+
+                                <div class="text-align:center;">प्रकाशन वितरणको रिपोर्ट</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("SelectDate", "Prakashanreports")" class="viewDetails" data-type="customers">
+                        <div class="panel-footer">
+                            <span class="pull-left">प्रकाशन रिपोर्ट</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+

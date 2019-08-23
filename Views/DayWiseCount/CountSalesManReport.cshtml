@@ -1,0 +1,212 @@
+﻿@model List<Newspaper.Models.ViewModel.SelectSalesManVM>
+@{
+    ViewBag.Title = "CountSalesManReport";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    body {
+    line-height:0.5;
+    }
+    .div1 {
+        /*width: 450px;
+        height: 460px;*/
+        width: 350px;
+        display: inline-block;
+        border: 1px solid black;
+        padding-top:4px;
+      //  margin-top:2px;
+        margin-bottom:5px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #000;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .btn {
+      background-color: blue;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+</style>
+
+<center><h1><b> दैनिक बितरकको रीपोर्ट</b></h1></center>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <div id="divprint">
+
+        @foreach (var item in Model.GroupBy(test => test.SalesManId).Select(grp => grp.First()))
+            {
+            <div class="div1">
+                <div>
+                    <Center><label style="font-size:15px"> <b>Gorkhapatra Santhan</b></label></Center><br />
+                    <Center><label style="font-size:13px">Dharmapath,kathmandu</label></Center><br />
+
+
+                    <Center>
+                        <label style="font-size:11px"><u>Gatepass</u></label>
+                    </Center>
+
+                    <br />
+                    <p align="left">
+                        <label>वितरकको नाम :-</label>
+                       <b class="nepalifont" style="font-size:20px;"> @item.SalesManName</b>
+                    </p>
+
+                    <p align="left">
+                        <label>रिपोर्ट मिति  :-</label>
+                        @StringToUnicode(item.NepDate)
+                    </p>
+                    <br />
+                    @*<p align="left">
+                        <label>Branch :-</label>
+                        @Model[0].branch
+                    </p>*@
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>पत्रिकाको नाम</th>
+
+                            <th>परिमाण</th>
+                        </tr>
+                        @foreach (var items in Model.Where(m => m.SalesManName == item.SalesManName))
+                        {
+                            <tr>
+                                <td class="nepalifont" style="font-size:20px;">@items.NewsPaperName</td>
+                                <td>@StringToUnicode(items.Count.ToString())</td>
+                            </tr>
+                        }
+                    </table>
+                    <br />
+                    <p align="left">
+                        <label>............................................</label>
+                        <br />
+                        <label>Gatepass Signature</label>
+                    </p>
+                </div>
+            </div>
+            
+        }
+    </div>
+
+    <br />
+
+    <center> <button class="btn" id="btnPrint"><i class="fa fa-print"></i> प्रिन्ट गर्नुहोस </button></center>
+
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+
+
+    <script src="~/Scripts/jQuery.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $("#btnPrint").click(function (e) {
+                PrintElem("divprint");
+            });
+        });
+
+        function PrintElem(elem) {
+            var mywindow = window.open('', 'PRINT', 'height=842,width=595');
+
+            mywindow.document.write('<html><head><style> .nepalifont{font-family:Preeti} body{text-align:left;line-height:0.5;}.div1 { margin-bottom:5px;padding-top:4px;width: 316px; display:inline-block;border: 1px solid black;}table {border-collapse: collapse;width: 100%;border: 1px solid ;}th, td {text-align: left;padding: 8px; border: 1px solid ;}</style><title></title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(document.getElementById(elem).innerHTML);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            mywindow.close();
+
+            return true;
+        }
+
+    </script>
+
+</body>
+
+</html>

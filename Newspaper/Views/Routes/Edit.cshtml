@@ -1,0 +1,64 @@
+﻿@model Newspaper.Models.Route
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="col-md-6 col-md-offset-2">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">
+                <center>
+                    <h4>
+                        रुट सच्याउनुहोस
+                    </h4>
+                </center>
+            </h1>
+        </div>
+
+        <div class="panel-body">
+            @if (ViewBag.message != null)
+            {
+                <div class="sucess">@ViewBag.message</div>
+            }
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label>रुट Id</label>
+                    @Html.TextBoxFor(model => model.RouteId, new { @class = "form-control nepalifont", style = "font-size:20px;" })
+                    @*@Html.EditorFor(model => model.RouteId, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.RouteId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label>रुटको नाम</label>
+                    @Html.TextBoxFor(model => model.RouteName, new { @class = "form-control nepalifont", style = "font-size:20px;" })
+                    @*@Html.EditorFor(model => model.RouteName, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.RouteName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-10">
+                    <input type="submit" value="अद्यावधिक" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Routes", new { @class = "btn btn-success" })
+    </div>
+
+</div>
+
+}
+
+

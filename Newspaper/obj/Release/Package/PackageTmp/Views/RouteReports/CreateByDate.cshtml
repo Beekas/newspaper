@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "CreateByDate";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    ViewBag.Title = "EditByDate";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm("Create", "RouteReports", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+
+    <br />
+    <div class="col-md-6 col-lg-offset-3">
+        <div class="panel panel-primary ">
+            <div class="panel-heading">
+
+                <h1 class="panel-title"><center><h4>मिति छानुहोस</h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["message"]</div>
+                }
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>मिति</label>
+                        @Html.TextBox("NepDate", null, new { id = "txtNepDate", @class = "form-control", @required = true })
+
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        @Html.TextBox("engdate", null, new { id = "txtPaperDispatchDate", @class = "form-control" })
+
+                    </div>
+                </div>
+                @*<div class="col-md-8 col-md-offset-2">
+
+                        <div class="form-group">
+                            <label>मिति छान्नुहोस्  </label>
+
+                            @Html.TextBox("NepDate", null, new { id = "txtNepDate", @class = "form-control", @required = true })
+                            @Html.TextBox("engdate", null, new { id = "txtPaperDispatchDate", @class = "form-control" })
+                        </div>
+                    </div>*@
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-10">
+                        <input type="submit" value="खोज्नुहोस" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/bootstrap/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+    <script src="~/bootstrap/nepali.datepicker.v2.2.min.js"></script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#txtNepDate', 'body').nepaliDatePicker({
+
+                onChange: function () {
+                    $('#txtNepDate').val();
+                    $('#txtPaperDispatchDate').val(BS2AD($('#txtNepDate').val()));
+                },
+                npdMonth: true,
+                npdYear:true
+            });
+        });
+
+
+
+    </script>
+}
+
+
+
+
+

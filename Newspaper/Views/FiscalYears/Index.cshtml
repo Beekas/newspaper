@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Newspaper.Models.FiscalYear>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+
+    #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+    }
+
+    #myTable tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+        #myTable tr.header, #myTable tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+<div class="module">
+
+    <div class="module-body">
+        <br />
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>आर्थिक वर्ष </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="panel-body">
+                    @if (TempData["message"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["message"]</div>
+                    }
+
+                    @Html.ActionLink("आर्थिक वर्ष थप्नुहोस", "Create", "FiscalYears", new { @class = "btn btn-primary", title = "Create fiscal year" })
+
+                    <div style="padding-top:10px;">
+                        <table class="table table-bordered" id="myTable">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        नेपाली आ.व
+                                    </th>
+                                    <th>
+                                       अंग्रेजी आ.व
+                                    </th>
+                                    <th>Status</th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr id="dataRow">
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(modelItem => item.NepYear)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EngYear)
+                                    </td>
+                                    <td>
+                                        @Html.RadioButtonFor(modelItem => item.Status, true, new { id = "txtStatus", disabled = "disabled" })
+                                       
+                                    </td>
+                                    
+
+                                    <td>
+                                        @Html.ActionLink("सच्याउनुहोस", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", title = "Edit fiscal year" })
+
+                                        <a href="#" id="btnStatus" data-id="@item.Id" class="btn btn-success">Change Status</a>
+                                    </td>
+
+                                </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+       
+        $("a#btnStatus").click(function () {
+            var status;
+            var $rowSelected = $(this).parent().parent();
+            var fyId = $(this).attr("data-id");
+
+            if ($rowSelected.find('input:radio').is(':checked')) {
+                alert("Can't Change the Status True to False");
+            }
+            else {
+                if(confirm("Change Status will change the bill no to initial position.Do you really want to change the status?"))
+                {
+                    changeStatus(fyId);
+                    var checkedRow = $('table#myTable').find('tbody') // select table body and
+                                   .find('tr#dataRow') // select all rows that has
+                                    .has('input[type=radio]');
+                    //// checked checkbox element
+                    checkedRow.val('TRUE');
+                    $rowSelected.find("td input#txtStatus").val('FALSE');
+                    alert("Status of fiscalyear changed Successfully.");
+                }
+                // }
+            }
+            location.reload();
+        });
+
+        function changeStatus(id) {
+            $.ajax({
+                url: RootUrl + 'FiscalYears/changeStatus',
+                data: "{'fyId': '" + id + "'}",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    //alert(data);
+                    return true;
+
+                },
+                error: function (response) {
+                    return false;
+                },
+                failure: function (response) {
+                    return false;
+                }
+            });
+        }
+    </script>
+}

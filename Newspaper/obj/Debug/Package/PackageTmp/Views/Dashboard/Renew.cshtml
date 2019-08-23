@@ -1,0 +1,197 @@
+﻿@model Newspaper.Models.Customer
+
+@{
+    ViewBag.Title = "ReNew";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    fieldset {
+        display: block;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding-top: 0.35em;
+        padding-bottom: 0.625em;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+        border: 2px solid black;
+    }
+
+    legend {
+        width: auto;
+        border: 1.5px solid black;
+    }
+</style>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+@using (Html.BeginForm("ReNew", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title"><center><h4>Re-New Customer</h4></center></h1>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerId)  @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.CustomerId, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    @*<i class="fa fa-user"></i>*@
+                    @Html.LabelFor(model => model.FirstName)@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MiddleName)@Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.MiddleName, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName) @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+            </div>
+            @*<div class="col-md-3" id="divRenew">
+                <div class="form-group">
+                    <label>Re-New Type</label>    @Html.ValidationMessageFor(model => model.PaperDispatchDate, "", new { @class = "text-danger" })
+                    @Html.DropDownList("type", new List<SelectListItem> { new SelectListItem { Text = "---Select Renew Type---", Value = "" }, new SelectListItem { Text = "Renew", Value = "renew" }, new SelectListItem { Text = "Paper Dispatch", Value = "paperDispatch" }, new SelectListItem { Text = "Renew and PaperDispatch", Value = "both" } }, new { @class = "form-control", id = "ddlRenew" })
+
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NepaliDate) @Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.NepaliDate, new { id = "txtNepaliDate", @class = "form-control" })
+
+                </div>
+            </div>
+
+         
+            <div class="col-md-3" id="divNepaliDate">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NepaliDate) @Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.NepaliDate, new { id = "txtNepaliDate", @class = "form-control" })
+
+                </div>
+            </div>*@
+
+
+
+
+            <div class="col-md-3" id="divDuration">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.Duration) @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+
+                    @Html.DropDownList("Duration", new List<SelectListItem>() { new SelectListItem() { Text = "--Select Duration--", Value = "" }, new SelectListItem() { Text = "Monthly", Value = "30" }, new SelectListItem() { Text = "Quarterly", Value = "90" }, new SelectListItem() { Text = "Half Quarterly", Value = "183" }, new SelectListItem() { Text = "Yearly", Value = "365" } }, new { @class = "form-control", id = "ddlDuration" })
+                </div>
+            </div>
+
+
+            @Html.HiddenFor(model => model.Id)
+
+            @Html.HiddenFor(model => model.PaperDispatchDate, new { id = "txtPaperDispatchDate" })
+
+            @Html.HiddenFor(model => model.EndedDate, DateTime.Now)
+            @Html.HiddenFor(model => model.RegisterDate, DateTime.Now)
+            <center>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="Re-New" class="btn btn-primary" id="btnSubmit" /><label style="padding:10px"></label>
+                        @Html.ActionLink("View Record", "Index", "Customer", new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </center>
+        </div>
+    </div>
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/bootstrap/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+    <script src="~/bootstrap/nepali.datepicker.v2.2.min.js"></script>
+    <script type="text/javascript">
+        //$(document).ready(function () {
+
+        //    $('#txtNepaliDate', 'body').nepaliDatePicker({
+
+        //        onChange: function () {
+        //            $('#txtNepaliDate').val();
+        //            $('#txtPaperDispatchDate').val(BS2AD($('#txtNepaliDate').val()));
+        //        },
+        //        npdMonth: true,
+        //        npdYear: true
+        //    }
+        //     );
+        //    //$('#txtPaperDispatchDate').datepicker();
+
+        //    $("#divNepaliDate").hide();
+        //    $("#txtNepaliDate").val("");
+        //    $("#divDuration").hide();
+        //    $("#ddlDuration").val("");
+        //    $("#ddlRenew").change(function () {
+
+        //        $("#divNepaliDate").show();
+        //        $("#txtNepaliDate").val("");
+        //        $("#divDuration").show();
+        //        $("#ddlDuration").val("");
+        //        if ($(this).val() === "both") {
+        //            $("#divNepaliDate").Show();
+        //            $("#txtNepaliDate").val("");
+        //            $("#divDuration").show();
+        //            $("#ddlDuration").val("");
+
+
+        //        }
+
+        //        else if ($(this).val() === "renew") {
+        //            $("#divDuration").show();
+        //            $("#ddlDuration").val("");
+
+        //            $("#divNepaliDate").hide();
+        //            $("#txtNepaliDate").val("");
+        //        }
+        //        else {
+        //            $("#divNepaliDate").show();
+        //            $("#txtNepaliDate").val("");
+
+        //            $("#divDuration").hide();
+        //            $("#ddlDuration").val("");
+        //        }
+        //    });
+        //});
+    </script>
+}
+
+

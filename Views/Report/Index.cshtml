@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Newspaper.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            Middle Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Customer Type
+
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.MiddleName
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @item.Address
+            </td>
+            <td>
+                @item.CustomerType
+            </td>
+
+        </tr>
+    }
+
+</table>
+<a href="@Url.Action("ExportCustomer","Report") ">Report PDF</a>
+

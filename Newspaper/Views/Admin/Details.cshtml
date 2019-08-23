@@ -1,0 +1,170 @@
+﻿@model Newspaper.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+
+<div>
+    <br />
+    <div class="col-md-7 col-lg-offset-3">
+
+        <p>
+            @Html.ActionLink("व्यवस्थापकहरु ", "Index", "", new { @class = "btn btn-info", title = "Back To Index Page" })
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4> व्यवस्थापकको जानकारी </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+                        <tr>
+
+                            <th>
+                                कर्मचारी आइडी
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.EmployeeId)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                कर्मचारीको नाम
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.FullName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                इमेल
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                प्रयोगकर्ताको नाम
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UserName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                फोन नम्बर
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Phone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                कार्यालयको नम्बर
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.WorkPhone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.URL)
+                            </th>
+
+                            <td>
+
+                                @Html.DisplayFor(model => model.URL)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                साखाको नाम
+                            </th>
+
+                            <td>
+
+                                @Html.DisplayFor(model => model.Branch.BranchName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                pp आकारको फोटो
+                            </th>
+
+                            <td>
+                                <img src="@Url.Content(Model.PPSizePhoto)" width="100" height="100" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreatedDate)
+                            </th>
+
+                            <td>
+                                @Model.CreatedDate.ToShortDateString()
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ModifiedDate)
+                            </th>
+
+                            <td>
+                                @Model.ModifiedDate.ToShortDateString()
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreatedBy)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreatedBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ModifiedBy)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.ModifiedBy)
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

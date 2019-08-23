@@ -1,0 +1,307 @@
+﻿@model List<Newspaper.Models.ViewModel.RouteVM>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+
+    .btn {
+        background-color: mediumblue;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+</style>
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title">
+            <center>
+                <h4>
+                    Route report
+                </h4>
+            </center>
+        </h1>
+    </div>
+
+
+
+    <div id="ExpReport">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>मिति :    <u>@StringToUnicode(Model[0].NepaliDate.ToString())</u></label>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            @foreach (var routes in ViewBag.Routes)
+            {
+                <label>@Model.FirstOrDefault(m => m.RouteId == routes).RouteName</label>
+                <table class="table table-bordered" id="myTable">
+
+                    <thead>
+                        <tr>
+
+                            <th>
+                                क.स
+                            </th>
+                            <th>
+                                Agent Name
+                            </th>
+                            <th>
+                                address
+                            </th>
+                            <th>
+                                गोरखापत्र
+                            </th>
+
+                            <th>
+                                राइजीङ्ग नेपाल
+                            </th>
+                            <th>
+                                Muna
+                            </th>
+                            <th>
+                                Madhu
+                            </th>
+                            <th>
+                                Yuwa
+                            </th>
+
+                            <th>
+                                Transport
+                            </th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int j = 0, k = 1;
+                        }
+
+
+                        @foreach (var item in Model.Where(m => m.RouteId == routes))
+                        {
+                            <tr>
+                                @{j = Model.IndexOf(item);
+                                }
+                                <td>
+                                    @StringToUnicode(k.ToString())
+                                </td>
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.AgentName
+                                </td>
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.Address
+                                </td>
+                                <td>
+                                    @StringToUnicode(Html.DisplayFor(a => a[j].gp_Quantity).ToString())
+                                    @*@Html.TextBox("[" + j + "].gp_Quantity", Model[j].gp_Quantity, new { @class = "form-control", type = "number" })*@
+                                </td>
+
+                                <td>
+                                    @StringToUnicode(Html.DisplayFor(a => a[j].rn_Quantity).ToString())
+                                    @* @Html.TextBox("[" + j + "].rn_Quantity",, new { @class = "form-control", type = "number" })*@
+                                </td>
+
+                                <td>
+                                    @StringToUnicode(Html.DisplayFor(a => a[j].muna_Quantity).ToString())
+                                    @*@Html.TextBox("[" + j + "].muna_Quantity", "0", new { @class = "form-control", type = "number" })*@
+                                </td>
+                                <td>
+                                    @StringToUnicode(Html.DisplayFor(a => a[j].madhu_Quantity).ToString())
+                                    @*@Html.TextBox("[" + j + "].madhu_Quantity", "0", new { @class = "form-control", type = "number" })*@
+                                </td>
+                                <td>
+                                    @StringToUnicode(Html.DisplayFor(a => a[j].Yuwa_Quantity).ToString())
+                                    @*@Html.TextBox("[" + j + "].yuwa_Quantity", "0", new { @class = "form-control", type = "number" })*@
+                                </td>
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.Transport
+                                </td>
+
+
+                            </tr>
+                            k++;
+                        }
+                        <tr>
+                            <td colspan="3">Jamma</td>
+                            <td>
+                                @StringToUnicode(Model.FirstOrDefault(m => m.RouteId == routes).gp_total.ToString())
+
+                            </td>
+
+                            <td>
+                                @StringToUnicode(Model.FirstOrDefault(m => m.RouteId == routes).rn_total.ToString())
+
+                            </td>
+
+                            <td>
+                                @StringToUnicode(Model.FirstOrDefault(m => m.RouteId == routes).muna_total.ToString())
+
+                            </td>
+                            <td>
+                                @StringToUnicode(Model.FirstOrDefault(m => m.RouteId == routes).madhu_total.ToString())
+
+                            </td>
+                            <td>
+                                @StringToUnicode(Model.FirstOrDefault(m => m.RouteId == routes).yuwa_total.ToString())
+
+                            </td>
+                            <td></td>
+
+
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            }
+            <label>GP:@StringToUnicode(Model[0].gp_grandtotal.ToString())</label>
+            <label>RN:@StringToUnicode(Model[0].rn_grandtotal.ToString())</label>
+            <label>MN:@StringToUnicode(Model[0].muna_grandtotal.ToString())</label>
+            <label>MD:@StringToUnicode(Model[0].madhu_grandtotal.ToString())</label>
+            <label>YU:@StringToUnicode(Model[0].Yuwa_grandtotal.ToString())</label>
+        </div>
+
+
+
+        @*<div class="form-group">
+            <div class="col-md-offset-5 col-md-10">
+                <input type="submit" value="थप्नुहोस" class="btn btn-primary" />
+            </div>*@
+    </div>
+
+    @*</div>*@
+
+
+    <br />
+    <center><button class="btn" id="btnPrint"><i class="fa fa-print"></i> Print</button></center>
+</div>
+
+
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+
+
+
+@section scripts{
+
+    <script src="~/Scripts/jQuery.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $("#btnPrint").click(function (e) {
+                PrintElem("ExpReport");
+            });
+        });
+
+        function PrintElem(elem) {
+            var mywindow = window.open('', 'PRINT', 'height=842,width=590');
+
+            mywindow.document.write('<html><head><style>.nepalifont{font-family:Preeti}  table {border-collapse: collapse;width: 100%;border: 1px solid ;}th, td {text-align: left;padding: 8px; border: 1px solid ;}tr:nth-child(even){background-color: #f2f2f2;}</style><title></title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(document.getElementById(elem).innerHTML);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            mywindow.close();
+
+            return true;
+        }
+
+    </script>
+
+}
+
+
+
+

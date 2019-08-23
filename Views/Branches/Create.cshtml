@@ -1,0 +1,67 @@
+﻿@model Newspaper.Models.Branch
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Create", "Branches", FormMethod.Post))
+{
+    <br />
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title"><center><h4> Create Branch</h4></center></h1>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label>Branch Name</label>   @Html.ValidationMessageFor(model => model.BranchName, "", new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(model => model.BranchName, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label>Branch Address</label>   @Html.ValidationMessageFor(model => model.BranchAddress, "", new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(model => model.BranchAddress, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label>Branch Phone</label>   @Html.ValidationMessageFor(model => model.BrachPhone, "", new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(model => model.BrachPhone, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-10">
+                    <input type="submit" value="Create" class="btn  btn-info" title="Create New Area Register" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

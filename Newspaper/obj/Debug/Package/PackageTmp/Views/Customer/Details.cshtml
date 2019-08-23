@@ -1,0 +1,297 @@
+﻿@model Newspaper.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+
+<div>
+
+    <br />
+    <<div class="col-md-7 col-lg-offset-3">
+        <br />
+        <p>
+            @Html.ActionLink("ग्राहकहरु", "Index", "", new { @class = "btn btn-info" })
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>ग्राहक विवरण</h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+
+                        <tr>
+                            <th>
+                               ग्राहक नम्बर
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.CustomerId)
+                            </td>
+                        </tr>
+
+                        @*<tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SalesManId)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.SaleMan.FullName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Newspaper
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Service.NewsPaperName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Branch
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Branch.BranchName)
+                            </td>
+                        </tr>*@
+                        <tr>
+
+                            <th>
+                               ग्राहकको नाम
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.FirstName)
+                            </td>
+                        </tr>
+                        @*<tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MiddleName)
+                            </th>
+
+
+                            <td>
+                                @Html.DisplayFor(model => model.MiddleName)
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.LastName)
+                            </th>
+
+
+
+                            <td>
+                                @Html.DisplayFor(model => model.LastName)
+                            </td>
+                        </tr>*@
+                        <tr>
+                            <th>
+                                फोन नम्बर
+                            </th>
+
+
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.MPhone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                इमेल
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                बैकल्पिक इमेल
+                            </th>
+
+
+
+                            <td>
+                                @Html.DisplayFor(model => model.AltEmail)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                घर नम्बर 
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.HomeNo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                               टोल
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.Tole)
+                                </>
+</tr>
+                        <tr>
+                            <th>
+                                ठेगाना 
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.Address)
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <th>
+                                प्रदेस 
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Provience)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+
+                                जीपीएस अक्षांश
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Gprslatitude)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+
+                                जीपीएस देशान्तर
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.GprsLongitude)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.URL)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.URL)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                ग्राहकको जानकारी
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CustomerInfo)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                ग्राहकको प्रकार
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CustomerType)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+
+                                प्रकारको बिबरण
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.TypeDetail)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                दर्ता भएको मिति 
+                            </th>
+                            <td>
+                                @Model.RegisterDate.ToShortDateString()
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                               दर्ता गर्नेको नाम 
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.RegisteredBy)
+                            </td>
+                        </tr>
+                        @*<tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PaperDispatchDate)
+                            </th>
+
+                            <td>
+                                @Model.PaperDispatchDate.ToShortDateString()
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EndedDate)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.EndedDate)
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Qunatity)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Qunatity)
+                            </td>
+
+                        </tr>*@
+
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    </div>
+

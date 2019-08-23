@@ -1,0 +1,336 @@
+﻿
+@model IEnumerable<Newspaper.Models.ViewModel.assignNewspaperVM>
+
+@{
+    ViewBag.Title = "All Assigned";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<style>
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4>  नियुक्त ग्राहकका सबै सेवाहरु  </h4></center></h1>
+    </div>
+    @*<div style="padding-left:5px;padding-top:5px;">
+            @Html.ActionLink("नया ग्राहक नियुक्त गर्नुहोस", "Show", "serviceAssigns", new { @class = "btn btn-primary", title = "Assign New Service to customer" })
+        </div>*@
+
+    <div class="panel-body">
+
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered" id="myTable">
+
+                <thead>
+                    <tr>
+
+                        <th>
+                            ग्राहकको नाम
+                        </th>
+                        <th style="width:150px;">
+                            पत्रिकाको नाम
+                        </th>
+                        <th>
+                            ठेगाना
+                        </th>
+
+                        <th>
+                            सुरु मिति
+                        </th>
+                        <th>
+                        समाप्त मिति
+                        </th>
+                        <th style="width:200px;">
+
+                        बाँकी दिन 
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+
+                        if ((item.EndedDate - DateTime.Now).Days < 1)
+                        {
+                            <tr class="danger">
+
+
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.CustomerName
+                                </td>
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.Paper
+                                </td>
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.Address
+                                </td>
+
+                                <td>
+                                    @StringToUnicode(item.dispatch.ToString())
+                                    @*@item.PaperDispatchDate.ToShortDateString()*@
+                                </td>
+
+                                <td>
+                                    @StringToUnicode(item.endDate.ToString())
+                                    @*@item.EndedDate.ToShortDateString()*@
+                                </td>
+                                <td>
+                                    समयावधि समाप्त @StringToUnicode(((DateTime.Now - item.EndedDate).Days).ToString()) दिन अगाडी
+                                </td>
+
+
+                            </tr>
+                        }
+                        else if ((item.EndedDate - DateTime.Now).Days > 10)
+                        {
+                            if ((item.PaperDispatchDate - DateTime.Now).Days > 10)
+                            {
+                                <tr class="warning">
+
+
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.CustomerName
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.Paper
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.Address
+                                    </td>
+
+                                    <td>
+                                       @StringToUnicode(item.dispatch.ToString())
+                                        @*@item.PaperDispatchDate.ToShortDateString()*@
+                                    </td>
+
+                                    <td>
+                                        @StringToUnicode(item.endDate.ToString())
+                                        @*@item.EndedDate.ToShortDateString()*@
+                                    </td>
+                                    <td>
+                                        @StringToUnicode(((item.EndedDate - item.PaperDispatchDate).Days).ToString()) दिन बाकी
+                                    </td>
+
+
+                                </tr>
+
+
+                            }
+                            else
+                            {
+                                <tr class="success">
+
+
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.CustomerName
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.Paper
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.Address
+                                    </td>
+
+                                    <td>
+                                        @StringToUnicode(item.dispatch.ToString())
+                                        @*@item.PaperDispatchDate.ToShortDateString()*@
+                                    </td>
+
+                                    <td>
+                                        @StringToUnicode(item.endDate.ToString())
+                                        @*@item.EndedDate.ToShortDateString()*@
+                                    </td>
+                                    <td>
+                                        @StringToUnicode(((item.EndedDate - DateTime.Now).Days).ToString()) दिन बाकी
+                                    </td>
+
+
+                                </tr>
+                            }
+
+
+
+                        }
+                        else
+                        {
+
+                            <tr class="warning">
+
+
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.CustomerName
+                                </td>
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.Paper
+                                </td>
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @item.Address
+                                </td>
+
+                                <td>
+                                    @StringToUnicode(item.dispatch.ToString())
+                                    @*@item.PaperDispatchDate.ToShortDateString()*@
+                                </td>
+
+                                <td>
+                                    @StringToUnicode(item.endDate.ToString())
+                                    @*@item.EndedDate.ToShortDateString()*@
+                                </td>
+                                <td>
+                                    @StringToUnicode(((item.EndedDate - DateTime.Now).Days).ToString()) दिन बाकी
+                                </td>
+
+
+                            </tr>
+                        }
+
+
+
+
+
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+
+
+
+
+@section Scripts {
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+
+
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+
+        //$('.myLinkToTop').click(function () {
+        //    $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+        //    return false;
+        //});
+
+
+
+        $(document).ready(function () {
+            $("body div.myTable input").addClass("nepalifont");
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+                "pageLength": 50,
+
+                //'initComplete': function () {
+                //    var api = this.api();
+
+                //    // Populate a dataset for autocomplete functionality
+                //    // using data from first, second and third columns
+                //    api.cells('tr', [0, 1, 2]).every(function () {
+                //        // Get cell data as plain text
+                //        var data = $('<div>').html(this.data()).text();
+                //        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+                //    });
+
+                //    // Sort dataset alphabetically
+                //    dataSrc.sort();
+
+                //    // Initialize Typeahead plug-in
+                //    $('.dataTables_filter input[type="search"]', api.table().container())
+                //        .typeahead({
+                //            source: dataSrc,
+                //            afterSelect: function (value) {
+                //                api.search(value).draw();
+                //            }
+                //        }
+                //        );
+                //}
+            });
+        });
+
+
+
+
+    </script>
+}
+
+
+

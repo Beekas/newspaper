@@ -1,0 +1,70 @@
+﻿@model Newspaper.Models.Route
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+
+<div>
+
+    <br />
+    <<div class="col-md-7 col-lg-offset-3">
+        <br />
+        <p>
+            @Html.ActionLink("रुटहरु", "Index", "", new { @class = "btn btn-info" })
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>रुटको विवरण</h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RouteId)
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.RouteId)
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.RouteName)
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.RouteName)
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

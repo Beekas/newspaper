@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Newspaper.Models.Customer>
+<style>
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4>ग्राहक नियुक्ति गर्नुहोस </h4></center></h1>
+    </div>
+
+
+    <div class="panel-body">
+
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered" id="myTable">
+                <thead>
+                    <tr>
+                        <th>
+                            ग्राहक नम्बर
+                        </th>
+                        <th>
+                            ग्राहकको नाम
+                        </th>
+                        <th>
+                            ठेगाना
+                        </th>
+                        <th>
+                            फोन नम्बर
+                        </th>
+
+
+
+                        <th>
+                            कार्य
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.CustomerId
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.FirstName
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.Address,  @item.Tole
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.MPhone
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("सेवा नियुक्ति ", "Create", new { id = item.Id }, new { @class = "btn btn-success", title = "Assign Services" })
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+
+
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+
+        //$('.myLinkToTop').click(function () {
+        //    $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+        //    return false;
+        //});
+
+
+
+        $(document).ready(function () {
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+                "pageLength": 50,
+
+
+            });
+        });
+
+
+
+
+    </script>
+}
+
+

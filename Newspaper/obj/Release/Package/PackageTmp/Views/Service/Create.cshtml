@@ -1,0 +1,133 @@
+﻿@model Newspaper.Models.Service
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    
+</style>
+
+
+@using (Html.BeginForm("Create", "Service", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <br />
+        @Html.ValidationSummary(true)
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>पत्रिका सिर्जना गर्नुहोस्
+ </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                                पत्रिका कोड
+                            </label>
+                            @Html.ValidationMessageFor(model => model.ServiceCode, "", new { @class = "text-danger" })
+
+                            @Html.TextBoxFor(model => model.ServiceCode, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>पत्रिकाको नाम</label>
+                            @Html.ValidationMessageFor(model => model.NewsPaperName, "", new { @class = "text-danger" })
+
+                            @Html.TextBoxFor(model => model.NewsPaperName, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                                समय आधार
+                            </label>
+                            @Html.ValidationMessageFor(model => model.TimeBase)
+
+                            @Html.DropDownList("TimeBase", new List<SelectListItem> { new SelectListItem() { Text = "--समयतालिका  छान्नुहोस्--", Value = "" }, new SelectListItem() { Text = "दैनिक ", Value = "दैनिक " }, new SelectListItem() { Text = "साप्ताहिक ", Value = "साप्ताहिक " }, new SelectListItem() { Text = "मासिक ", Value = "मासिक " } }, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>पत्रीकाको तस्बिर</label>
+                            @Html.ValidationMessageFor(model => model.Images)
+
+                            <input type="file" name="ImageFile" id="ImageFile" onchange="readURL(this);" class="form-control" />
+                            <img id="blah" src="#" alt="your image" />
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>समाप्त मिती</label>
+                    @Html.ValidationMessageFor(model => model.EditedDate)
+
+                    @Html.TextBoxFor(model => model.EditedDate, new { id = "txtEditedDate", @class = "form-control" })
+
+                </div>
+
+            </div>
+        </div>*@
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="पत्रिका थप्नुहोस " class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+            </div>
+
+               
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    €
+
+    <script type="text/javascript">
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').show();
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(100)
+                        .height(50);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
+        $(document).ready(function () {
+
+
+            $('#txtEditedDate').datepicker();
+
+
+        });
+    </script>
+}

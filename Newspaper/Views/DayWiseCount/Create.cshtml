@@ -1,0 +1,256 @@
+﻿
+@model List<Newspaper.Models.ViewModel.CustomerVM>
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>Create Daywise Count SalesMan</h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+
+
+                @if (ViewBag.message != null)
+                {
+                    <div class="alert alert-success">@ViewBag.message</div>
+                }
+                @if (ViewBag.errormessage != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.errormessage</div>
+                }
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>SalesMan</label>
+                        @Html.DropDownList("SalesManId", null, "---Select Salesman---", new { id = "ddlSalesMan", @class = "form-control", @required = true })
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>PaperDisPatchDate</label>
+                        @Html.TextBox("NepDate", null, new { id = "txtNepDate", @class = "form-control", @required = true })
+                        @Html.Hidden("PaperDispatchDate", "", new { id = "txtPaperDispatchDate" })
+
+                        @*@Html.TextBox("PaperDispatchDate", null, new { id = "txtPaperDispatchDate", @class = "form-control", @required = true })*@
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Newspaper Name</label>
+
+                        @Html.DropDownList("ServiceId", null, "---Select Newspaper---", new { id = "ddlService", @class = "form-control", @required = true })
+
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div style="overflow-x:auto;">
+                            <table id="tblCustomer" class="table table-bordered">
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            IsPaperDispatch
+                                        </th>
+                                        <th>SalesMan</th>
+                                        <th>NewsPaper</th>
+                                        <th>Customer Name</th>
+                                        <th>Address</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int j = 0;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            @Html.HiddenFor(m => m[j].CustomerId)
+
+                                            <td>
+                                                @Html.CheckBoxFor(m => m[j].IsPaperDispatched)
+                                            </td>
+                                            <td>
+                                                @item.SalesMan
+                                            </td>
+                                            <td>
+                                                @item.NewsPaperName
+                                            </td>
+                                            <td>
+                                                @item.CustomerName
+                                            </td>
+                                            <td>
+                                                @item.Address
+                                            </td>
+
+                                        </tr>
+                                        j++;
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Remarks</label>
+
+                        @Html.TextArea("Remarks", null, new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-lg btn-primary" />
+                        &nbsp; &nbsp;  &nbsp; &nbsp;
+                        @Html.ActionLink("Select SalesMan", "SelectSalesMan", "DayWiseCount", new { @class = "btn btn-lg btn-primary", title = "Print Daywise salesman Report" })
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+                                        }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/bootstrap/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+    <script src="~/bootstrap/nepali.datepicker.v2.2.min.js"></script>
+
+
+
+    @*<select id="SalesManDropDown" onchange="getCityList()">
+            @foreach (var item in ViewBag.SalesManDropDown)
+            {
+                <text>
+                    <option value="@item.SalesManId">@item.FullName</option>
+                </text>
+            }
+
+            </select><br /><br />
+
+        <select id="ServiceDropDown"></select>*@
+    <script type="text/javascript">
+
+
+
+        $(document).ready(function () {
+            $('#txtNepDate', 'body').nepaliDatePicker({
+
+                onChange: function () {
+                    $('#txtNepDate').val();
+                    $('#txtPaperDispatchDate').val(BS2AD($('#txtNepDate').val()));
+                },
+                npdMonth: true,
+                npdYear:true
+            });
+      
+
+        $("#ddlSalesMan").change(function () {
+            if ($(this).val() > 0 && $("#ddlService").val() > 0) {
+                getCustomerList($(this).val(), $("#ddlService").val());
+            }
+            else {
+                alert("");
+            }
+        });
+        $("#ddlService").change(function () {
+            if ($(this).val() > 0 && $("#ddlSalesMan").val() > 0) {
+                getCustomerList($("#ddlSalesMan").val(), $(this).val());
+            }
+            else {
+                alert("");
+            }
+        });
+        });
+
+        //
+
+        function getCustomerList(salesManId, serviceId) {
+            //var j = 0;
+            $("#tblCustomer tbody tr").remove();
+            // debugger;
+            // var stateId = $("#SalesManDropDown").val();
+            $.ajax
+            ({
+                url: '/DayWiseCount/GetCustomerList',
+                type: 'POST',
+                datatype: 'application/json',
+                contentType: 'application/json',
+                data: "{'salesManId':'" + salesManId + "','serviceId':'" + serviceId + "'}",
+                success: function (data) {
+                    var items = '';
+                    $.each(data, function (i, item) {
+                        var rows = "<tr>"
+                       + "<td style='display:none;'><input name='[" + i + "].CustomerId' type='hidden' value='" + item.CustomerId + "'></td>"
+                        + "<td class='prtoducttd'>" + "<input name='[" + i + "].IsPaperDispatched' type='checkbox' checked value='true'>" + "</td>"
+                        + "<td class='prtoducttd'>" + item.SalesMan + "</td>"
+                        + "<td class='prtoducttd'>" + item.NewsPaperName + "</td>"
+                        + "<td class='prtoducttd'>" + item.CustomerName + "</td>"
+                        + "<td class='prtoducttd'>" + item.Address + "</td>"
+                        + "</tr>";
+                        $('#tblCustomer tbody').append(rows);
+                    });
+
+                    //for (var i = 0; i < data.length; i++) {
+                    //       alert(data[i].CustomerId);
+                    //   }
+
+                    // $("#ServiceDropDown").html("");
+                    //$.each($.parseJSON(result), function (i, NewsPaperName) {
+                    //    $("#ServiceDropDown").append
+                    //    ($('<option></option>').val(Service.ServiceId).html(Service.NewsPaperName))
+                    //})
+                },
+                error: function () {
+                    alert("Whooaaa! Something went wrong..")
+                }
+            });
+        }
+    </script>
+
+
+
+}

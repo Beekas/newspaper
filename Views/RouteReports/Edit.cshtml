@@ -1,0 +1,443 @@
+﻿@model List<Newspaper.Models.ViewModel.RouteVM>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">
+                <center>
+                    <h4>
+                        Route report
+                    </h4>
+                </center>
+            </h1>
+        </div>
+
+        <div class="panel-body">
+            @if (ViewBag.message != null)
+            {
+                <div class="sucess">@ViewBag.message</div>
+            }
+
+
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>मिति <label style="color:red; font-size:20px;">*</label></label>
+                    @*@Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })*@
+
+                    @Html.TextBox("NepaliDate", Model[0].NepaliDate, new { id = "txtNepaliDate", @class = "form-control", @required = true })
+
+
+
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+
+                    @*@Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })*@
+                    <label>&nbsp;<label style="font-size:20px;">&nbsp;</label></label>
+                    <input type="text" id="txtdate" name="EnglishDate" class="form-control" value="@Model[0].Date.ToShortDateString()">
+
+
+
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                @foreach (var routes in ViewBag.Routes)
+                {
+                    <label>@Model.FirstOrDefault(m => m.RouteId == routes).RouteName</label>
+                    <table class="table table-bordered" id="myTable">
+
+                        <thead>
+                            <tr>
+
+                                <th>
+                                    क.स
+                                </th>
+                                <th>
+                                    Agent Name
+                                </th>
+                                <th>
+                                    address
+                                </th>
+                                <th>
+                                    गोरखापत्र
+                                </th>
+
+                                <th>
+                                    राइजीङ्ग नेपाल
+                                </th>
+                                <th>
+                                    Muna
+                                </th>
+                                <th>
+                                    Madhu
+                                </th>
+                                <th>
+                                    Yuwa
+                                </th>
+
+                                <th>
+                                    Transport
+                                </th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int j = 0, k = 1;
+                            }
+
+
+                            @foreach (var item in Model.Where(m => m.RouteId == routes))
+                            {
+                                <tr>
+                                    @{j = Model.IndexOf(item);
+                                    }
+                                    <td style="font-size:20px;">
+                                        @StringToUnicode(k.ToString())
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.AgentName
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.Address
+                                    </td>
+                                    <td style="font-size:20px;">
+                                        @Html.TextBoxFor(a => a[j].gp_Quantity, new { @class = "form-control" })
+                                        @*@Html.TextBox("[" + j + "].gp_Quantity", Model[j].gp_Quantity, new { @class = "form-control", type = "number" })*@
+                                    </td>
+
+                                    <td style="font-size:20px;">
+                                        @Html.TextBoxFor(a => a[j].rn_Quantity, new { @class = "form-control" })
+                                        @* @Html.TextBox("[" + j + "].rn_Quantity",, new { @class = "form-control", type = "number" })*@
+                                    </td>
+
+                                    <td style="font-size:20px;">
+                                        @Html.TextBoxFor(a => a[j].muna_Quantity, new { @class = "form-control" })
+                                        @*@Html.TextBox("[" + j + "].muna_Quantity", "0", new { @class = "form-control", type = "number" })*@
+                                    </td>
+                                    <td style="font-size:20px;">
+                                        @Html.TextBoxFor(a => a[j].madhu_Quantity, new { @class = "form-control" })
+                                        @*@Html.TextBox("[" + j + "].madhu_Quantity", "0", new { @class = "form-control", type = "number" })*@
+                                    </td>
+                                    <td style="font-size:20px;">
+                                        @Html.TextBoxFor(a => a[j].Yuwa_Quantity, new { @class = "form-control" })
+                                        @*@Html.TextBox("[" + j + "].yuwa_Quantity", "0", new { @class = "form-control", type = "number" })*@
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.Transport
+                                    </td>
+
+
+                                </tr>
+                                @Html.HiddenFor(a => a[j].Id)
+                                @Html.HiddenFor(a => a[j].RouteId)
+                                @Html.HiddenFor(a => a[j].AgentId)
+                                @Html.HiddenFor(a => a[j].NepaliDate)
+                                @Html.HiddenFor(a => a[j].Date)
+                                //j++;
+                                k++;
+                            }
+                        </tbody>
+
+                    </table>
+                }
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-10">
+                    <input type="submit" value="थप्नुहोस" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @helper StringToUnicode(string data)
+    {
+        string uni = "";
+        foreach (char c in data)
+        {
+            var charCode = "U+" + ((int)c).ToString("X4");
+            switch (charCode)
+            {
+                case "U+0030":
+                    uni += "०";
+                    break;
+                case "U+0031":
+                    uni += "१";
+                    break;
+                case "U+0032":
+                    uni += "२";
+                    break;
+                case "U+0033":
+                    uni += "३";
+                    break;
+                case "U+0034":
+                    uni += "४";
+                    break;
+                case "U+0035":
+                    uni += "५";
+                    break;
+                case "U+0036":
+                    uni += "६";
+                    break;
+                case "U+0037":
+                    uni += "७";
+                    break;
+                case "U+0038":
+                    uni += "८";
+                    break;
+                case "U+0039":
+                    uni += "९";
+                    break;
+                default:
+                    uni += c;
+                    break;
+            }
+        }
+        @uni
+    }
+    @helper CheckZero(decimal data)
+    {
+        if (data == 0)
+        {
+            @StringToUnicode("0.00")
+        }
+        else
+        {
+            @StringToUnicode(data.ToString())
+        }
+    }
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/bootstrap/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+    <script src="~/bootstrap/nepali.datepicker.v2.2.min.js"></script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $('#txtNepaliDate', 'body').nepaliDatePicker({
+
+                                onChange: function () {
+                    $('#txtNepaliDate').val();
+                    $('#txtdate').val(BS2AD($('#txtNepaliDate').val()));
+                                },
+                npdMonth: true,
+                npdYear: true
+            }
+            );
+
+
+
+                        });
+
+
+
+
+
+    </script>
+}
+
+
+
+
+
+@*<h2>Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>RouteReport</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NepaliDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NepaliDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.gp_Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.gp_Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.gp_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.rn_Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.rn_Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.rn_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.muna_Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.muna_Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.muna_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Yuwa_Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Yuwa_Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Yuwa_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.madhu_Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.madhu_Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.madhu_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.gp_total, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.gp_total, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.gp_total, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.rn_total, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.rn_total, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.rn_total, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.muna_total, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.muna_total, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.muna_total, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Yuwa_total, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Yuwa_total, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Yuwa_total, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.madhu_total, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.madhu_total, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.madhu_total, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.gp_grandtotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.gp_grandtotal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.gp_grandtotal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.rn_grandtotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.rn_grandtotal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.rn_grandtotal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.muna_grandtotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.muna_grandtotal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.muna_grandtotal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Yuwa_grandtotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Yuwa_grandtotal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Yuwa_grandtotal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.madhu_grandtotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.madhu_grandtotal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.madhu_grandtotal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RouteId, "RouteId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("RouteId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RouteId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AgentId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AgentId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AgentId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

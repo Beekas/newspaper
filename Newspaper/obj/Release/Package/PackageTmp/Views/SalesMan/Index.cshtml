@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Newspaper.Models.SalesMan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4> वितरक   </h4></center></h1>
+    </div>
+
+    <div class="panel-body">
+        <div>
+            @Html.ActionLink("नया  वितरक ", "Create", "SalesMan", FormMethod.Post, new { @class = "btn btn-primary", title = "Create New Distributor" })
+        </div>
+        <br />
+        <table class="table table-bordered" id="myTable">
+            <thead>
+                <tr>
+                    <th>
+                        वितरक  नम्बर
+                    </th>
+                    <th>
+                        वितरकको  नाम
+                    </th>
+                    <th>
+                        इमेल
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.AltEmail)
+                        </th>*@
+                    <th>
+                        फोन नम्बर
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Phone2)
+                        </th>*@
+                    <th>कार्य </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="nepalifont" style="font-size:20px;">
+                            @Html.DisplayFor(modelItem => item.SalesManId)
+                        </td>
+                        <td class="nepalifont" style="font-size:20px;">
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                        <td class="nepalifont" style="font-size:20px;">
+                            @Html.DisplayFor(modelItem => item.Phone1)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Phone2)
+                            </td>*@
+                        <td>
+                            @Html.ActionLink("अद्यावधिक", "Edit", new { id = item.Id }, new { @class = "btn btn-success", title = "Edit Distributor" }) |
+                            @Html.ActionLink("पुरा हेर्नुहोस ", "Details", new { id = item.Id }, new { @class = "btn btn-warning", title = "Show Disributor Details" })
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "remove(" + item.Id + ");" })*@
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you wish to delete this article?');" })*@
+
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<button class="myMenuLink btn btn-info" id="but1" style="float:right;"><u>माथि जानुहोस</u></button>
+
+
+
+<br />@section Scripts {
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+
+
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+
+        //$('.myLinkToTop').click(function () {
+        //    $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+        //    return false;
+        //});
+
+        $('.myMenuLink').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+            return false;
+        });
+
+        $(function () {
+            $("#myInput").autocomplete({
+                source: '@Url.Action("GetCostumers")',
+                minLength: 1
+            });
+        });
+
+
+
+        $(document).ready(function () {
+            $("body div.myTable input").addClass("nepalifont");
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+                "pageLength": 50,
+
+                //'initComplete': function () {
+                //    var api = this.api();
+
+                //    // Populate a dataset for autocomplete functionality
+                //    // using data from first, second and third columns
+                //    api.cells('tr', [0, 1, 2]).every(function () {
+                //        // Get cell data as plain text
+                //        var data = $('<div>').html(this.data()).text();
+                //        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+                //    });
+
+                //    // Sort dataset alphabetically
+                //    dataSrc.sort();
+
+                //    // Initialize Typeahead plug-in
+                //    $('.dataTables_filter input[type="search"]', api.table().container())
+                //        .typeahead({
+                //            source: dataSrc,
+                //            afterSelect: function (value) {
+                //                api.search(value).draw();
+                //            }
+                //        }
+                //        );
+                //}
+            });
+        });
+
+
+
+
+    </script>
+}
+
+
+

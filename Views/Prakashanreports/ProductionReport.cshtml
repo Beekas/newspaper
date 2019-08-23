@@ -1,0 +1,233 @@
+﻿@model List<Newspaper.Models.ViewModel.ProductionReportvm>
+
+@{
+    ViewBag.Title = "ProductionReport";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+
+    .btn {
+        background-color: mediumblue;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+    /*body
+    {
+        counter-reset: Serial;
+    }
+        table.auto-index td:first-child:before
+    {
+      counter-increment: Serial;
+      content:  counter(Serial);
+    }*/
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div id="ExpReport">
+        <h2><center><b>गोरखापत्र संस्थान</b></center></h2>
+        <h4><center>दैनिक प्रकाशनहरुको उत्पादन अनुरोधपत्र</center></h4>
+
+        <h4 style="float:right;">@StringToUnicode(Model[0].dateyes.ToString())</h4><br />
+        <h5>श्री निर्देशकज्यू</h5>
+        <h5>उत्पादन विभाग |</h5>
+        <h5> मिति <u>@StringToUnicode(Model[0].datetoday.ToString())</u> गते गोरखापत्र दैनिक <u>@StringToUnicode(Model.LastOrDefault().gptodaytotal.ToString())</u> प्रति र दि राईजिङ्ग नेपाल <u>@StringToUnicode(Model.LastOrDefault().rntodaytotal.ToString())</u> प्रति छाप्ने आवश्यक ब्यावस्थाका लागि अनुरोध गर्दछु |</h5>
+
+        @{ int i = 1;}
+        <table class="table table-bordered" id="myTable">
+
+            <tr>
+                <th colspan="5" width="500"> गो .प. विवरण </th>
+                <th colspan="3" width="300">रा .ने . विवरण</th>
+
+            </tr>
+            <tr>
+                <th width="20">सि.न</th>
+                <th width="180">विवरण</th>
+                <th width="70">अघिल्लो दिनको </th>
+                <th width="50">आजको </th>
+                <th width="70">फरक संख्या </th>
+                <th width="60">अघिल्लो दिनको</th>
+                <th width="50">आजको</th>
+                <th width="70">फरक संख्या </th>
+
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                if (Model.Last() == item)
+                {
+                    <tr>
+
+                        <td></td>
+                        <td>जम्मा :-</td>
+                        <td>@StringToUnicode(item.gpyestotal.ToString())</td>
+                        <td>@StringToUnicode(item.gptodaytotal.ToString())</td>
+                        <td>@StringToUnicode(item.gpdifftotal.ToString())</td>
+                        <td>@StringToUnicode(item.rnyestotal.ToString())</td>
+                        <td>@StringToUnicode(item.rntodaytotal.ToString())</td>
+                        <td>@StringToUnicode(item.rndifftotal.ToString())</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+
+                        <td>@StringToUnicode(i.ToString())</td>
+                        <td>@StringToUnicode(item.groupname.ToString())</td>
+                        <td>@StringToUnicode(item.gpyes.ToString())</td>
+                        <td>@StringToUnicode(item.gptoday.ToString())</td>
+                        <td>@StringToUnicode(item.gpdiff.ToString())</td>
+                        <td>@StringToUnicode(item.rnyes.ToString())</td>
+                        <td>@StringToUnicode(item.rntoday.ToString())</td>
+                        <td>@StringToUnicode(item.rndiff.ToString())</td>
+                    </tr>
+                }
+                i = i + 1;
+            }
+
+
+        </table>
+
+        <br />
+        <br />
+
+        <div style="width:100%;">
+            <span style="width:25%;  float:left;">
+                <label><br />..................................<br />उत्पादन अर्डर तयार गर्ने   </label>
+            </span>
+            <span style="width:30%; text-align:right; float:right ;">
+                <label><br />..................................<br />चेक गर्ने </label>
+            </span>
+            <span style="width:45%; text-align:center; float:right;">
+                <label><br />..................................<br />प्रमुख, ग्राहक सेवा शाखा</label>
+            </span>
+        </div>
+    </div>
+
+    <br />
+    <center><button class="btn" id="btnPrint"><i class="fa fa-print"></i> Print</button></center>
+
+
+
+
+    @helper StringToUnicode(string data)
+    {
+        string uni = "";
+        foreach (char c in data)
+        {
+            var charCode = "U+" + ((int)c).ToString("X4");
+            switch (charCode)
+            {
+                case "U+0030":
+                    uni += "०";
+                    break;
+                case "U+0031":
+                    uni += "१";
+                    break;
+                case "U+0032":
+                    uni += "२";
+                    break;
+                case "U+0033":
+                    uni += "३";
+                    break;
+                case "U+0034":
+                    uni += "४";
+                    break;
+                case "U+0035":
+                    uni += "५";
+                    break;
+                case "U+0036":
+                    uni += "६";
+                    break;
+                case "U+0037":
+                    uni += "७";
+                    break;
+                case "U+0038":
+                    uni += "८";
+                    break;
+                case "U+0039":
+                    uni += "९";
+                    break;
+                default:
+                    uni += c;
+                    break;
+            }
+        }
+        @uni
+    }
+    @helper CheckZero(decimal data)
+    {
+        if (data == 0)
+        {
+            @StringToUnicode("0.00")
+        }
+        else
+        {
+            @StringToUnicode(data.ToString())
+        }
+    }
+
+
+
+
+    <script src="~/Scripts/jQuery.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $("#btnPrint").click(function (e) {
+                PrintElem("ExpReport");
+            });
+        });
+
+        function PrintElem(elem) {
+            var mywindow = window.open('', 'PRINT', 'height=842,width=590');
+
+            mywindow.document.write('<html><head><style>.nepalifont{font-family:Preeti}  table {border-collapse: collapse;width: 100%;border: 1px solid ;}th, td {text-align: left;padding: 8px; border: 1px solid ;}tr:nth-child(even){background-color: #f2f2f2;}</style><title></title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(document.getElementById(elem).innerHTML);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            mywindow.close();
+
+            return true;
+        }
+
+    </script>
+
+
+
+</body>
+</html>
+

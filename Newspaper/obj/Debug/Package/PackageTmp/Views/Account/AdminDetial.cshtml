@@ -1,0 +1,165 @@
+﻿@model Newspaper.Models.Admin
+@{
+    ViewBag.Title = "AdminDetial";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .Circle {
+    border-radius:50%;
+    
+    }
+</style>
+
+
+
+<div>
+    <br />
+    <div class="col-md-7 col-lg-offset-3">
+
+        
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>Admin Details </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <center>     <img class="Circle" src='@Session["imageUrl"].ToString()' height="150" width="150" /></center> 
+                <br/>
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+                        <tr>
+                           
+                            <th>
+                                @Html.DisplayNameFor(model => model.EmployeeId)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.EmployeeId)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FullName)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.FullName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserName)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UserName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Phone)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Phone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.WorkPhone)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.WorkPhone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.URL)
+                            </th>
+
+                            <td>
+
+                                @Html.DisplayFor(model => model.URL)
+                            </td>
+                        </tr>
+                        @*<tr>
+                            <th>
+                                PPSizePhoto
+                            </th>
+
+                            <td>
+                                <img src="@Url.Content(Model.PPSizePhoto)" width="100" height="100" />
+                            </td>
+                        </tr>*@
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreatedDate)
+                            </th>
+
+                            <td>
+                                @Model.CreatedDate.ToShortDateString()
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ModifiedDate)
+                            </th>
+
+                            <td>
+                                @Model.ModifiedDate.ToShortDateString()
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreatedBy)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreatedBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ModifiedBy)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.ModifiedBy)
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

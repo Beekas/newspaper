@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "NormalCostumer";
+}
+
+@model IEnumerable<Newspaper.Models.Customer>
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4>Normal Customer</h4></center></h1>
+    </div>
+
+    <div class="panel-body">
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered" id="mytable">
+                <thead>
+                    <tr>
+                        <th>
+                            Full Name
+                        </th>
+                        <th>
+                            NewsPaper Name
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+                        <th>Phone</th>
+                        <th>
+                            CreatedDate
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @item.FirstName &nbsp; @item.MiddleName &nbsp; @item.LastName
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Service.NewsPaperName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @item.Amount
+                            </td>
+                            <td>
+                                @item.MPhone
+                            </td>
+                            <td>
+                                @item.RegisterDate.ToShortDateString()
+                            </td>
+                        </tr>
+
+
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td></td>
+                        <th align="left"></th>
+                        <th align="left">@ViewBag.message</th>
+                        <th align="left"></th>
+
+                    </tr>
+
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <link rel=" stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var dataSrc = [];
+
+            var table = $("#mytable").DataTable({
+
+
+                "pageLength": 50,
+
+
+
+
+                'initComplete': function () {
+                    var api = this.api();
+
+
+                    // Populate a dataset for autocomplete functionality
+                    // using data from first, second and third columns
+                    api.cells('tr', [0, 1, 2]).every(function () {
+                        // Get cell data as plain text
+                        var data = $('<div>').html(this.data()).text();
+                        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+                    });
+
+                    // Sort dataset alphabetically
+                    dataSrc.sort();
+
+                    // Initialize Typeahead plug-in
+                    $('.dataTables_filter input[type="search"]', api.table().container())
+                        .typeahead({
+                            source: dataSrc,
+                            afterSelect: function (value) {
+                                api.search(value).draw();
+                            }
+                        }
+                        );
+                }
+            });
+        });
+
+    </script>
+}

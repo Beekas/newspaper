@@ -1,0 +1,376 @@
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\csc.exe
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\vbc.exe
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\VBCSCompiler.exe
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Newspaper.dll.config
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Newspaper.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Newspaper.pdb
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Antlr3.Runtime.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\AutoMapper.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\EntityFramework.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\EntityFramework.SqlServer.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Newtonsoft.Json.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Owin.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.Helpers.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.Mvc.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.Optimization.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.Razor.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.WebPages.Deployment.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.WebPages.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.WebPages.Razor.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\WebGrease.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\AutoMapper.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\EntityFramework.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.Helpers.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.Mvc.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.Razor.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.WebPages.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.WebPages.Deployment.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.WebPages.Razor.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\System.Web.Optimization.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Antlr3.Runtime.pdb
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Newtonsoft.Json.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\EntityFramework.SqlServer.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.ek.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.c.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.po.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.p.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.prop.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.prop1.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.prope.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.f.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.h.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.aalu.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.full.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.csproj.GenerateResource.Cache
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.dll
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.pdb
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.d.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.e.resources
+C:\Users\cool_bkas\documents\visual studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.rr.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.abc.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.q.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.g.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.aalu1.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.root.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.u.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.y.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.t.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.r.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.e1.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.account.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.acc.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.newspaper.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.discount.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.BillNoAddedToAccountAndServiceAssign.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.duration.resources
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.csproj.CoreCompileInputs.cache
+C:\Users\cool_bkas\Documents\Visual Studio 2015\Projects\Newspaper\Newspaper\obj\Release\Newspaper.csproj.CopyComplete
+F:\Newspaper\Newspaper\bin\roslyn\csc.exe
+F:\Newspaper\Newspaper\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Newspaper\Newspaper\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Newspaper\Newspaper\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Newspaper\Newspaper\bin\roslyn\System.Collections.Immutable.dll
+F:\Newspaper\Newspaper\bin\roslyn\System.Reflection.Metadata.dll
+F:\Newspaper\Newspaper\bin\roslyn\vbc.exe
+F:\Newspaper\Newspaper\bin\roslyn\VBCSCompiler.exe
+F:\Newspaper\Newspaper\bin\roslyn\VBCSCompiler.exe.config
+F:\Newspaper\Newspaper\bin\Newspaper.dll.config
+F:\Newspaper\Newspaper\bin\Newspaper.dll
+F:\Newspaper\Newspaper\bin\Newspaper.pdb
+F:\Newspaper\Newspaper\bin\Antlr3.Runtime.dll
+F:\Newspaper\Newspaper\bin\AutoMapper.dll
+F:\Newspaper\Newspaper\bin\EntityFramework.dll
+F:\Newspaper\Newspaper\bin\EntityFramework.SqlServer.dll
+F:\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Newspaper\Newspaper\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Facebook.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Google.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Twitter.dll
+F:\Newspaper\Newspaper\bin\Microsoft.Web.Infrastructure.dll
+F:\Newspaper\Newspaper\bin\Newtonsoft.Json.dll
+F:\Newspaper\Newspaper\bin\Owin.dll
+F:\Newspaper\Newspaper\bin\System.Web.Helpers.dll
+F:\Newspaper\Newspaper\bin\System.Web.Mvc.dll
+F:\Newspaper\Newspaper\bin\System.Web.Optimization.dll
+F:\Newspaper\Newspaper\bin\System.Web.Razor.dll
+F:\Newspaper\Newspaper\bin\System.Web.WebPages.Deployment.dll
+F:\Newspaper\Newspaper\bin\System.Web.WebPages.dll
+F:\Newspaper\Newspaper\bin\System.Web.WebPages.Razor.dll
+F:\Newspaper\Newspaper\bin\WebGrease.dll
+F:\Newspaper\Newspaper\bin\AutoMapper.xml
+F:\Newspaper\Newspaper\bin\EntityFramework.xml
+F:\Newspaper\Newspaper\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Newspaper\Newspaper\bin\System.Web.Helpers.xml
+F:\Newspaper\Newspaper\bin\System.Web.Mvc.xml
+F:\Newspaper\Newspaper\bin\System.Web.Razor.xml
+F:\Newspaper\Newspaper\bin\System.Web.WebPages.xml
+F:\Newspaper\Newspaper\bin\System.Web.WebPages.Deployment.xml
+F:\Newspaper\Newspaper\bin\System.Web.WebPages.Razor.xml
+F:\Newspaper\Newspaper\bin\System.Web.Optimization.xml
+F:\Newspaper\Newspaper\bin\Antlr3.Runtime.pdb
+F:\Newspaper\Newspaper\bin\Newtonsoft.Json.xml
+F:\Newspaper\Newspaper\bin\EntityFramework.SqlServer.xml
+F:\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Facebook.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Google.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Twitter.xml
+F:\Newspaper\Newspaper\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\Newspaper\Newspaper\obj\Release\Newspaper.csprojAssemblyReference.cache
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.ek.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.c.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.po.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.p.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.prop.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.prop1.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.prope.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.f.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.h.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.aalu.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.full.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.d.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.e.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.rr.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.abc.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.q.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.g.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.aalu1.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.root.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.u.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.y.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.t.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.r.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.e1.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.account.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.acc.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.newspaper.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.discount.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.BillNoAddedToAccountAndServiceAssign.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.duration.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.customer.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.add.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.added.resources
+F:\Newspaper\Newspaper\obj\Release\Newspaper.csproj.GenerateResource.cache
+F:\Newspaper\Newspaper\obj\Release\Newspaper.csproj.CoreCompileInputs.cache
+F:\Newspaper\Newspaper\obj\Release\Newspaper.csproj.CopyComplete
+F:\Newspaper\Newspaper\obj\Release\Newspaper.dll
+F:\Newspaper\Newspaper\obj\Release\Newspaper.pdb
+E:\company\Newspaper\Newspaper\bin\roslyn\csc.exe
+E:\company\Newspaper\Newspaper\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\company\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\company\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\company\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\company\Newspaper\Newspaper\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\company\Newspaper\Newspaper\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\company\Newspaper\Newspaper\bin\roslyn\System.Collections.Immutable.dll
+E:\company\Newspaper\Newspaper\bin\roslyn\System.Reflection.Metadata.dll
+E:\company\Newspaper\Newspaper\bin\roslyn\vbc.exe
+E:\company\Newspaper\Newspaper\bin\roslyn\VBCSCompiler.exe
+E:\company\Newspaper\Newspaper\bin\roslyn\VBCSCompiler.exe.config
+E:\company\Newspaper\Newspaper\bin\Newspaper.dll.config
+E:\company\Newspaper\Newspaper\bin\Newspaper.dll
+E:\company\Newspaper\Newspaper\bin\Newspaper.pdb
+E:\company\Newspaper\Newspaper\bin\Antlr3.Runtime.dll
+E:\company\Newspaper\Newspaper\bin\AutoMapper.dll
+E:\company\Newspaper\Newspaper\bin\EntityFramework.dll
+E:\company\Newspaper\Newspaper\bin\EntityFramework.SqlServer.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Core.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Cookies.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Facebook.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Google.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.OAuth.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Twitter.dll
+E:\company\Newspaper\Newspaper\bin\Microsoft.Web.Infrastructure.dll
+E:\company\Newspaper\Newspaper\bin\Newtonsoft.Json.dll
+E:\company\Newspaper\Newspaper\bin\Owin.dll
+E:\company\Newspaper\Newspaper\bin\System.Web.Helpers.dll
+E:\company\Newspaper\Newspaper\bin\System.Web.Mvc.dll
+E:\company\Newspaper\Newspaper\bin\System.Web.Optimization.dll
+E:\company\Newspaper\Newspaper\bin\System.Web.Razor.dll
+E:\company\Newspaper\Newspaper\bin\System.Web.WebPages.Deployment.dll
+E:\company\Newspaper\Newspaper\bin\System.Web.WebPages.dll
+E:\company\Newspaper\Newspaper\bin\System.Web.WebPages.Razor.dll
+E:\company\Newspaper\Newspaper\bin\WebGrease.dll
+E:\company\Newspaper\Newspaper\bin\AutoMapper.xml
+E:\company\Newspaper\Newspaper\bin\EntityFramework.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\company\Newspaper\Newspaper\bin\System.Web.Helpers.xml
+E:\company\Newspaper\Newspaper\bin\System.Web.Mvc.xml
+E:\company\Newspaper\Newspaper\bin\System.Web.Razor.xml
+E:\company\Newspaper\Newspaper\bin\System.Web.WebPages.xml
+E:\company\Newspaper\Newspaper\bin\System.Web.WebPages.Deployment.xml
+E:\company\Newspaper\Newspaper\bin\System.Web.WebPages.Razor.xml
+E:\company\Newspaper\Newspaper\bin\System.Web.Optimization.xml
+E:\company\Newspaper\Newspaper\bin\Antlr3.Runtime.pdb
+E:\company\Newspaper\Newspaper\bin\Newtonsoft.Json.xml
+E:\company\Newspaper\Newspaper\bin\EntityFramework.SqlServer.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Core.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Facebook.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Cookies.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.OAuth.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Google.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Twitter.xml
+E:\company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.csprojAssemblyReference.cache
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.csproj.CoreCompileInputs.cache
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.csproj.CopyComplete
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.dll
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.pdb
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.prakashan.resources
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.csproj.GenerateResource.cache
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.group.resources
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations._new.resources
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.newspaper.resources
+E:\company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.gdms.resources
+D:\Company\Newspaper\Newspaper\bin\roslyn\csc.exe
+D:\Company\Newspaper\Newspaper\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Company\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Company\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Company\Newspaper\Newspaper\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Company\Newspaper\Newspaper\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Company\Newspaper\Newspaper\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Company\Newspaper\Newspaper\bin\roslyn\System.Collections.Immutable.dll
+D:\Company\Newspaper\Newspaper\bin\roslyn\System.Reflection.Metadata.dll
+D:\Company\Newspaper\Newspaper\bin\roslyn\vbc.exe
+D:\Company\Newspaper\Newspaper\bin\roslyn\VBCSCompiler.exe
+D:\Company\Newspaper\Newspaper\bin\roslyn\VBCSCompiler.exe.config
+D:\Company\Newspaper\Newspaper\bin\Newspaper.dll.config
+D:\Company\Newspaper\Newspaper\bin\Newspaper.dll
+D:\Company\Newspaper\Newspaper\bin\Newspaper.pdb
+D:\Company\Newspaper\Newspaper\bin\Antlr3.Runtime.dll
+D:\Company\Newspaper\Newspaper\bin\AutoMapper.dll
+D:\Company\Newspaper\Newspaper\bin\EntityFramework.dll
+D:\Company\Newspaper\Newspaper\bin\EntityFramework.SqlServer.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Google.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Web.Infrastructure.dll
+D:\Company\Newspaper\Newspaper\bin\Newtonsoft.Json.dll
+D:\Company\Newspaper\Newspaper\bin\Owin.dll
+D:\Company\Newspaper\Newspaper\bin\System.Web.Helpers.dll
+D:\Company\Newspaper\Newspaper\bin\System.Web.Mvc.dll
+D:\Company\Newspaper\Newspaper\bin\System.Web.Optimization.dll
+D:\Company\Newspaper\Newspaper\bin\System.Web.Razor.dll
+D:\Company\Newspaper\Newspaper\bin\System.Web.WebPages.Deployment.dll
+D:\Company\Newspaper\Newspaper\bin\System.Web.WebPages.dll
+D:\Company\Newspaper\Newspaper\bin\System.Web.WebPages.Razor.dll
+D:\Company\Newspaper\Newspaper\bin\WebGrease.dll
+D:\Company\Newspaper\Newspaper\bin\AutoMapper.xml
+D:\Company\Newspaper\Newspaper\bin\EntityFramework.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Company\Newspaper\Newspaper\bin\System.Web.Helpers.xml
+D:\Company\Newspaper\Newspaper\bin\System.Web.Mvc.xml
+D:\Company\Newspaper\Newspaper\bin\System.Web.Razor.xml
+D:\Company\Newspaper\Newspaper\bin\System.Web.WebPages.xml
+D:\Company\Newspaper\Newspaper\bin\System.Web.WebPages.Deployment.xml
+D:\Company\Newspaper\Newspaper\bin\System.Web.WebPages.Razor.xml
+D:\Company\Newspaper\Newspaper\bin\System.Web.Optimization.xml
+D:\Company\Newspaper\Newspaper\bin\Antlr3.Runtime.pdb
+D:\Company\Newspaper\Newspaper\bin\Newtonsoft.Json.xml
+D:\Company\Newspaper\Newspaper\bin\EntityFramework.SqlServer.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Google.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Company\Newspaper\Newspaper\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.csprojAssemblyReference.cache
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.prakashan.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.group.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations._new.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.newspaper.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.gdms.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.csproj.GenerateResource.cache
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.csproj.CoreCompileInputs.cache
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.csproj.CopyComplete
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.dll
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.pdb
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.serviceimg.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.dscountamount.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.route.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.cs.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.fiscal.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.fiscal1.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.counterfiscal.resources
+D:\Company\Newspaper\Newspaper\obj\Release\Newspaper.Migrations.newfis.resources

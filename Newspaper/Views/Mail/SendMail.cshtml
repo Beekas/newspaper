@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "SendMail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br/>
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <center> <h4>Send Mail</h4> </center>
+
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4 col-lg-2">
+                    <a href='@Url.Action("CustomMail","Mail")' class="btn btn-info" title="Send Custom Mail">Send Custom Mail </a>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-4 col-lg-2">
+                    <a href='@Url.Action("DeadLineMail","Mail")' class="btn btn-info" title="Send Mail Whose Remaining Days is less than 10">Send Mail To DeadLine Customers</a>
+                </div>
+            </div>
+           
+            
+            <br />
+            <div class="row">
+                <div class="col-md-4 col-lg-2">
+                    <a href='@Url.Action("ExpiredMail","Mail")' class="btn btn-info" title="Send Mail to the Expired Customers">Send Mail To Expired Customers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

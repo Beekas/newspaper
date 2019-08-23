@@ -1,0 +1,154 @@
+﻿@model IEnumerable<Newspaper.Models.ViewModel.assignNewspaperVM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4>  नियुक्त ग्राहक</h4></center></h1>
+    </div>
+    <div style="padding-left:5px;padding-top:5px;">
+               @Html.ActionLink("नया ग्राहक नियुक्त गर्नुहोस", "Show", "serviceAssigns", new { @class = "btn btn-primary", title = "Assign New Service to customer" })
+    </div>
+
+    <div class="panel-body">
+
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered" id="myTable">
+
+                <thead>
+                    <tr>
+
+                        <th>
+                            ग्राहक आईडी
+                        </th>
+                        <th>
+                            ग्राहकको नाम
+                        </th>
+                        <th>
+                            ठेगाना
+                        </th>
+                       
+                        <th>
+                            फोन नं
+                        </th>
+
+                        <th style="width:200px;">कार्य</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+
+                        <td class="nepalifont" style="font-size:20px;">
+                            @item.CusId
+                        </td>
+                        <td class="nepalifont" style="font-size:20px;">
+                            @item.CustomerName
+                        </td>
+                        <td class="nepalifont" style="font-size:20px;">
+                            @item.Address
+                        </td>
+                       
+                        <td class="nepalifont" style="font-size:20px;">
+                            @item.phone
+                        </td>
+
+
+
+                        <td>
+                            @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.CustomerId }, new { @class = "btn btn-success", title = "View Assigned Service Detail" }) |
+                            @Html.ActionLink("सेवा नियुक्त", "Create", new { id = item.CustomerId }, new { @class = "btn btn-primary", title = " Assigned new Service" })
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+
+
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+
+        //$('.myLinkToTop').click(function () {
+        //    $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+        //    return false;
+        //});
+
+    
+
+        $(document).ready(function () {
+            $("body div.myTable input").addClass("nepalifont");
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+                "pageLength": 100,
+
+                //'initComplete': function () {
+                //    var api = this.api();
+
+                //    // Populate a dataset for autocomplete functionality
+                //    // using data from first, second and third columns
+                //    api.cells('tr', [0, 1, 2]).every(function () {
+                //        // Get cell data as plain text
+                //        var data = $('<div>').html(this.data()).text();
+                //        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+                //    });
+
+                //    // Sort dataset alphabetically
+                //    dataSrc.sort();
+
+                //    // Initialize Typeahead plug-in
+                //    $('.dataTables_filter input[type="search"]', api.table().container())
+                //        .typeahead({
+                //            source: dataSrc,
+                //            afterSelect: function (value) {
+                //                api.search(value).draw();
+                //            }
+                //        }
+                //        );
+                //}
+            });
+        });
+
+
+
+
+    </script>
+}
+

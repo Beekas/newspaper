@@ -1,0 +1,112 @@
+﻿@model Newspaper.Models.Service
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+<div>
+    <br />
+    <div class="col-md-7 col-lg-offset-3">
+        
+        <p>
+            @Html.ActionLink("सबै पत्रिकाहरु ", "Index", "", new { @class = "btn btn-info" })
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>पत्रिका विवरण  </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>
+                                पत्रिकाको कोड
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.ServiceCode)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                पत्रिकाको नाम
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.NewsPaperName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                समय आधार
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.TimeBase)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                पत्रीकाको तस्बिर
+                            </th>
+
+                            <td>
+                                <img src="@Url.Content(Model.Images)" width="100" height="50" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreatedBy)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreatedBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EditedBy)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.EditedBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EditedDate)
+                            </th>
+
+                            <td>
+                                @Model.EditedDate.ToShortDateString()
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

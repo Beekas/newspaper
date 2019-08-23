@@ -1,0 +1,290 @@
+﻿@model Newspaper.Models.GroupName
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        withh: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+
+<div>
+
+    <br />
+    <<div class="col-md-7 col-lg-offset-3">
+        <br />
+        <p>
+            @Html.ActionLink("एजेन्टहरु", "Index", "", new { @class = "btn btn-info" })
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>एजेन्टको विवरण</h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+
+                        <tr>
+                            <th>
+                                रुटको नाम
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.Route.RouteName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                एजेन्टको नाम
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.AgentName)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Pan)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Pan)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                समय
+                            </th>
+
+                            <td>
+                                @StringToUnicode(Html.DisplayFor(model => model.Time).ToString())
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                रुटको नाम
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Transport)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                गोरखापत्र परिमाण
+                            </th>
+
+                            <td>
+                                @StringToUnicode(Html.DisplayFor(model => model.GP_Quantity).ToString())
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                राइजीङ्ग नेपाल परिमाण
+                            </th>
+
+                            <td>
+                                @StringToUnicode(Html.DisplayFor(model => model.RN_Quantity).ToString())
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                मुना परिमाण
+                            </th>
+
+                            <td>
+                                @StringToUnicode(Html.DisplayFor(model => model.MUNA_Quantity).ToString())
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Madhu परिमाण
+                            </th>
+
+                            <td>
+                                @StringToUnicode(Html.DisplayFor(model => model.Madhu_Quantity).ToString())
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Yuwa परिमाण
+                            </th>
+
+                            <td>
+                                @StringToUnicode(Html.DisplayFor(model => model.Yuwa_Quantity).ToString())
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                ठेगाना
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.Address)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                प्रदेश
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.State)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Transport
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Transport)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                Time
+                            </th>
+
+                            <td>
+                                @StringToUnicode(Html.DisplayFor(model => model.Time).ToString())
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                जिल्ला
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.District)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                फोन न:
+                            </th>
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(model => model.Phone)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                इमेल
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.URL)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.URL)
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+
+

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Newspaper.Models.ViewModel.CounterVM>
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="module">
+    
+    <div class="module-body">
+
+      
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Full Name
+                    </th>
+                    <th>
+                        NewsPaper Name
+                    </th>
+                    <th>
+                       Email
+                    </th>
+
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                    CreatedDate
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Customer.FirstName
+                        </td>
+                        <td>
+                            @item.NewsPaper.NewsPaperName
+                        </td>
+                        <td>
+                          @item.Customer.Email  
+                        </td>
+
+
+                        <td>
+                            @item.Customer.Address &nbsp; , &nbsp;@item.Customer.Tole
+                        </td>
+                        <td>
+                           @item.Customer.RegisterDate.ToShortDateString()
+                        </td>
+
+                      
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CrystalDecisions.Web</id>
+    <version>1.0.1</version>
+    <title>CrystalDecisions.Web</title>
+    <authors>zqb971</authors>
+    <owners>zqb971</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CrystalDecisions.Web</description>
+    <summary />
+  </metadata>
+</package>

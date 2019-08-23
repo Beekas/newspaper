@@ -1,0 +1,297 @@
+﻿@model Newspaper.Models.Customer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    fieldset {
+        display: block;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding-top: 0.35em;
+        padding-bottom: 0.625em;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+        border: 2px solid black;
+    }
+
+    legend {
+        width: auto;
+        border: 1.5px solid black;
+    }
+</style>
+
+@using (Html.BeginForm("Edit", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+  
+    @Html.ValidationSummary(true)
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title"><center><h4> ग्राहक अद्यावधिक</h4></center></h1>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>ग्राहक आइडी(ID) </label>  @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.CustomerId, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                </div>
+            </div>
+            @*<div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.SalesManId)  @Html.ValidationMessageFor(model => model.SalesManId, "", new { @class = "text-danger" })
+
+                @Html.DropDownList("SalesManId", null, "---Select Salesman---", htmlAttributes: new { @class = "form-control" })
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceId)  @Html.ValidationMessageFor(model => model.ServiceId, "", new { @class = "text-danger" })
+
+                @Html.DropDownList("ServiceId", null, "---Select NewsPaper---", htmlAttributes: new { @class = "form-control" })
+
+            </div>
+        </div>
+        @if (Session["Category"].ToString() == "SuperAdmin")
+        {
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BranchId)  @Html.ValidationMessageFor(model => model.BranchId, "", new { @class = "text-danger" })
+
+                    @Html.DropDownList("BranchId", null, "---Select Branch---", htmlAttributes: new { @class = "form-control" })
+
+                </div>
+            </div>
+        }*@
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @*<i class="fa fa-user"></i>*@
+                    <label>पुरा नाम </label> @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "nepalifont form-control", style = "font-size:20px;", id = "txtFirstName" })
+
+                </div>
+            </div>
+            @*<div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.MiddleName)@Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+
+                @Html.TextBoxFor(model => model.MiddleName, new { @class = "form-control" })
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName) @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", id = "txtLastName" })
+
+            </div>
+        </div>*@
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>फोन नम्बर</label> @Html.ValidationMessageFor(model => model.MPhone, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.MPhone, new { @class = "nepalifont form-control", style = "font-size:20px;", id = "txtMPhone", type = "phoneNumber" })
+
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>टोल</label>  @Html.ValidationMessageFor(model => model.Tole, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Tole, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>घर नम्बर</label>@Html.ValidationMessageFor(model => model.HomeNo, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.HomeNo, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>ठेगाना</label> @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Address, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>प्रदेस</label> @Html.ValidationMessageFor(model => model.Provience, "", new { @class = "text-danger" })
+
+                    @Html.DropDownList("Provience", new List<SelectListItem>() { new SelectListItem() { Text = "--प्रदेश छान्नुहोस--", Value = "" }, new SelectListItem() { Text = "१", Value = "१" }, new SelectListItem() { Text = "२", Value = "२" }, new SelectListItem() { Text = "३", Value = "३" }, new SelectListItem() { Text = "४", Value = "४" }, new SelectListItem() { Text = "५", Value = "५" }, new SelectListItem() { Text = "६", Value = "६" }, new SelectListItem() { Text = "७", Value = "७" } }, new { @class = "form-control", id = "ddlProvience" })
+
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+
+                    <label>ग्राहकको जानकारी</label> @Html.ValidationMessageFor(model => model.CustomerInfo, "", new { @class = "text-danger" })
+                    @Html.DropDownList("CustomerInfo", new List<SelectListItem> { new SelectListItem() { Text = "---छान्नुहोस---", Value = "" }, new SelectListItem() { Text = "संस्थागत", Value = "संस्थागत" }, new SelectListItem() { Text = "व्यक्तिगत", Value = "व्यक्तिगत" } }, new { @class = "form-control", id = "ddlCustomerInfo" })
+                    @*@Html.DropDownList("CustomerInfoId",new List<selectlistitem>{}     (ViewBag.CustomerInfo,"Value","Text"),"--Select Individual/Organization---",new { @class = "form-control" ,id="ddlCustomerInfo"})*@
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>ग्राहकको प्रकार</label> @Html.ValidationMessageFor(model => model.CustomerType, "", new { @class = "text-danger" })
+
+                    @Html.DropDownList("CustomerType", new List<SelectListItem> { new SelectListItem { Text = "---छान्नुहोस---", Value = "" }, new SelectListItem { Text = "एजेन्सी", Value = "एजेन्सी" }, new SelectListItem { Text = "नर्मल", Value = "नर्मल" }, new SelectListItem { Text = "स्टाफ", Value = "स्टाफ" }, new SelectListItem { Text = "रिटायर", Value = "रिटायर" }, new SelectListItem { Text = "कम्प्लिमेन्ट", Value = "कम्प्लिमेन्ट" }, new SelectListItem { Text = "नया वितरक", Value = "नया वितरक" } }, new { @class = "form-control", id = "ddlCustomerType" })
+
+                </div>
+            </div>
+            <div class="col-md-3" id="divTypeDetail">
+                <div class="form-group">
+                    <label>प्रकारको बिबरण</label> @Html.ValidationMessageFor(model => model.TypeDetail, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.TypeDetail, new { @class = "form-control nepalifont", id = "txtTypeDetail", style = "font-size:20px;" })
+
+                </div>
+            </div>
+
+            @*<div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Qunatity) @Html.ValidationMessageFor(model => model.Qunatity, "", new { @class = "text-danger" })
+
+                @Html.TextBoxFor(model => model.Qunatity, new { @class = "form-control" })
+
+            </div>
+        </div>*@
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>ईमेल</label>@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", id = "txtEmail" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>वैकल्पिक इमेल</label>@Html.ValidationMessageFor(model => model.AltEmail, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.AltEmail, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>जीपीएस अक्षांश</label>@Html.ValidationMessageFor(model => model.Gprslatitude, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Gprslatitude, new { @class = "form-control", type = "decimal" })
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>जीपीएस देशान्तर</label>@Html.ValidationMessageFor(model => model.GprsLongitude, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.GprsLongitude, new { @class = "form-control", type = "decimal" })
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.URL) @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.URL, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            @*<div class="col-md-3" id="divAmount">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Amount) @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+
+                @Html.TextBoxFor(model => model.Amount, new { @class = "form-control", id = "txtAmount" })
+
+            </div>
+        </div>*@
+
+            @*<div class="col-md-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.PaperDispatchDate)  @Html.ValidationMessageFor(model => model.PaperDispatchDate, "", new { @class = "text-danger" })
+
+                @Html.TextBoxFor(model => model.PaperDispatchDate, new { id = "txtPaperDispatchDate", @class = "form-control", @Value = Model.PaperDispatchDate.ToShortDateString() })
+
+            </div>
+        </div>*@
+            @*@Html.HiddenFor(model => model.EndedDate)*@
+
+
+
+
+
+
+            <center>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="अद्यावधिक" class="btn btn-primary" id="btnSubmit" />
+                        <label style="padding:10px"></label>
+                        @Html.ActionLink("ग्राहकहरु हेर्नुहोस", "Index", "Customer", new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </center>
+        </div>
+        </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
+    <script src="https//cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js">       </script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            var type = $("#ddlCustomerType").val();
+
+           
+
+            $('#txtPaperDispatchDate').datepicker();
+
+            $("#divAmount").hide();
+            $("#divTypeDetail").hide();
+            $("#ddlCustomerType").change(function () {
+
+                $("#divTypeDetail").show();
+                if ($(this).val() === "नर्मल" || $(this).val() === "") {
+                    $("#divTypeDetail").hide();
+                    $("#divAmount").hide();
+                } else {
+                    $("#divTypeDetail").show();
+                    $("#divAmount").hide();
+                }
+            });
+            if (type != "normal") {
+                $("#divTypeDetail").show();
+
+            }
+
+
+        });
+    </script>
+}

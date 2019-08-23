@@ -1,0 +1,191 @@
+﻿@model Newspaper.Models.GroupName
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">
+                <center>
+                    <h4>
+                        एजेन्ट सच्याउनुहोस
+                    </h4>
+                </center>
+            </h1>
+        </div>
+
+        <div class="panel-body">
+            @if (ViewBag.message != null)
+            {
+                <div class="sucess">@ViewBag.message</div>
+            }
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Route नाम</label>  @Html.ValidationMessageFor(model => model.RouteId, "", new { @class = "text-danger" })
+
+                    @Html.DropDownList("RouteId", null, "ljt/s u|'k 5fg'xf];", htmlAttributes: new { @class = "form-control nepalifont", style = "font-size:20px;", required = "required" })
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>एजेन्टको नाम</label>
+
+                    @Html.TextBoxFor(model => model.AgentName, new { @class = "nepalifont form-control", style = "font-size:20px;", required = "required" })
+                    @Html.ValidationMessageFor(model => model.AgentName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>PAN NO:</label>
+
+                    @Html.EditorFor(model => model.Pan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>गोरखापत्र परिमाण</label>
+
+                    @Html.TextBoxFor(model => model.GP_Quantity, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.GP_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>रेजिङ्ग नेपाल परिमाण </label>
+
+                    @Html.TextBoxFor(model => model.RN_Quantity, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.RN_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>मुना परिमाण </label>
+
+                    @Html.TextBoxFor(model => model.MUNA_Quantity, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.MUNA_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>madhu परिमाण </label>
+
+                    @Html.TextBoxFor(model => model.Madhu_Quantity, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.Madhu_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Yuwa परिमाण </label>
+
+                    @Html.TextBoxFor(model => model.Yuwa_Quantity, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.Yuwa_Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>ठेगाना </label>
+
+                    @Html.TextBoxFor(model => model.Address, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Time </label>
+
+                    @Html.TextBoxFor(model => model.Time, new { @class = " form-control", type = "Time" })
+                    @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>प्रदेश</label>
+                    @Html.DropDownList("State", new List<SelectListItem>() { new SelectListItem() { Text = "--प्रदेश छान्नुहोस--", Value = "" }, new SelectListItem() { Text = "१", Value = "१" }, new SelectListItem() { Text = "२", Value = "२" }, new SelectListItem() { Text = "३", Value = "३" }, new SelectListItem() { Text = "४", Value = "४" }, new SelectListItem() { Text = "५", Value = "५" }, new SelectListItem() { Text = "६", Value = "६" }, new SelectListItem() { Text = "७", Value = "७" } }, new { @class = "form-control", id = "ddlProvience" })
+                    @*@Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Transport</label>
+                    @Html.DropDownList("Transport", new List<SelectListItem>() { new SelectListItem() { Text = "--Transport छान्नुहोस--", Value = "" }, new SelectListItem() { Text = "Bus", Value = "Bus" }, new SelectListItem() { Text = "Plane", Value = "Plane" }, new SelectListItem() { Text = "dhuwani", Value = "dhuwani" }, new SelectListItem() { Text = "hulak", Value = "hulak" } }, new { @class = "form-control", id = "ddlTransport" })
+                    @*@Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>जिल्ला</label>
+
+                    @Html.TextBoxFor(model => model.District, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+                    @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>फोन न:</label>
+
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>इमेल</label>
+
+                    @Html.TextBoxFor(model => model.Email, new { @class = " form-control" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.URL, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                    @Html.EditorFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-10">
+                    <input type="submit" value="अद्यावधिक" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+}

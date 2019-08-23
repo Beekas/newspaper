@@ -1,0 +1,89 @@
+﻿@model Newspaper.Models.SalesMan
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+   
+  
+</style>
+
+@using (Html.BeginForm("Create", "SalesMan", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title"><center><h4>वितरण </h4></center></h1>
+        </div>
+
+        <div class="panel-body">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>वितरण नम्बर </label>  @Html.ValidationMessageFor(model => model.SalesManId, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.SalesManId, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>पुरा नाम </label>  @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.FullName, new { @class = "nepalifont form-control",style="font-size:20px;" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>इमेल </label>  @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>वैकल्पिक इमेल</label>  @Html.ValidationMessageFor(model => model.AltEmail, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.AltEmail, new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                   <label>फोन नम्बर</label>  @Html.ValidationMessageFor(model => model.Phone1, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Phone1, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>बैकल्पिक फोन नम्बर </label>  @Html.ValidationMessageFor(model => model.Phone2, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.Phone2, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-10">
+                    <input type="submit" value="बितरण थप्नुहोस " class="btn btn-info" />
+                </div>
+            </div>
+
+            </div>
+        </div>
+        
+          
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+}

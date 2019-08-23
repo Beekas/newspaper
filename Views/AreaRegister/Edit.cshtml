@@ -1,0 +1,120 @@
+﻿@model Newspaper.Models.ViewModel.AreaRegister
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/Themes/ckfull/ckeditor.js"></script>
+<style>
+    fieldset {
+        display: block;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding-top: 0.35em;
+        padding-bottom: 0.625em;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+        border: 2px solid black;
+    }
+
+    legend {
+        width: auto;
+        border: 1.5px solid black;
+    }
+
+    textarea {
+        font-family: inherit;
+        width: 650px;
+        height: 65px;
+    }
+</style>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <br />
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4> अद्यावधिक क्षेत्रनिर्धारण  </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
+
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            वितरक आइडी
+
+                            @Html.ValidationMessageFor(model => model.SalesManId, "", new { @class = "text-danger" })
+
+                            @Html.DropDownList("SalesManId", null, "5fGg'xf]l;", htmlAttributes: new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>कार्य</label>
+                            @Html.ValidationMessageFor(model => model.Area , "" ,new { @class="text-danger"})
+
+                            @Html.TextBoxFor(model => model.Area, new { @class = "nepalifont form-control", style = "font-size:20px;" })
+
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                             @Html.ValidationMessageFor(model => model.Comment)
+
+                            @Html.TextAreaFor(model => model.Comment, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+                </div>*@
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label>टिप्पणी</label>
+                           @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+
+                            @Html.TextAreaFor(model => model.Comment, new { @id = "Comment", @class = "form-control", @rows = "25" })
+                           
+
+                                <script>
+
+                                    CKEDITOR.config.autoParagraph = false;
+                                    CKEDITOR.replace("Comment");
+                                </script>
+</div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-10">
+                        <input type="submit" value="अद्यावधिक" class="btn btn-info" />
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+}
+<br />
+<p>
+    @Html.ActionLink("सबै क्षेत्रनिर्धारणहरु ", "Index", new { id = Model.Id }, new { @class = "btn btn-info",title="Back To Index Page" })
+</p>

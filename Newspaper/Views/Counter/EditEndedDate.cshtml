@@ -1,0 +1,176 @@
+﻿@model Newspaper.Models.ViewModel.CounterVM
+<br/>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>समाप्त मिति </h4></center></h1>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div style="padding-left:15px">
+                    <label>ग्राहक नम्बर :</label> : <font style="font-size:20px;" class="nepalifont">
+                        @Model.Customer.CustomerId
+                    </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <label>ग्राहक नाम :</label> :<font style="font-size:20px;" class="nepalifont"> @Model.Customer.FirstName </font> <br />
+
+                    <label>फोन :</label> : <font style="font-size:20px;" class="nepalifont">
+                        @Model.Customer.MPhone
+                    </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>इमेल : </label> : @Model.Customer.Email<br />
+                    <label>ठेगाना : </label> :<font style="font-size:20px;" class="nepalifont">
+                        @Model.Customer.Address
+                    </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>पत्रिका :</label><font style="font-size:20px;" class="nepalifont">
+                        @Model.NewsPaper.NewsPaperName
+                    </font><br />
+                    <label>सुरु मिति :</label>@StringToUnicode(Model.Paperdispatch).ToString() &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>समाप्त मिति :</label>@StringToUnicode(Model.enddate).ToString()<br />
+
+                </div>
+                @using (Html.BeginForm("EditEndedDate", "Counter", FormMethod.Post))
+                {
+                    <input id="txtServiceAssignId" type="hidden" name="id" value="@Model.ServiceAssign.Id">
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>पत्रिका सुरु मिति </label>  @*@Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })*@
+                            <input type="text" class="form-control" name="NepaliDate1" id="txtNepaliDate1">
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>पत्रिका समाप्त मिति </label>  @*@Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })*@
+                            <input type="text" class="form-control" name="NepaliDate" id="txtNepaliDate2">
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>परिमाण </label>  @*@Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })*@
+                            <input type="number" class="form-control" value="@Model.ServiceAssign.Quantity" name="Quantity" id="txtquantity">
+
+                        </div>
+                    </div>
+
+
+                    <input type="hidden" class="form-control" name="PaperDispatchDate" id="txtPaperDispatchDate" value="@Model.ServiceAssign.PaperDispatchDate">
+                    <input type="hidden" class="form-control" name="EndedDate" id="txtEndedDate" value="@Model.ServiceAssign.EndedDate">
+                    <div class="form-group">
+
+                        <div class="col-md-10 col-md-offset-5">
+                            <input type="submit" value="अद्यावधिक " class="btn btn-info" id="btnSubmit" onclick="validate()" />
+
+                        </div>
+
+                    </div>
+
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/bootstrap/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+    <script src="~/bootstrap/nepali.datepicker.v2.2.min.js"></script>
+
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $('#txtNepaliDate1', 'body').nepaliDatePicker({
+
+                onChange: function () {
+                    $('#txtNepaliDate1').val();
+                    $('#txtPaperDispatchDate').val(BS2AD($('#txtNepaliDate1').val()));
+                },
+                npdMonth: true,
+                npdYear: true
+            }
+            );
+            $('#txtNepaliDate2', 'body').nepaliDatePicker({
+
+                onChange: function () {
+                    $('#txtNepaliDate2').val();
+                    $('#txtEndedDate').val(BS2AD($('#txtNepaliDate2').val()));
+                },
+                npdMonth: true,
+                npdYear: true
+            }
+            );
+            
+
+        });
+    </script>
+
+
+}
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}

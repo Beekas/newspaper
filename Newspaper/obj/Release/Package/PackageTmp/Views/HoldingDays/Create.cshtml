@@ -1,0 +1,162 @@
+﻿
+@model Newspaper.Models.Customer
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<style>
+    fieldset {
+        display: block;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding-top: 0.35em;
+        padding-bottom: 0.625em;
+        a padding-left: 0.75em;
+        padding-right: 0.75em;
+        border: 2px solid black;
+    }
+
+    legend {
+        width: auto;
+        border: 1.5px solid black;
+    }
+</style>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+@using (Html.BeginForm("Create", "HoldingDays", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title"><center><h4>Holding Customer</h4></center></h1>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerId)  @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.CustomerId, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    @*<i class="fa fa-user"></i>*@
+                    @Html.LabelFor(model => model.FirstName)@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MiddleName)@Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.MiddleName, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName) @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+          </div>
+            @*<div class="col-md-6" id="divNepaliDate">
+                <div class="form-group">
+                    <label>Holding Date</label> 
+                    @Html.TextBox("NepDate", null, new { id = "txtNepDate", @class = "form-control", @required = true })
+
+                    @Html.Hidden("EndedDate", "", new { id = "txtEndedDate" })
+
+                </div>
+            </div>*@
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Select Date</label>
+
+                        @Html.TextBox("NepDate", null, new { id = "txtNepDate", @class = "form-control", @required = true })
+
+                        @Html.Hidden("EndedDate", "", new { id = "txtEndedDate" })
+                    </div>
+                </div>
+
+
+
+
+            <div class="col-md-3" id="divDuration">
+                <div class="form-group">
+
+                    <label>Holding Days</label> @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+
+                    @Html.TextBox("HoldingDays", "" , new { @class = "form-control" });
+                </div>
+            </div>
+
+
+            @Html.HiddenFor(model => model.Id)
+
+            @Html.HiddenFor(model => model.PaperDispatchDate, new { id = "txtPaperDispatchDate" })
+
+         
+            @Html.HiddenFor(model => model.RegisterDate, DateTime.Now)
+            <center>
+                <div class="form-group">
+                    <div class="col-md-10">
+                       
+                        <input type="submit" value="Re-New" class="btn btn-primary" id="btnSubmit" /><label style="padding:10px"></label>
+                        @Html.ActionLink("View Record", "Index", "Customer", new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </center>
+        </div>
+            
+    </div>
+       
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/bootstrap/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+    <script src="~/bootstrap/nepali.datepicker.v2.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtNepDate").val("");
+            $('#txtNepDate', 'body').nepaliDatePicker({
+                
+                onChange: function () {
+                    $('#NepDate').val();
+                    $('#txtEndedDate').val(BS2AD($('#txtNepDate').val()));
+                },
+                npdMonth: true,
+                npdYear: true
+            });
+
+            //$('#txtPaperDispatchDate').datepicker();
+
+        });
+    </script>
+}
+
+

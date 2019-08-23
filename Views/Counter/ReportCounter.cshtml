@@ -1,0 +1,237 @@
+﻿@model Newspaper.Models.ViewModel.PrintVM
+
+
+
+<div id="Report" class="col-md-12" style="font-size:14px">
+
+    <div style="width:100%;float:right;text-align:right;">फोन नं: ४२२२२५२<br />मिती/Date:@StringToUnicode(Html.DisplayFor(model => model.NepaliDate).ToString())</div>
+    <div style="text-align:center;">
+        <b> गोरखापत्र सस्थान</b><br />
+        <b>Gorkhapatra Sansthan</b></br>
+        नगद लेखा शाखा/Cash Account Section<br />
+        धर्मपथ काठमाडौँ,/Dharmapath Kathmandu<br />
+        नगदी रसिद/Cash Receipt<br />
+    </div>
+
+    <br />
+    <br />
+    र.नं:<font class="nepalifont" style="font-size:20px;">
+    @Html.DisplayFor(model => model.BillNo).ToString()</font><br />
+    नाम/name:<font class="nepalifont" style="font-size:20px;">  @Html.DisplayFor(model => model.CustomerName)</font></br>
+    ठेगाना/Address:<font class="nepalifont" style="font-size:20px;">
+        @Html.DisplayFor(model => model.Address)
+    </font></br>
+    मो.नं. Mo.No/फोन.नं. ph.no:<font class="nepalifont" style="font-size:20px;">
+        @Html.DisplayFor(model => model.Phone)
+    </font><br />
+    स-धन्यवादसहित निम्न बिषयमा सम्बन्धित रकम प्राप्त भयो|<br />
+    received with thanks for the amount related to following titles.
+    <table class="table table-bordered" style="text-align:center;width:100%">
+        <tr>
+            <td>
+                क्र.म.<br />
+                sno
+            </td>
+            <td>
+                बिषय<br />
+                Subject
+            </td>
+            <td>
+                नगद</br>Cash
+
+            </td>
+            <td>
+                चेक विवरण</br>
+                Cheque Details
+            </td>
+            <td style="width=20%;">
+                विवरणहरु<br />
+                Particulars
+            </td>
+            <td>
+                रकम<br />
+                Amount
+            </td>
+
+            <td>
+                कैफियत<br />
+                Remarks
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> @Html.DisplayFor(model => model.Subject)</td>
+            <td></td>
+
+            <td>
+                @if (Model.BankAcc.Trim() != "" || Model.BankName.Trim() != "")
+                {
+                    <font class="nepalifont" style="font-size:20px;">@Model.BankName</font> <font class="nepalifont" style="font-size:20px;">
+                        @Html.DisplayFor(model => model.BankAcc)
+                    </font> <font> बाट प्राप्त</font>
+                }
+                else
+                {
+                            <font >
+                                नगद
+                            </font>
+                }
+            </td>
+            <td>
+                <font class="nepalifont" style="font-size:20px;">    @Html.DisplayFor(model => model.NewspaperName) </font>   @StringToUnicode(Html.DisplayFor(model => model.Quantity).ToString()) प्रति  <br />@StringToUnicode(Html.DisplayFor(model => model.StartDate).ToString() + "-" + @Html.DisplayFor(model => model.EndedDate).ToString())
+            </td>
+            <td>@StringToUnicode(Html.DisplayFor(model => model.Amount).ToString())</td>
+            <td><font class="nepalifont" style="font-size:20px;">@Html.DisplayFor(model => model.Remarks)</font></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>DiscountAmount</td>
+            <td>@StringToUnicode(Html.DisplayFor(model => model.DiscountAmount).ToString())</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>जम्मा रकम/total</td>
+            <td>@StringToUnicode(Html.DisplayFor(model => model.GrandTotal).ToString())</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="6" style="text-align:left;">
+                अक्षेरुपि<br />
+                Inwords   &nbsp;&nbsp;    @Html.DisplayFor(model => model.AmountWord)
+
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="7" style="text-align:left;">
+                भुलचुक लिने दिने<span style="float:right">बुझीलिनेको सही</span><br />
+                E &O.E.<span style="float:right">Received by</span>
+            </td>
+
+
+        </tr>
+    </table>
+
+</div>
+
+<br />
+
+
+
+<button id="btnPrint" class="btn btn-primary">Print</button>
+
+
+
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+
+
+
+@*else if (System.Web.HttpContext.Current.Request.HttpMethod.ToString() == "GET")
+    {
+
+        using (Html.BeginForm("ReportCounter", "Counter", FormMethod.Post))
+        {
+
+                <div class="col-md-10 col-md-offset-5">
+                    <input type="submit" value="Activate" class="btn btn-info" id="btnSubmit" onclick="validate()" />
+                </div>
+
+
+
+        }
+
+    }*@
+@section Scripts{
+    <script src="~/Scripts/preeti.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#btnPrint").click(function () {
+              //  convert_to_unicode();
+                PrintElem("Report");
+            })
+        })
+
+        function PrintElem(elem) {
+            var mywindow = window.open('', 'PRINT', 'height=842,width=590');
+
+            mywindow.document.write('<html><head><style>.nepalifont{font-family:Preeti;font-size:14px;} table{border-collapse:collapse;width:100%;border:1px solid ;}th, td {text-align: left;padding: 8px; border: 1px solid ;}tr:nth-child(even){background-color: #f2f2f2;}</style><title></title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(document.getElementById(elem).innerHTML);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            mywindow.close();
+
+            return true;
+        }
+
+    </script>
+}

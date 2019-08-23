@@ -1,0 +1,202 @@
+﻿@model List<Newspaper.Models.ViewModel.DistributorVM>
+@{
+    ViewBag.Title = "DistributorAddReport";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+
+    .btn {
+        background-color: mediumslateblue;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+
+        .btn:hover {
+            background-color: blueviolet;
+        }
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+    <div id="ExpReport">
+        <h5 style="text-align:right;">मिति :-@StringToUnicode(Model[0].NepaliDate.ToString()) </h5>
+        <h3 style="margin-left:350px;"><b><u>दैनिक बितरकको बिवरण   </u></b></h3>
+        <div style="width:100%">
+            <div class="nepalifont" style="width:50%;float:left;"> बितरण पत्रीकाको नाम  <b style="font-size:20px;">@Model[0].newspaperName</b></div>
+            @*<div style="width:50%;float:right;text-align:right;">Branch Name : <b>@Model[0].branch</b></div>*@
+        </div>
+
+        @{ int i = 1;}
+        <table class="table table-bordered" id="myTable">
+            <tr>
+                <th>क.स </th>
+                <th>बितरक </th>
+                <th>परिमण </th>
+                <th>बढ </th>
+                <th>घट </th>
+                <th>जम्मा </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@StringToUnicode(i.ToString())</td>
+                    <td class="nepalifont" style="font-size:20px;">@item.DistributorName</td>
+                    <td>@StringToUnicode(item.Quantity.ToString())</td>
+                    <td>@StringToUnicode(item.Added.ToString())</td>
+                    <td>@StringToUnicode(item.Subs.ToString())</td>
+                    <td>@StringToUnicode((item.Quantity + item.Added - item.Subs).ToString())</td>
+
+
+
+                </tr>
+                i = i + 1;
+            }
+            <tr><td></td><td>जम्मा </td><td>  @StringToUnicode(Model.Sum(m => m.Quantity).ToString())</td><td> @StringToUnicode(Model.Sum(m => m.Added).ToString())</td><td> @StringToUnicode(Model.Sum(m => m.Subs).ToString())</td><td>@StringToUnicode(Model.Sum(m => (m.Quantity + m.Added - m.Subs)).ToString())</td></tr>
+        </table>
+        <br />
+        <div style="text-align:center">
+            <table class="table table-bordered" id="myTable" style="width:150px" align="center">
+
+                <tr>
+                    <th> बढ</th>
+                    <th>@StringToUnicode(Model.Sum(m => m.Added).ToString())</th>
+
+                </tr>
+                <tr>
+                    <td>घट</td>
+                    <td>@StringToUnicode(Model.Sum(m => m.Subs).ToString())</td>
+
+                </tr>
+                <tr>
+                    <td>जम्मा</td>
+                    <td>@StringToUnicode(Model.Sum(m => (m.Quantity + m.Added - m.Subs)).ToString())</td>
+
+                </tr>
+                @*<tr>
+                        <td></td>
+                        <td></td>
+
+                    </tr>*@
+            </table>
+        </div>
+    </div>
+
+    <br />
+    <center><button class="btn" id="btnPrint"><i class="fa fa-print"></i> प्रिन्ट गर्नुहोस</button></center>
+
+    @helper StringToUnicode(string data)
+    {
+        string uni = "";
+        foreach (char c in data)
+        {
+            var charCode = "U+" + ((int)c).ToString("X4");
+            switch (charCode)
+            {
+                case "U+0030":
+                    uni += "०";
+                    break;
+                case "U+0031":
+                    uni += "१";
+                    break;
+                case "U+0032":
+                    uni += "२";
+                    break;
+                case "U+0033":
+                    uni += "३";
+                    break;
+                case "U+0034":
+                    uni += "४";
+                    break;
+                case "U+0035":
+                    uni += "५";
+                    break;
+                case "U+0036":
+                    uni += "६";
+                    break;
+                case "U+0037":
+                    uni += "७";
+                    break;
+                case "U+0038":
+                    uni += "८";
+                    break;
+                case "U+0039":
+                    uni += "९";
+                    break;
+                default:
+                    uni += c;
+                    break;
+            }
+        }
+        @uni
+    }
+    @helper CheckZero(decimal data)
+    {
+        if (data == 0)
+        {
+            @StringToUnicode("0.00")
+        }
+        else
+        {
+            @StringToUnicode(data.ToString())
+        }
+    }
+
+
+
+    <script src="~/Scripts/jQuery.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $("#btnPrint").click(function (e) {
+                PrintElem("ExpReport");
+            });
+        });
+
+        function PrintElem(elem) {
+            var mywindow = window.open('', 'PRINT', 'height=842,width=590');
+
+            mywindow.document.write('<html><head><style> .nepalifont{font-family:Preeti} table {border-collapse: collapse;width: 100%;border: 1px solid ;}th, td {text-align: left;padding: 8px; border: 1px solid ;}tr:nth-child(even){background-color: #f2f2f2;}</style><title></title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(document.getElementById(elem).innerHTML);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            mywindow.close();
+
+            return true;
+        }
+
+    </script>
+
+
+
+</body>
+</html>

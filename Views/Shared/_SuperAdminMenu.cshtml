@@ -1,0 +1,106 @@
+﻿
+<br />
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+
+            <li>
+                <a href="@Url.Action("Index","DashBoard")"><i class="fa fa-tachometer-alt"></i> गृहपृष्ठ</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Admin")"><i class="fa fa-user-secret"></i>व्यवस्थापक</a>
+
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Customer")"><i class="fa fa-users"></i>ग्राहक</a>
+
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "serviceassigns")"><i class="fa fa-newspaper"></i>ग्राहक नियुक्त  </a>
+
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="@Url.Action("Index","SalesMan")"><i class="fa fa-male"></i>वितरक</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Service")"><i class="fa fa-route"></i>पत्रिकाहरुको दर्ता </a>
+            </li>
+            @*<li>
+                <a href="@Url.Action("Index","AreaRegister")"><i class="fas fa-chart-area"></i>क्षेत्र निर्धारण</a>
+            </li>*@
+            @*<li>
+            <a href="@Url.Action("Index","Branches")"><i class="fas fa-chart-area"></i>साखा छुत्याउनुहोस्</a>
+        </li>*@
+
+            @*<li>
+            <a href="@Url.Action("Create","DaywiseCount")"><i class="fa fa-calendar-alt"></i> Create DaywiseCount</a>
+        </li>*@
+
+            <li>
+                <a href="@Url.Action("ActivityLog","DashBoard")"><i class="fa fa-user-secret"></i> कार्यविवरण  हेर्नुहोस</a>
+
+                <!-- /.nav-second-level -->
+            </li>
+
+
+
+            <li>
+                <a href="@Url.Action("backup", "Backup")"><i class="fa fa-database"></i>डाटा ब्याकप गर्नुहोस</a>
+
+
+            </li>
+
+            @*<li>
+            <a href="@Url.Action("SendMail","Mail")">
+                <i class="fa fa-envelope"></i> इ-मेल पठाउनुहोस्
+            </a>
+
+
+        </li>*@
+            @*<li>
+            <a href="@Url.Action("Index","Categories")"><i class="fa fa-list-alt"></i>View Categories</a>
+
+             /.nav-second-level
+        </li>*@
+
+
+            <li>
+                <a href="@Url.Action("SelectPublishDate", "QtyToPublish")"><i class="fa fa-newspaper"></i>प्रक्राशन मिती तय गर्नुहोस </a>
+
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "PrakashanGroups")"><i class="fa fa-newspaper"></i>एजेन्ट ग्रुप  </a>
+
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "GroupNames")"><i class="fa fa-newspaper"></i>एजेन्ट दर्ता </a>
+
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Prakashanreports")"><i class="fa fa-newspaper"></i>प्रकाशन रिपोर्ट</a>
+
+                <!-- /.nav-second-level -->
+            </li>
+
+            
+
+            <li>
+                <a href="@Url.Action("Report","DayWiseCount")"><i class="fa fa-print"></i> प्रिन्ट रिपोर्ट</a>
+
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="@Url.Action("Logout","Account")">
+                    <i class="fa fa-sign-out-alt"></i>बाहिर  निस्कनुहोस्
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>

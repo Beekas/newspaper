@@ -1,0 +1,308 @@
+﻿@model IEnumerable<Newspaper.Models.ViewModel.SalesmanVM>
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+
+   
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+<div>
+
+    <br />
+    <div class="col-md-12">
+        <br />
+        <p>
+            @Html.ActionLink("वितरकहरु ", "Index", "", new { @class = "btn btn-info" })
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>वितरक विवरण  </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+
+
+                <div style="padding-left:215px">
+
+                    <label>
+                        वितरकको आईडी
+                    </label>:<font class="nepalifont" style="font-size:20px;">
+                        @Model.FirstOrDefault().salesman.SalesManId
+                    </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <label>
+                        वितरकको नाम
+                    </label>:<font class="nepalifont" style="font-size:20px;"> @Model.FirstOrDefault().salesman.FullName</font><br />
+                    <label>इमेल</label> :
+                    @Model.FirstOrDefault().salesman.Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>फोन नम्बर</label> :<font class="nepalifont" style="font-size:20px;">
+                        @Model.FirstOrDefault().salesman.Phone1
+                    </font><br />
+
+                    <label> बैकल्पिक फोन नम्बर</label> :@Model.FirstOrDefault().salesman.Phone2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @*<label>ग्राहकको प्रकार</label> : @Model.FirstOrDefault().Customer.CustomerType<br />
+                        <label>ठेगाना</label> :<font class="nepalifont" style="font-size:20px;"> @Model.Select(m => (m.Customer.Address + ", " + m.Customer.Tole)).FirstOrDefault()</font>*@
+                </div>
+
+                @*<div style="overflow-x:auto;">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+                                    वितरकको नम्बर
+                                </th>
+
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @Html.DisplayFor(model => model.SalesManId)
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <th>
+                                    वितरकको नाम
+                                </th>
+
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @Html.DisplayFor(model => model.FullName)
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    इमेल
+                                </th>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Email)
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th>
+
+                                    वितरकको नम्बर
+                                </th>
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @Html.DisplayFor(model => model.Phone1)
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    बैकल्पिक फोन नम्बर
+                                </th>
+
+                                <td class="nepalifont" style="font-size:20px;">
+                                    @Html.DisplayFor(model => model.Phone2)
+                                </td>
+                            </tr>
+                        </table>
+                    </div>*@
+
+                <div style="overflow-x:auto;" class="panel-body">
+                    <table class="table table-bordered" id="myTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ग्राहक न:
+                                </th>
+                                <th>
+                                    ग्राहकको पुरानाम
+
+
+                                </th>
+                                <th style="width:180px;">
+                                    फोन नम्बर
+
+
+                                </th>
+
+                                <th>
+                                    ठेगाना
+                                </th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.CustomerId
+
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.CustomerName
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.Phone
+                                    </td>
+
+
+
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @item.Address
+                                    </td>
+
+
+                                    @*<td class="nepalifont" style="font-size:20px;">
+                                            @item.SalesMan.FullName
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.Customer.Id }, new { @class = "btn btn-success", title = "View Assign Customer" })
+                                        </td>*@
+
+                                </tr>
+
+
+                            }
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@*@section Scripts {
+        <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+
+
+
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+        <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+        </script>
+        <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+        <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+        <script type="text/javascript">
+
+            //$('.myLinkToTop').click(function () {
+            //    $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+            //    return false;
+            //});
+
+
+
+            $(document).ready(function () {
+                $("body div.myTable input").addClass("nepalifont");
+                var dataSrc = [];
+
+                var table = $("#myTable").DataTable({
+                    "columnDefs": [
+                        { "orderable": false, "targets": 3 }
+
+                    ],
+                    "pageLength": 50,
+
+                    //'initComplete': function () {
+                    //    var api = this.api();
+
+                    //    // Populate a dataset for autocomplete functionality
+                    //    // using data from first, second and third columns
+                    //    api.cells('tr', [0, 1, 2]).every(function () {
+                    //        // Get cell data as plain text
+                    //        var data = $('<div>').html(this.data()).text();
+                    //        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+                    //    });
+
+                    //    // Sort dataset alphabetically
+                    //    dataSrc.sort();
+
+                    //    // Initialize Typeahead plug-in
+                    //    $('.dataTables_filter input[type="search"]', api.table().container())
+                    //        .typeahead({
+                    //            source: dataSrc,
+                    //            afterSelect: function (value) {
+                    //                api.search(value).draw();
+                    //            }
+                    //        }
+                    //        );
+                    //}
+                });
+            });
+
+
+
+
+        </script>
+    }*@
+
+
+@section Scripts {
+    <link rel=" stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+
+
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body div.myTable input").addClass("nepalifont");
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+                "pageLength": 50,
+
+            });
+        });
+
+
+
+
+
+
+    </script>
+}
+
+

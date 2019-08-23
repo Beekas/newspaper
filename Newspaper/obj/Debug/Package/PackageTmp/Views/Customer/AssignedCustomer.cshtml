@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "AssignedCustomer";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-clock-o fa-fw"></i> CUSTOMERS LIST
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+
+        <div id="myData">
+
+
+            <div class="module">
+
+                <div class="module-body">
+                    @*<p>
+                            @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get))
+                            {
+                            <p>
+                                Find: <input type="text" name="SearchString" class="myclass" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" autocomplete="on">
+
+                            </p>
+                        }*@
+
+
+                    <div style="overflow-x:auto;">
+                        <table class="table table-bordered" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        FirstName
+
+                                        @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
+                                    </th>
+                                    <th>
+                                        Newspaper Name
+
+                                        @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.NewsSortParam, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
+                                    </th>
+
+                                    <th>
+                                        Address
+                                        @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.AddressSortParam, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
+
+                                    </th>
+
+                                    <th>
+                                        DIstrubutor Name
+                                        @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.DateSortParam, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
+
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Customer.FirstName
+                                        </td>
+                                        <td>
+                                            @item.NewsPaper.NewspaperName
+                                        </td>
+
+
+
+                                        <td>
+                                            @item.Customer.Address
+                                        </td>
+
+
+                                        <td>
+                                            @item.SalesMan.FullName
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("View", "CustomerDetail", new { id = item.Customer.Id }, new { @class = "btn btn-success", title = "View Assign Customer" })
+                                        </td>
+
+
+                                    </tr>
+
+
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+
+
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+
+        //$('.myLinkToTop').click(function () {
+        //    $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+        //    return false;
+        //});
+
+        $('.myMenuLink').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+            return false;
+        });
+
+        $(function () {
+            $("#myInput").autocomplete({
+                source: '@Url.Action("GetCostumers")',
+                minLength: 1
+            });
+        });
+
+
+
+        $(document).ready(function () {
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+                "pageLength": 50,
+
+                'initComplete': function () {
+                    var api = this.api();
+
+                    // Populate a dataset for autocomplete functionality
+                    // using data from first, second and third columns
+                    api.cells('tr', [0, 1, 2]).every(function () {
+                        // Get cell data as plain text
+                        var data = $('<div>').html(this.data()).text();
+                        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+                    });
+
+                    // Sort dataset alphabetically
+                    dataSrc.sort();
+
+                    // Initialize Typeahead plug-in
+                    $('.dataTables_filter input[type="search"]', api.table().container())
+                        .typeahead({
+                            source: dataSrc,
+                            afterSelect: function (value) {
+                                api.search(value).draw();
+                            }
+                        }
+                        );
+                }
+            });
+        });
+
+
+
+
+    </script>
+}
+
+

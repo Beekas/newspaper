@@ -1,0 +1,171 @@
+﻿@model Newspaper.Models.RouteReport
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RouteReport</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Route.RouteId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Route.RouteId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NepaliDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NepaliDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gp_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gp_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rn_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rn_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.muna_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.muna_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yuwa_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yuwa_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.madhu_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.madhu_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gp_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gp_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rn_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rn_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.muna_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.muna_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yuwa_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yuwa_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.madhu_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.madhu_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gp_grandtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gp_grandtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rn_grandtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rn_grandtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.muna_grandtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.muna_grandtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yuwa_grandtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yuwa_grandtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.madhu_grandtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.madhu_grandtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgentId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

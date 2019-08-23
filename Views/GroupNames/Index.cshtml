@@ -1,0 +1,355 @@
+﻿@model IEnumerable<Newspaper.Models.GroupName>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GP_Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RN_Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MUNA_Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Madhu_Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yuwa_Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.URL)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Route.RouteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GP_Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RN_Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MUNA_Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Madhu_Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yuwa_Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.URL)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+
+    #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+    }
+
+    #myTable tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+        #myTable tr.header, #myTable tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+
+<div class="module">
+
+    <div class="module-body">
+        <br />
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>ग्राहकहरु </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert alert-success">@TempData["message"]</div>
+                }
+
+                @Html.ActionLink("एजेन्ट थप्नुहोस", "Create", "GroupNames", new { @class = "btn btn-primary", title = "Create new Agent" })
+
+                <div style="padding-top:10px;">
+                    <table class="table table-bordered" id="myTable">
+                        <thead>
+                            <tr>
+
+                                <th>
+                                    Route Name
+                                </th>
+                                <th>
+                                    एजेन्टको नाम
+                                </th>
+                                <th>
+                                    ठेगाना
+                                </th>
+                                <th>
+                                    फोन न:
+                                </th>
+                                <th>
+                                    जिल्ला
+                                </th>
+
+                                <th>कार्य</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="@*nepalifont*@" style="font-size:20px;">
+                                        @Html.DisplayFor(modelItem => item.Route.RouteName)
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(modelItem => item.AgentName)
+                                    </td>
+
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(modelItem => item.Address)
+                                    </td>
+
+
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(modelItem => item.Phone)
+                                    </td>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(modelItem => item.District)
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("सच्याउनुहोस", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", title = "Edit Customer" })|
+                                        @Html.ActionLink("थप हेर्नुहोस", "Details", new { id = item.Id }, new { @class = "btn btn-success", title = "Show Customer Detail" })
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="myMenuLink btn btn-info" id="but1" style="float:right;"><u>माथि जानुहोस</u></button>
+
+
+
+<br />
+
+
+
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+
+
+
+
+@section Scripts {
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+
+
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $("body div.myTable input").addClass("nepalifont");
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+                "pageLength": 100,
+
+
+            });
+        });
+
+
+
+
+    </script>
+}
+

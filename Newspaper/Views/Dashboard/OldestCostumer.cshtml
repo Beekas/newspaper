@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Newspaper.Models.Customer>
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="module">
+
+    <div class="module-body">
+
+
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Full Name
+                    </th>
+                    <th>
+                        NewsPaper Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        CreatedDate
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.FirstName &nbsp; @item.MiddleName &nbsp; @item.LastName
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service.NewsPaperName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+
+                        <td>
+                            @item.Amount
+                        </td>
+
+                        <td>
+                            @item.RegisterDate.ToShortDateString()
+                        </td>
+
+
+                    </tr>
+
+
+                }
+
+                    <tfoot>
+                        <tr class="borderless">
+                            <td></td>
+                            <td></td>
+                            <td>Total Amount</td>
+                            <td>
+                                <b>  @ViewBag.message</b>
+                            </td>
+                            <td></td>
+              </tr>
+                        @Html.ActionLink("View details ", "NormalCostumer", "", new { @class = "btn btn-info", style = "color:#000000" })
+                    </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>

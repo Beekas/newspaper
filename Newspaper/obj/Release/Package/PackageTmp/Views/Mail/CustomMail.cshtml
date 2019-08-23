@@ -1,0 +1,146 @@
+﻿@model Newspaper.Models.ViewModel.MailViewModel
+
+
+@{
+    ViewBag.Title = "CustomMail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Themes/ckfull/ckeditor.js"></script>
+
+@using (Html.BeginForm("CustomMail", "Mail", FormMethod.Post))
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Send Custom Mail</h3>
+        </div>
+
+        <div class="panel-body">
+            <fieldset>
+                <br />
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-success">@ViewBag.Message</div>
+                }
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+                }
+              
+
+                @*<div class="form-group">
+                <label for="your-input">To :</label>
+
+               @Html.DropDownList("structure", (MultiSelectList)ViewBag.email, new { multiple = "multiple" });
+            <input type="submit" />
+
+
+
+
+            </div>*@
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="your-input">Subject</label>
+                            <input type="text" name="MailSubject" id="txtsubject" class="form-control" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+
+                            <label for="your-input">Mail-Body</label>
+                            @*<input textarea="text" name="MailBody" id="MailBody" class="form-control" rows="200" />*@
+                            @Html.TextAreaFor(model => model.MailBody, new { id="MailBody",@class = "form-control", rows = "200" })
+
+
+                            <script type="text/javascript" language="javascript">
+
+                            CKEDITOR.config.autoParagraph = false;
+                            CKEDITOR.replace("MailBody");
+
+                        </script>
+
+                        </div>
+                        </div>
+                    </div>
+                        @*<div class="form-group">
+
+                        <label for="your-input">File Attachment</label>
+                        <input type="file" name="ImageFile" id="fuAttachment" onchange="readURL(this);" class="form-control" />
+                        <img id="blah" src="#" alt="your image" />
+                    </div>*@
+
+
+                        <center>
+                            <div class="form-group">
+                                <div class=" col-md-10">
+                                    <input type="submit" value="Send Mail" class="btn btn-info" id="btnSubmit" />
+                                </div>
+                                <div>
+                                    @Html.ActionLink("Back To Mail ", "SendMail", "Customer", new { @class = "btn btn-primary", title = "Back to Mail page" })
+                                </div>
+                            </div>
+
+                            
+
+                        </center>
+
+            </fieldset>
+
+
+
+        </div>
+    </div>
+}
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+
+
+        <link href="~/css/jquery-ui.css" rel="stylesheet" />
+        @*<script type="text/javascript">
+            $('#blah').hide();
+            function readURL(input) {
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah').show();
+                        $('#blah')
+                            .attr('src', e.target.result)
+                            .width(100)
+                            .height(100);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+
+        </script>
+    }*@
+
+@section scripts{
+    <script>
+        $("#submit").click(function () {
+            $.ajax({
+                url: '@Url.Action("CustomMail", "Mail")',
+                traditional: true,
+                data: { ids: $("#To").val() },
+                success: function () {
+                    alert("s");
+                },
+                error: function () {
+                    alert("e");
+                }
+            })
+        })
+    </script>
+}

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*  @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+
+
+    <link href="@Url.Content("~/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+   
+
+    <link href="@Url.Content("~/bootstrap/css/bootstrap-responsive.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/theme.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/images/icons/css/font-awesome.css")" rel="stylesheet" />
+
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <style>
+        span.field-validation-error {
+            color: red;
+        }
+    </style>
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' />
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="icon-reorder shaded"></i>
+                </a><a class="brand" href="@Url.Action("Index","Admin")">Gym Management </a>
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+
+
+                    <ul class="nav pull-right">
+
+                        <li>
+                            <a href="#">
+                                @if (Session["fullname"] != null)
+                                {
+                                    @Session["fullname"].ToString()
+                                }
+                            </a>
+                        </li>
+
+
+                        <li class="nav-user dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @if (Session["photo"] != null)
+                                {
+                                    <img src="~/MemberPhoto/@Session["photo"].ToString()" class="nav-avatar" />
+
+                                }
+                                else
+                                {
+                                    <img src="~/images/user.png" class="nav-avatar" />
+                                }
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li><a href="@Url.Action("ViewProfile","Admin")">Edit Profile</a></li>
+                                <li><a href="@Url.Action("ChangePassword","Admin")">Change Password</a></li>
+                                <li class="divider"></li>
+                                <li><a href="@Url.Action("Login","Account")">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </div>
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+    <!-- /navbar -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="sidebar">
+                        <ul class="widget widget-menu unstyled">
+                            <li class="active">
+                                <a href="@Url.Action("Index","Admin")">
+                                    <i class="menu-icon icon-dashboard"></i>Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Create","Member")"><i class="menu-icon icon-bullhorn"></i>Add Member </a>
+                            </li>
+
+
+                        </ul>
+                        <!--/.widget-nav-->
+
+
+                        <ul class="widget widget-menu unstyled">
+                            <li><a href="@Url.Action("Payment","Member")"><i class="menu-icon icon-money"></i> Member Payment </a></li>
+
+                            <li><a href="@Url.Action("Add","Attendance")"><i class="menu-icon icon-paste"></i>Attendance </a></li>
+                            <li><a href="@Url.Action("Index","Protein")"><i class="menu-icon icon-bar-chart"></i>Protein </a></li>
+                            <li><a href="@Url.Action("Index","MembershipType")"><i class="menu-icon icon-bar-chart"></i>MembershipType </a></li>
+                            <li><a href="@Url.Action("Index","Measurement")"><i class="menu-icon icon-bar-chart"></i>Measurement </a></li>
+                            <li><a href="~/Gallery/Index"><i class="menu-icon icon-bar-chart"></i>Gallery </a></li>
+                            <li><a href="@Url.Action("Index","Shift")"><i class="menu-icon icon-bar-chart"></i>Shift </a></li>
+                            <li><a href="@Url.Action("Add","Workout")"><i class="menu-icon icon-table"></i>Member Workout </a></li>
+                            <li><a href="@Url.Action("MessageSender","Member")"><i class="menu-icon icon-table"></i>Send Message </a></li>
+
+                            <li><a href="@Url.Action("Logout","Account")"><i class="menu-icon icon-table"></i>Logout </a></li>
+
+                        </ul>
+
+                    </div>
+                    <!--/.sidebar-->
+                </div>
+                <!--/.span3-->
+                <div class="span9">
+
+
+                    <div class="content">
+                        @RenderBody()
+
+
+                        <!--/.module-->
+                        <!--/.module-->
+                    </div>
+                    <!--/.content-->
+                </div>
+                <!--/.span9-->
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.wrapper-->
+    <div class="footer">
+        <div class="container">
+            <b class="copyright">&copy; 2018 Gym - Management </b>All rights reserved.
+        </div>
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+
+    <script src="@Url.Content("~/scripts/jquery-ui-1.10.1.custom.min.js")"></script>
+
+    <script src="@Url.Content("~/bootstrap/js/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    <script src="@Url.Content("~/scripts/datatables/jquery.dataTables.js")"></script>
+    @*<script src="@Url.Content("~/scripts/common.js")"></script>*@
+
+    
+        @RenderSection("scripts", required: false)
+</body>
+</html>

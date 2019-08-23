@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Newspaper.Models.ViewModel.CounterVM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>नियुक्ति ग्राहकहरुको विवरण  </h4></center></h1>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body text-center">
+                <div>
+                    <label>ग्राहक नं</label>:<font class="nepalifont" style="font-size:20px;">
+    @Model.FirstOrDefault().Customer.CustomerId</font><br />
+
+                    <label>ग्राहकको नाम</label>:<font class="nepalifont" style="font-size:20px;"> @Model.Select(m => (m.Customer.FirstName)).FirstOrDefault()</font><br />
+
+                    <label>फोन नं</label> :<font class="nepalifont" style="font-size:20px;"> @Model.FirstOrDefault().Customer.MPhone</font><br />
+                    <label>इमेल</label> : @Model.FirstOrDefault().Customer.Email<br />
+                    <label>ठेगाना</label> :<font class="nepalifont" style="font-size:20px;"> @Model.FirstOrDefault().Customer.Address</font><br />
+</div>
+                <div class="col-md-8 col-md-offset-2">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>
+                                पत्रिकाको नाम
+                            </th>
+                            <th>
+                                सुरु मिति
+                            </th>
+                            <th>
+                                अन्तिम मिति
+                            </th>
+                            <th>
+                                बाँकी दिन
+                            </th>
+
+
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.NewsPaper.NewsPaperName
+                            </td>
+                            <td>
+                                @*@item.ServiceAssign.PaperDispatchDate.ToShortDateString()*@
+                                @StringToUnicode(item.Paperdispatch.ToString())
+                            </td>
+                            <td>
+                                @*@item.ServiceAssign.EndedDate.ToShortDateString()*@
+                                @StringToUnicode(item.NepaliDate.ToString())
+                            </td>
+
+                            @if ((item.ServiceAssign.EndedDate - DateTime.Now).Days < 1)
+                            {
+                                <td class="danger">
+                                    समयावधि समाप्त  @StringToUnicode((DateTime.Now - item.ServiceAssign.EndedDate).Days.ToString()) दिन बित्यो
+                                </td>
+                            }
+                            else if (item.ServiceAssign.status)
+                            {
+                                <td class="info">
+                                    @StringToUnicode(((item.ServiceAssign.EndedDate - DateTime.Now).Days).ToString()) (pending)
+                                </td>
+                            }
+                            else if ((item.ServiceAssign.EndedDate - DateTime.Now).Days > 10)
+                            {
+                                if ((item.ServiceAssign.PaperDispatchDate - DateTime.Now).Days > 10)
+                                {
+                                    <td class="success">
+                                        @StringToUnicode((item.ServiceAssign.EndedDate - item.ServiceAssign.PaperDispatchDate).Days.ToString()) दिन बाँकी
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="success">
+                                        @StringToUnicode(((item.ServiceAssign.EndedDate - DateTime.Now).Days).ToString()) दिन बाँकी
+                                    </td>
+                                }
+                            }
+
+                            else
+                            {
+                                <td class="warning">
+                                    @StringToUnicode(((item.ServiceAssign.EndedDate - DateTime.Now).Days).ToString()) दिन बाँकी
+                                </td>
+                            }
+
+
+
+
+                        </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+

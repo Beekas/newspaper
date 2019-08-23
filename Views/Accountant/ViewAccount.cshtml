@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Newspaper.Models.ViewModel.AccountantVM>
+@{
+    ViewBag.Title = "ViewAccount";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Model.FirstOrDefault().Customer.CustomerId</font><br />
+
+<label>ग्राहकको नाम</label>:<font class="nepalifont" style="font-size:20px;"> @Model.FirstOrDefault().Customer.FirstName</font><br />
+
+<label>फोन नं</label> :<font class="nepalifont" style="font-size:20px;"> @Model.FirstOrDefault().Customer.MPhone</font><br />
+<label>इमेल</label> : @Model.FirstOrDefault().Customer.Email<br />
+<label>cusid</label> :<font class="nepalifont" style="font-size:20px;"> @Model.FirstOrDefault().Customer.CustomerId</font><br />
+<label>endeddate</label> :<font class="nepalifont" style="font-size:20px;"> @Model.FirstOrDefault().ServiceAssign.EndedDate</font><br />
+<label>salesman</label> :<font class="nepalifont" style="font-size:20px;"> @Model.FirstOrDefault().SalesMan.FullName</font><br />
+<div class="col-md-8 col-md-offset-2">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                पत्रिकाको नाम
+            </th>
+            <th>
+                Bill No
+            </th>
+            <th>
+                Cheque
+            </th>
+            <th>
+                Cash
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                discount
+            </th>
+            <th>date</th>
+           
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="nepalifont" style="font-size:20px;">
+                    @item.Service.NewsPaperName
+                </td>
+                <td>
+                    @item.Account.BillNo
+                </td>
+                <td>
+                    @item.Account.BankName, @item.Account.BankAcc
+                </td>
+
+              
+                    <td>
+                        @if (string.IsNullOrEmpty(item.Account.BankName)&& string.IsNullOrEmpty(item.Account.BankAcc))
+                        {
+                            <label>Cash</label>
+                        }
+                    </td>
+               
+               <td>
+                   @item.Account.Amount
+               </td>
+                <td>
+                    @item.Account.Amount
+                </td>
+                <td>@item.Account.Paymentdate</td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+

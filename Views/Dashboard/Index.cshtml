@@ -1,0 +1,529 @@
+﻿@*@model PagedList.IPagedList<Newspaper.Models.Customer>
+    @using PagedList.Mvc;*@
+@model IEnumerable<Newspaper.Models.ViewModel.CounterVM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+
+<div class="row">
+
+    <div class="col-lg-3 col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-users fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" id="CountCustomers">
+                            <span>
+                                @if (ViewBag.cus != null)
+                                {
+                                    @StringToUnicode(ViewBag.cus.ToString());
+                                }
+                            </span>
+                        </div>
+                        <div>ग्राहकहरु</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index", "Customer")" class="viewDetails" data-type="customers">
+                <div class="panel-footer">
+                    <span class="pull-left">पुरा हेर्नुहोस </span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+
+
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-male fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" id="SellsMan">
+                            <span>
+                                @if (ViewBag.sellman != null)
+                                {
+                                    @StringToUnicode(ViewBag.sellman.ToString());
+                                }
+                            </span>
+                        </div>
+                        <div>वितरक </div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index", "SalesMan")">
+                <div class="panel-footer">
+                    <span class="pull-left">पुरा हेर्नुहोस </span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-user-circle fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" id="Active-Users">
+                            <span>
+                                @if (ViewBag.message != null)
+                                {
+                                    @StringToUnicode(ViewBag.message.ToString());
+                                }
+                            </span>
+                        </div>
+                        <div>नियुक्त ग्राहक </div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("allassigned", "serviceassigns")">
+                <div class="panel-footer">
+                    <span class="pull-left">पुरा हेर्नुहोस </span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-newspaper fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" id="Inactive-Users">
+                            <span>
+                                @if (ViewBag.news != null)
+                                {
+                                    @StringToUnicode(ViewBag.news.ToString());
+                                }
+                            </span>
+                        </div>
+                        <div>पत्रिकाहरु </div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index", "Service")">
+                <div class="panel-footer">
+                    <span class="pull-left">पुरा जानकारी </span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-clock-o fa-fw"></i> नियुक्त ग्राहकहरु
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+
+                <div id="myData">
+
+
+                    <div class="module">
+
+                        <div class="module-body">
+                            @*<p>
+                                    @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get))
+                                    {
+                                    <p>
+                                        Find: <input type="text" name="SearchString" class="myclass" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" autocomplete="on">
+
+                                    </p>
+                                }*@
+
+
+                            <div style="overflow-x:auto;" class="panel-body">
+                                <table class="table table-bordered" id="myTable">
+                                    <thead>
+                                        <tr>
+                                            <th> 
+                                                ग्राहक न:
+                                            </th>
+                                            <th>
+                                                ग्राहकको पुरानाम
+
+                                                @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
+                                            </th>
+                                            <th style="width:180px;">
+                                                पत्रिका
+
+                                                @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.NewsSortParam, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
+                                            </th>
+
+                                            <th>
+                                                ठेगाना
+                                                @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.AddressSortParam, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
+
+                                            </th>
+
+                                            <th style="width:180px;">
+                                                वितरकको नाम
+                                                @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.DateSortParam, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
+
+                                            </th>
+                                            <th>
+                                                कार्य
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Customer.CustomerId
+
+                                                </td>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Customer.FirstName
+                                                </td>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.NewsPaper.NewsPaperName
+                                                </td>
+
+
+
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Customer.Address
+                                                </td>
+
+
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.SalesMan.FullName
+                                            </td>
+
+                                            <td>
+                                                @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.Customer.Id }, new { @class = "btn btn-success", title = "View Assign Customer" })
+                                            </td>
+
+                                            @*@if ((item.EndedDate - DateTime.Now).Days < 1)
+                                                {
+                                                    <td class="danger">
+                                                        expired  @((DateTime.Now - item.EndedDate).Days) days ago
+                                                    </td>
+                                                }
+                                                else if ((item.EndedDate - DateTime.Now).Days > 10)
+                                                {
+                                                    if ((item.PaperDispatchDate - DateTime.Now).Days > 10)
+                                                    {
+                                                        <td class="success">
+                                                            @((item.EndedDate - item.PaperDispatchDate).Days) day left
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="success">
+                                                            @((item.EndedDate - DateTime.Now).Days) day left
+                                                        </td>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <td class="warning">
+                                                        @((item.EndedDate - DateTime.Now).Days) day left
+                                                    </td>
+                                                }*@
+
+                                        </tr>
+
+
+                                    }
+                                    </tbody>
+
+                                </table>
+                                @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                                    @Html.PagedListPager(Model, page => Url.Action("Index","DashBoard",
+                                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+
+
+        @*<div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> भर्खरै थपिएका ग्राहकहरु
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div id="RecentCostumer">
+                  
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>*@
+
+
+
+        <!-- /.panel -->
+        @*<div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Normal Customer
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="OldCostumers"></div>
+                            </div>
+                            <!-- /.col-lg-8 (nested) -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                <!-- /.panel -->
+            </div>*@
+        <button class="myMenuLink btn btn-info" id="but1" style="float:right;"><u>माथि जानुहोस </u></button>
+    </div>
+
+    <br />
+    <!-- /.col-lg-8 -->
+    @*<div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Activity Log
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body ">
+
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>SalesMan Info
+                    </div>
+                    <div class="panel-body">
+                        <div id="salesman"></div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-4 -->
+        </div>*@
+
+
+    @helper StringToUnicode(string data)
+    {
+        string uni = "";
+        foreach (char c in data)
+        {
+            var charCode = "U+" + ((int)c).ToString("X4");
+            switch (charCode)
+            {
+                case "U+0030":
+                    uni += "०";
+                    break;
+                case "U+0031":
+                    uni += "१";
+                    break;
+                case "U+0032":
+                    uni += "२";
+                    break;
+                case "U+0033":
+                    uni += "३";
+                    break;
+                case "U+0034":
+                    uni += "४";
+                    break;
+                case "U+0035":
+                    uni += "५";
+                    break;
+                case "U+0036":
+                    uni += "६";
+                    break;
+                case "U+0037":
+                    uni += "७";
+                    break;
+                case "U+0038":
+                    uni += "८";
+                    break;
+                case "U+0039":
+                    uni += "९";
+                    break;
+                default:
+                    uni += c;
+                    break;
+            }
+        }
+        @uni
+    }
+    @helper CheckZero(decimal data)
+    {
+        if (data == 0)
+        {
+            @StringToUnicode("0.00")
+        }
+        else
+        {
+            @StringToUnicode(data.ToString())
+        }
+    }
+
+
+
+    @section Scripts {
+        <link rel=" stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+
+        <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+        <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+        <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+        <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+        </script>
+
+        <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+
+
+        <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+        <script type="text/javascript">
+
+
+            $('.myMenuLink').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+                return false;
+            });
+
+            $.ajax
+                ({
+                    url: "/Dashboard/RecientCostumer",
+                    contentType: "application/html; charset=utf-8",
+                    type: "GET",
+                    cache: !0,
+                    datatype: "html",
+                    success: function (t) {
+                        $("#RecentCostumer").html(t)
+                    },
+                    error: function () {
+                        $("#RecentCostumer").html("Costumer Not Found")
+                    }
+                })
+
+            $.ajax
+                ({
+                    url: "/Dashboard/OldestCostumer",
+                    contentType: "application/html; charset=utf-8",
+                    type: "GET",
+                    cache: !0,
+                    datatype: "html",
+                    success: function (t) {
+                        $("#OldCostumers").html(t)
+                    },
+                    error: function () {
+                        $("#OldCostumers").html("Costumer Not Found")
+                    }
+                })
+            //function myFunction() {
+            //    var input, filter, table, tr, td, i;
+            //    input = document.getElementById("myInput");
+            //    filter = input.value.toUpperCase();
+            //    table = document.getElementById("myTable");
+            //    tr = table.getElementsByTagName("tr");
+            //    for (i = 0; i < tr.length; i++) {
+            //        td = tr[i].getElementsByTagName("td")[0];
+            //        if (td) {
+            //            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            //                tr[i].style.display = "";
+            //            } else {
+            //                tr[i].style.display = "none";
+            //            }
+            //        }
+            //    }
+            //}
+
+
+
+
+
+
+            $(document).ready(function () {
+                $("body div.myTable input").addClass("nepalifont");
+                var dataSrc = [];
+
+                var table = $("#myTable").DataTable({
+                    "columnDefs": [
+                        { "orderable": false, "targets": 3 }
+
+                    ],
+                    "pageLength": 50,
+
+                    //'initComplete': function () {
+                    //    var api = this.api();
+
+                    //    // Populate a dataset for autocomplete functionality
+                    //    // using data from first, second and third columns
+                    //    api.cells('tr', [0, 1, 2]).every(function () {
+                    //        // Get cell data as plain text
+                    //        var data = $('<div>').html(this.data()).text();
+                    //        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+                    //    });
+
+                    //    // Sort dataset alphabetically
+                    //    dataSrc.sort();
+
+                    //    // Initialize Typeahead plug-in
+                    //    $('.dataTables_filter input[type="search"]', api.table().container())
+                    //        .typeahead({
+                    //            source: dataSrc,
+                    //            afterSelect: function (value) {
+                    //                api.search(value).draw();
+                    //            }
+                    //        }
+                    //        );
+                    //}
+                });
+            });
+
+
+
+
+
+
+        </script>
+    }
+
+

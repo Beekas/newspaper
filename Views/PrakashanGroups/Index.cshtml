@@ -1,0 +1,222 @@
+﻿@model IEnumerable<Newspaper.Models.PrakashanGroup>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+
+    #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+    }
+
+    #myTable tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+        #myTable tr.header, #myTable tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+<div class="module">
+
+    <div class="module-body">
+        <br />
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>एजेन्ट ग्रुपहरु </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="panel-body">
+                    @if (TempData["message"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["message"]</div>
+                    }
+
+                    @Html.ActionLink("एजेन्ट ग्रुप थप्नुहोस", "Create", "PrakashanGroups", new { @class = "btn btn-primary", title = "Create Prakashan Group" })
+
+                    <div style="padding-top:10px;">
+                        <table class="table table-bordered" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        ग्रुप ID
+                                    </th>
+                                    <th>
+                                        ग्रुप
+                                    </th>
+                                    <th>कार्य </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="nepalifont" style="font-size:20px;">
+                                            @item.GroupId
+                                        </td>
+                                        <td class="nepalifont" style="font-size:20px;">
+                                            @item.GroupName
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("सच्याउनुहोस", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", title = "Edit Customer" })|
+                                            @Html.ActionLink("थप हेर्नुहोस", "Details", new { id = item.Id }, new { @class = "btn btn-success", title = "Show Customer Detail" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<button class="myMenuLink btn btn-info" id="but1" style="float:right;"><u>माथि जानुहोस</u></button>
+<br />
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+@section Scripts {
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+
+        $('.myMenuLink').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+            return false;
+        });
+
+        $(function () {
+            $("#myInput").autocomplete({
+                source: '@Url.Action("GetCostumers")',
+                minLength: 1
+            });
+        });
+
+        $(document).ready(function () {
+            $("body div.myTable input").addClass("nepalifont");
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+                "pageLength": 50,
+
+                //'initComplete': function () {
+                //    var api = this.api();
+
+                //    // Populate a dataset for autocomplete functionality
+                //    // using data from first, second and third columns
+                //    api.cells('tr', [0, 1, 2]).every(function () {
+                //        // Get cell data as plain text
+                //        var data = $('<div>').html(this.data()).text();
+                //        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+                //    });
+
+                //    // Sort dataset alphabetically
+                //    dataSrc.sort();
+
+                //    // Initialize Typeahead plug-in
+                //    $('.dataTables_filter input[type="search"]', api.table().container())
+                //        .typeahead({
+                //            source: dataSrc,
+                //            afterSelect: function (value) {
+                //                api.search(value).draw();
+                //            }
+                //        }
+                //        );
+                //}
+            });
+        });
+
+    </script>
+}
+
+

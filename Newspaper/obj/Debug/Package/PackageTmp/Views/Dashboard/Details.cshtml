@@ -1,0 +1,275 @@
+﻿@model Newspaper.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+
+<div>
+
+    <br />
+    <<div class="col-md-7 col-lg-offset-3">
+        <br />
+        <p>
+            @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-info" })
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>Customers Details </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerId)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CustomerId)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SalesManId)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.SaleMan.FullName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Newspaper
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Service.NewsPaperName)
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstName)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.FirstName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MiddleName)
+                            </th>
+
+
+                            <td>
+                                @Html.DisplayFor(model => model.MiddleName)
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.LastName)
+                            </th>
+
+
+
+                            <td>
+                                @Html.DisplayFor(model => model.LastName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MPhone)
+                            </th>
+
+
+
+                            <td>
+                                @Html.DisplayFor(model => model.MPhone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AltEmail)
+                            </th>
+
+
+
+                            <td>
+                                @Html.DisplayFor(model => model.AltEmail)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HomeNo)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.HomeNo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tole)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Tole)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Address)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Address)
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Provience)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Provience)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Gprslatitude)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Gprslatitude)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.GprsLongitude)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.GprsLongitude)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.URL)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.URL)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerInfo)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CustomerInfo)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerType)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CustomerType)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TypeDetail)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.TypeDetail)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RegisterDate)
+                            </th>
+                            <td>
+                                @Model.RegisterDate.ToShortDateString()
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RegisteredBy)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.RegisteredBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PaperDispatchDate)
+                            </th>
+
+                            <td>
+                                @Model.PaperDispatchDate.ToShortDateString()
+                            </td>
+                        </tr>
+                        @*<tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Duration)
+                                </th>
+
+                                <td>
+                                    @Html.DisplayFor(model => model.Duration)
+                                </td>
+
+                            </tr>*@
+
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+

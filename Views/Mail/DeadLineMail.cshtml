@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "DeadLineMail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br/>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+<div>
+    @Html.ActionLink("Back To Mail ", "SendMail", "Customer", new { @class = "btn btn-primary", title = "Back to Mail page" })
+</div>

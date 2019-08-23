@@ -1,0 +1,98 @@
+﻿
+@model PagedList.IPagedList<Newspaper.Models.Customer>
+@using PagedList.Mvc;
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="module">
+
+    <div class="module-body">
+        <p>
+            @using (Html.BeginForm("CostumerSort", "Dashboard", FormMethod.Get))
+            {
+        <p>
+            Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" />
+        </p>
+        }
+        </p>
+
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        @Html.ActionLink("firstname", "Dashboard", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+                   
+                    <th>
+                        Address
+                    </th>
+
+
+                    <th>Days Remaining</th>
+
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.FirstName &nbsp; @item.MiddleName &nbsp; @item.LastName
+                        </td>
+                     
+
+
+
+                        <td>
+                            @item.Address &nbsp; , &nbsp;@item.Tole
+                        </td>
+
+
+                        @if ((item.PaperDispatchDate - DateTime.Now).Days < 10)
+                        {
+                            <td >
+                                @((item.PaperDispatchDate - DateTime.Now).Days)
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @((item.PaperDispatchDate - DateTime.Now).Days)
+                            </td>
+                        }
+
+
+
+                    </tr>
+                }
+
+            </table>
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("CostumerSort","DashBoard",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+        </div>
+    </div>
+</div>
+
+

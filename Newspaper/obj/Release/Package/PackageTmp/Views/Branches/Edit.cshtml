@@ -1,0 +1,100 @@
+﻿@model Newspaper.Models.Branch
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    fieldset {
+        display: block;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding-top: 0.35em;
+        padding-bottom: 0.625em;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+        border: 2px solid black;
+    }
+
+    legend {
+        width: auto;
+        border: 1.5px solid black;
+    }
+
+    textarea {
+        font-family: inherit;
+        width: 650px;
+        height: 65px;
+    }
+</style>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title"><center><h4> Edit Branch </h4></center></h1>
+        </div>
+
+        <div class="panel-body">
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.BranchId)
+
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label>Branch Name</label>   @Html.ValidationMessageFor(model => model.BranchName, "", new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(model => model.BranchName, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label>Branch Address</label>   @Html.ValidationMessageFor(model => model.BranchAddress, "", new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(model => model.BranchAddress, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label>Branch Phone</label>   @Html.ValidationMessageFor(model => model.BrachPhone, "", new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(model => model.BrachPhone, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-10">
+                    <input type="submit" value="Update" class="btn btn-info" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+<br />
+<p>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.BranchId }, new { @class = "btn btn-info", title = "Back To Index Page" })
+</p>

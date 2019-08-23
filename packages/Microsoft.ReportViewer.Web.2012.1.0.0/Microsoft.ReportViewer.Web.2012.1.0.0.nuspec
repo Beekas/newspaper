@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.ReportViewer.Web.2012</id>
+    <version>1.0.0</version>
+    <title>Microsoft.ReportViewer.Web.2012</title>
+    <authors>Robert Hoffmann</authors>
+    <owners>Robert Hoffmann</owners>
+    <projectUrl>https://github.com/robert-hoffmann/Microsoft.ReportViewer.Web</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Dependent libraries to use Microsoft.ReportViewer in MVC or WebForms. Includes DataVisualization to be able to render chart controls. Works with both MVC and WebForms.
+
+includes: Common, ProcessingObjectModel, DataVisualization, WebForms
+
+Required on Server
+Microsoft® System CLR Types for Microsoft® SQL Server® 2012
+https://www.microsoft.com/en-us/download/details.aspx?id=29065
+
+or nuget package "Microsoft.SqlServer.Types &gt;= 11.0.2"
+but i find it adds too many dependencies, so having sql server types on server is probably a better solution.</description>
+    <summary>Dependent libraries to use Microsoft.ReportViewer in MVC or WebForms. Includes DataVisualization to be able to render chart controls. Works with both MVC and WebForms.</summary>
+    <copyright>Microsoft</copyright>
+    <tags>ReportViewer Reporting Report MVC Web Forms</tags>
+  </metadata>
+</package>

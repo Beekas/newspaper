@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Newspaper.Models.Branch>
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4> View Branches </h4></center></h1>
+    </div>
+
+    <div class="panel-body">
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Branch Name
+                    </th>
+                    <th>
+                        Branch Address
+                    </th>
+                    <th>
+                        Branch Phone
+                    </th>
+                    <th>Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BranchName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BranchAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BrachPhone)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.BranchId }, new { @class = "btn btn-primary", title = "Edit Branches" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.BranchId }, new { @class = "btn btn-info", title = "Show Branch Detials" })
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.BranchId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.BranchId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.BranchId })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+
+</div>
+<div class="col-md-offset-5">
+    @Html.ActionLink("Create New", "Create", "AreaRegister", new { @class = "btn btn-primary", title = "Create New Branch " })
+</div>

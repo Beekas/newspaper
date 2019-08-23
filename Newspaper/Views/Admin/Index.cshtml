@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Newspaper.Models.ViewModel.AdminViewModel>
+
+
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4>व्यवस्थापकहरु </h4></center></h1>
+    </div>
+
+    <div class="panel-body">
+
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered">
+                <tr>
+
+                    <th>
+                      पुरा नाम 
+                    </th>
+                    <th>
+                        इमेल 
+                    </th>
+                    <th>
+                        प्रयोगकर्ताको नाम
+                    </th>
+
+                    <th>
+                        फोन 
+                    </th>
+
+
+
+                    <th>कार्य </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+
+
+                        <td>
+                            @Html.ActionLink("अद्यावधिक", "Edit", new { id = item.Id }, new { @class = "btn btn-primary", title = "Edit Admin" }) |
+
+
+                            @Html.ActionLink("पुरा हेर्नुहोस ", "Details", new { id = item.Id }, new { @class = "btn btn-info", title = "Show Admin Detail" })
+
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", title = "Delete Admin", onclick = "return confirm('Are you sure you wish to delete this article?');" })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+    </div>
+</div>
+<div class="col-md-offset-5">
+    @Html.ActionLink(" नया व्यवस्थापक", "CreateAdmin", "Admin", new { @class = "btn btn-primary", title = "Create New Admin" })
+</div>
+<br />
+

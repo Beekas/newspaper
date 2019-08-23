@@ -1,0 +1,250 @@
+﻿@model List<Newspaper.Models.ViewModel.BillVM>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4>बिल प्रिन्ट गर्नुहोस् </h4></center></h1>
+    </div>
+
+    <div class="panel-body">
+        <div style="padding-top:10px;">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>बिल न:</label>
+                    @Html.TextBox("BillNo", null, new { id = "txtBillNo", @class = "form-control nepalifont", style = "font-size:20px;" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>ग्राहक नं:</label>
+                    @Html.TextBox("CustomerId", null, new { id = "txtCustomerId", @class = "form-control nepalifont", style = "font-size:20px;" })
+
+
+                    @*@Html.TextBox("PaperDispatchDate", null, new { id = "txtPaperDispatchDate", @class = "form-control", @required = true })*@
+
+                </div>
+            </div>
+
+            <table class="table table-bordered" id="myTable">
+                <thead>
+                    <tr>
+                        <th>
+                            बिल न:
+                        </th>
+                        <th>
+                            ग्राहक न:
+                        </th>
+                        <th>
+                            ग्राहक नाम
+                        </th>
+                        <th>
+                            प्रिन्ट मिती
+                        </th>
+                        <th>
+                            पत्रिका नाम
+                        </th>
+                        <th>
+                            ठेगाना
+                        </th>
+                        <th>
+                            कार्य
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <font class="nepalifont" style="font-size:20px;">    @Html.DisplayFor(modelItem => item.BillNo)</font>
+                            </td>
+                            <td>
+                                <font class="nepalifont" style="font-size:20px;">   @Html.DisplayFor(modelItem => item.CustomerId)</font>
+                            </td>
+                            <td>
+                                <font class="nepalifont" style="font-size:20px;">   @Html.DisplayFor(modelItem => item.CustomerName)</font>
+                            </td>
+                            <td>
+                                @StringToUnicode(Html.DisplayFor(modelItem => item.PrintedDate).ToString())
+                            </td>
+                            <td>
+                                <font class="nepalifont" style="font-size:20px;">     @Html.DisplayFor(modelItem => item.NewspaperName)</font>
+                            </td>
+                            <td>
+                                <font class="nepalifont" style="font-size:20px;">     @Html.DisplayFor(modelItem => item.Address)</font>
+                            </td>
+                            <td>
+                                @Html.ActionLink("प्रिन्ट", "ReportCounter", new { BillNo = item.BillNo }, new { @class = "btn btn-default" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+    <link rel="stylesheet" href="/code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/DataTables/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="~/Content/DataTables/css/dataTables.bootstrap.css" />
+
+
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+
+        //$('.myLinkToTop').click(function () {
+        //    $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+        //    return false;
+        //});
+
+        @*$('.myMenuLink').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+            return false;
+        });
+
+        $(function () {
+            $("#myInput").autocomplete({
+                source: '@Url.Action("GetCostumers")',
+                minLength: 1
+            });
+        });*@
+
+
+        $(document).ready(function () {
+          //  var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+
+                "pageLength": 50,
+
+
+                    });
+
+
+            var table = $("#myTable").DataTable();
+            $('#txtBillNo').on('keyup', function () {
+                table
+                    .columns(0)
+                    .search(this.value)
+                    .draw();
+            });
+
+
+            $('#txtCustomerId').on('keyup', function () {
+                table
+                    .columns(1)
+                    .search(this.value)
+                    .draw();
+            });
+            $("#myTable_filter").css('display', 'none');
+
+        })
+        //        "columnDefs": [
+        //            { "orderable": false, "targets": 3 }
+
+        //        ],
+        //        "pageLength": 50,
+
+        //        'initComplete': function () {
+        //            var api = this.api();
+
+        //            // Populate a dataset for autocomplete functionality
+        //            // using data from first, second and third columns
+        //            api.cells('tr', [0, 1, 2]).every(function () {
+        //                // Get cell data as plain text
+        //                var data = $('<div>').html(this.data()).text();
+        //                if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
+        //            });
+
+        //            // Sort dataset alphabetically
+        //            dataSrc.sort();
+
+        //            // Initialize Typeahead plug-in
+        //            //$('.dataTables_filter input[type="search"]', api.table().container())
+        //            //    .typeahead({
+        //            //        source: dataSrc,
+        //            //        afterSelect: function (value) {
+        //            //            api.search(value).draw();
+        //            //        }
+        //            //    }
+        //                );
+        //        }
+        //    });
+        //});
+
+
+
+
+    </script>
+}
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+
+

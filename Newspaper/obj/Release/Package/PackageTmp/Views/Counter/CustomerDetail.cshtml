@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Newspaper.Models.ViewModel.CounterVM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>नियुक्त ग्राहकको विवरण </h4></center></h1> 
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div style="padding-left:215px">
+
+                    <label>ग्राहक नम्बर </label>:<font class="nepalifont" style="font-size:20px;">
+                        @Model.FirstOrDefault().Customer.CustomerId
+                    </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <label>ग्राहकको नाम </label>:<font class="nepalifont" style="font-size:20px;">
+                        @Model.Select(m => (m.Customer.FirstName)).FirstOrDefault()
+                    </font><br />
+                    <label>इमेल </label> : @Model.FirstOrDefault().Customer.Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>फोन </label> :<font class="nepalifont" style="font-size:20px;">
+                        @Model.FirstOrDefault().Customer.MPhone
+                    </font><br />
+
+                    <label>ग्राहक इन्फो </label> :
+                    @Model.FirstOrDefault().Customer.CustomerInfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <label>ग्राहक प्रकार </label> : @Model.FirstOrDefault().Customer.CustomerType<br />
+                    <label>ठेगाना </label> :<font class="nepalifont" style="font-size:20px;"> @Model.Select(m => (m.Customer.Address + ", " + m.Customer.Tole)).FirstOrDefault()</font>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>
+                            पत्रिकाको नाम 
+                        </th>
+                        <th>
+                           सुरु मिति 
+                        </th>
+                        <th>
+                            समाप्त मिति 
+                        </th>
+                        <th>
+                            कार्य 
+                        </th>
+
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.NewsPaper.NewsPaperName
+                                </td>
+                                <td>
+                                    @item.ServiceAssign.PaperDispatchDate.ToShortDateString()
+                                </td>
+                                <td>
+                                    @item.ServiceAssign.EndedDate.ToShortDateString()
+                                </td>
+
+
+                                <td>
+
+                                    @Html.ActionLink("तिर्नुहोस ", "CustomerActivate", new { id = item.ServiceAssign.Id }, new { @class = "btn btn-success", title = "Payment Option" })
+                                    @*@Html.ActionLink("Renew", "Renew", new { id = item.ServiceAssign.Id }, new { @class = "btn btn-info", title = "Renew Customer" })*@
+
+                                </td>
+</tr>
+                    }
+
+                </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

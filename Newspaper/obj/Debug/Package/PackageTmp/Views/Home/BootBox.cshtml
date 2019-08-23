@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Satyaprakash BootBox Intro";
+}
+
+<title>@ViewBag.Title</title>
+
+<h2 style="background-color: Yellow;color: Blue; text-align: center; font-style: oblique">Satyaprakash's BootBox Intro Using MVC and BOOTSTRAP</h2>
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script src="~/Scripts/bootbox.min.js"></script>
+
+<script>
+    bootbox.prompt({
+        title: "This is a prompt with a textarea!",
+        inputType: 'textarea',
+        callback: function (result) {
+            bootbox.alert(result);
+        }
+    });
+</script>
+
+<footer>
+    <p style="background-color: Yellow; font-weight: bold; color:blue; text-align: center; font-style: oblique">© @DateTime.Now.ToLocalTime()</p> @*Add Date Time*@
+</footer>  

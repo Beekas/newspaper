@@ -1,0 +1,79 @@
+﻿@model Newspaper.Models.Branch
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+
+
+
+<div>
+
+    <br />
+    <div class="col-md-7 col-lg-offset-3">
+        <br />
+        <p>
+            @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-info", title = "Back To Index Page" })
+        </p>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><center><h4>Branch Details </h4></center></h1>
+            </div>
+
+            <div class="panel-body">
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BranchName)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.BranchName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BranchAddress)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.BranchAddress)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BrachPhone)
+                            </th>
+
+                            <td>
+                                @Html.DisplayFor(model => model.BrachPhone)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
