@@ -25,6 +25,9 @@
     <div class="panel-body">
 
         <div style="overflow-x:auto;">
+            <label id="lblduration" class="row col-md-3" style="float:right;">
+                @Html.DropDownList("PaymentType", new List<SelectListItem> { new SelectListItem { Text = "ग्राहक प्रकार छानुहोस", Value = "" }, new SelectListItem { Text = "एजेन्सी", Value = "एजेन्सी" }, new SelectListItem { Text = "नर्मल", Value = "नर्मल" }, new SelectListItem { Text = "स्टाफ", Value = "स्टाफ" }, new SelectListItem { Text = "रिटायर", Value = "रिटायर" }, new SelectListItem { Text = "कम्प्लिमेन्ट", Value = "कम्प्लिमेन्ट" }, new SelectListItem { Text = "नया वितरक", Value = "नया वितरक" } }, new { id = "ddlduration", @class = "form-control" })
+            </label>
             <table class="table table-bordered" id="myTable">
 
                 <thead>
@@ -39,8 +42,11 @@
                         <th>
                             ठेगाना
                         </th>
-                       
                         <th>
+                            ग्राहकको प्रकार
+                        </th>
+
+                        <th style="width:20px;">
                             फोन नं
                         </th>
 
@@ -52,30 +58,34 @@
 
                     @foreach (var item in Model)
                     {
-                    <tr>
+                        <tr>
 
-                        <td class="nepalifont" style="font-size:20px;">
-                            @item.CusId
-                        </td>
-                        <td class="nepalifont" style="font-size:20px;">
-                            @item.CustomerName
-                        </td>
-                        <td class="nepalifont" style="font-size:20px;">
-                            @item.Address
-                        </td>
-                       
-                        <td class="nepalifont" style="font-size:20px;">
-                            @item.phone
-                        </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.CusId
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;width:300px;">
+                                @item.CustomerName
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;width:220px;">
+                                @item.Address
+                            </td>
+                            <td>
+                                @item.CustomerType
+                            </td>
+
+                            <td class="nepalifont" style="font-size:20px;width:10px;">
+                                @item.phone
+                            </td>
 
 
 
-                        <td>
-                            @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.CustomerId }, new { @class = "btn btn-success", title = "View Assigned Service Detail" }) |
-                            @Html.ActionLink("सेवा नियुक्त", "Create", new { id = item.CustomerId }, new { @class = "btn btn-primary", title = " Assigned new Service" })
+                            <td style="width:350px;">
+                                @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.CustomerId }, new { @class = "btn btn-success btn-sm", title = "View Assigned Service Detail" }) |
+                                @Html.ActionLink("सेवा नियुक्त", "Create", new { id = item.CustomerId }, new { @class = "btn btn-primary btn-sm", title = " Assigned new Service" }) |
+                                @Html.ActionLink("वितरक परिबर्तन", "ChangeSaleman", new { id = item.CustomerId }, new { @class = "btn btn-info btn-sm", title = " Assigned new Service" })
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     }
                 </tbody>
 
@@ -144,9 +154,15 @@
                 //        );
                 //}
             });
+            $("#ddlduration").change(function () {
+                searchData(3, $(this).val());
+            })
         });
 
-
+        function searchData(col, value) {
+            var table = $("#myTable").DataTable();
+            table.column(col).search(value).draw();
+        }
 
 
     </script>

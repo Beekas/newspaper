@@ -163,10 +163,16 @@
 
 
                             <div style="overflow-x:auto;" class="panel-body">
+                                <label id="lblduration" class="row col-md-3" style="float:right;">
+                                    @Html.DropDownList("PaymentType", new List<SelectListItem> { new SelectListItem { Text = "ग्राहक प्रकार छानुहोस", Value = "" }, new SelectListItem { Text = "एजेन्सी", Value = "एजेन्सी" }, new SelectListItem { Text = "नर्मल", Value = "नर्मल" }, new SelectListItem { Text = "स्टाफ", Value = "स्टाफ" }, new SelectListItem { Text = "रिटायर", Value = "रिटायर" }, new SelectListItem { Text = "कम्प्लिमेन्ट", Value = "कम्प्लिमेन्ट" }, new SelectListItem { Text = "नया वितरक", Value = "नया वितरक" } }, new { id = "ddlduration", @class = "form-control" })
+                                </label> 
+                                <label id="lblduration" class="row col-md-3" style="float:right;">
+                                    @Html.DropDownList("term", new SelectList(ViewBag.Newspaper, "value", "text"), "kq", new { @class = "form-control nepalifont", style="font-size:20px;", id = "ddlnews" })
+                                </label>
                                 <table class="table table-bordered" id="myTable">
                                     <thead>
                                         <tr>
-                                            <th> 
+                                            <th>
                                                 ग्राहक न:
                                             </th>
                                             <th>
@@ -184,6 +190,9 @@
                                                 ठेगाना
                                                 @*@Html.ActionLink(" ", "Index", new { sortOrder = ViewBag.AddressSortParam, currentFilter = ViewBag.CurrentFilter }, new { @class = "fa fa-sort fa-lg" })*@
 
+                                            </th>
+                                            <th>
+                                                ग्राहकको प्रकार
                                             </th>
 
                                             <th style="width:180px;">
@@ -216,55 +225,57 @@
                                                 <td class="nepalifont" style="font-size:20px;">
                                                     @item.Customer.Address
                                                 </td>
-
+                                                <td>
+                                                    @item.Customer.CustomerType
+                                                </td>
 
                                                 <td class="nepalifont" style="font-size:20px;">
                                                     @item.SalesMan.FullName
-                                            </td>
+                                                </td>
 
-                                            <td>
-                                                @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.Customer.Id }, new { @class = "btn btn-success", title = "View Assign Customer" })
-                                            </td>
+                                                <td>
+                                                    @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.Customer.Id }, new { @class = "btn btn-success", title = "View Assign Customer" })
+                                                </td>
 
-                                            @*@if ((item.EndedDate - DateTime.Now).Days < 1)
-                                                {
-                                                    <td class="danger">
-                                                        expired  @((DateTime.Now - item.EndedDate).Days) days ago
-                                                    </td>
-                                                }
-                                                else if ((item.EndedDate - DateTime.Now).Days > 10)
-                                                {
-                                                    if ((item.PaperDispatchDate - DateTime.Now).Days > 10)
-                                                    {
-                                                        <td class="success">
-                                                            @((item.EndedDate - item.PaperDispatchDate).Days) day left
-                                                        </td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td class="success">
-                                                            @((item.EndedDate - DateTime.Now).Days) day left
-                                                        </td>
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    <td class="warning">
-                                                        @((item.EndedDate - DateTime.Now).Days) day left
-                                                    </td>
-                                                }*@
+                                                @*@if ((item.EndedDate - DateTime.Now).Days < 1)
+                        {
+                            <td class="danger">
+                                expired  @((DateTime.Now - item.EndedDate).Days) days ago
+                            </td>
+                        }
+                        else if ((item.EndedDate - DateTime.Now).Days > 10)
+                        {
+                            if ((item.PaperDispatchDate - DateTime.Now).Days > 10)
+                            {
+                                <td class="success">
+                                    @((item.EndedDate - item.PaperDispatchDate).Days) day left
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="success">
+                                    @((item.EndedDate - DateTime.Now).Days) day left
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td class="warning">
+                                @((item.EndedDate - DateTime.Now).Days) day left
+                            </td>
+                        }*@
 
-                                        </tr>
+                                            </tr>
 
 
-                                    }
+                                        }
                                     </tbody>
 
                                 </table>
                                 @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                                    @Html.PagedListPager(Model, page => Url.Action("Index","DashBoard",
-                                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+        @Html.PagedListPager(Model, page => Url.Action("Index","DashBoard",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
 
                             </div>
                         </div>
@@ -457,26 +468,7 @@
                         $("#OldCostumers").html("Costumer Not Found")
                     }
                 })
-            //function myFunction() {
-            //    var input, filter, table, tr, td, i;
-            //    input = document.getElementById("myInput");
-            //    filter = input.value.toUpperCase();
-            //    table = document.getElementById("myTable");
-            //    tr = table.getElementsByTagName("tr");
-            //    for (i = 0; i < tr.length; i++) {
-            //        td = tr[i].getElementsByTagName("td")[0];
-            //        if (td) {
-            //            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            //                tr[i].style.display = "";
-            //            } else {
-            //                tr[i].style.display = "none";
-            //            }
-            //        }
-            //    }
-            //}
-
-
-
+       
 
 
 
@@ -491,38 +483,19 @@
                     ],
                     "pageLength": 50,
 
-                    //'initComplete': function () {
-                    //    var api = this.api();
-
-                    //    // Populate a dataset for autocomplete functionality
-                    //    // using data from first, second and third columns
-                    //    api.cells('tr', [0, 1, 2]).every(function () {
-                    //        // Get cell data as plain text
-                    //        var data = $('<div>').html(this.data()).text();
-                    //        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
-                    //    });
-
-                    //    // Sort dataset alphabetically
-                    //    dataSrc.sort();
-
-                    //    // Initialize Typeahead plug-in
-                    //    $('.dataTables_filter input[type="search"]', api.table().container())
-                    //        .typeahead({
-                    //            source: dataSrc,
-                    //            afterSelect: function (value) {
-                    //                api.search(value).draw();
-                    //            }
-                    //        }
-                    //        );
-                    //}
                 });
+                $("#ddlduration").change(function () {
+                    searchData(4, $(this).val());
+                })
+                $("#ddlnews").change(function () {
+                    searchData(2, $(this).val());
+                })
             });
 
-
-
-
-
-
+            function searchData(col, value) {
+                var table = $("#myTable").DataTable();
+                table.column(col).search(value).draw();
+            }
         </script>
     }
 

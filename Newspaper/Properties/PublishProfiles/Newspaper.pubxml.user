@@ -118,10 +118,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2018 12:36:10</publishTime>
     </File>
     <File Include="bin/Newspaper.dll">
-      <publishTime>08/22/2019 16:09:14</publishTime>
+      <publishTime>12/10/2019 15:35:46</publishTime>
     </File>
     <File Include="bin/Newspaper.pdb">
-      <publishTime>08/22/2019 16:09:14</publishTime>
+      <publishTime>12/10/2019 15:35:46</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>08/03/2014 20:33:56</publishTime>
@@ -3742,13 +3742,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2018 14:33:39</publishTime>
     </File>
     <File Include="Views/Counter/BillView.cshtml">
-      <publishTime>07/18/2019 18:39:59</publishTime>
+      <publishTime>12/03/2019 17:46:08</publishTime>
     </File>
     <File Include="Views/Counter/Create.cshtml">
       <publishTime>03/12/2019 15:34:06</publishTime>
     </File>
     <File Include="Views/Counter/CustomerActivate.cshtml">
-      <publishTime>08/18/2019 15:43:03</publishTime>
+      <publishTime>12/04/2019 15:27:00</publishTime>
     </File>
     <File Include="Views/Counter/CustomerDetail.cshtml">
       <publishTime>03/29/2019 17:29:50</publishTime>
@@ -3763,7 +3763,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/12/2019 15:34:16</publishTime>
     </File>
     <File Include="Views/Counter/EditEndedDate.cshtml">
-      <publishTime>08/18/2019 15:46:14</publishTime>
+      <publishTime>12/04/2019 17:28:04</publishTime>
     </File>
     <File Include="Views/Counter/Index.cshtml">
       <publishTime>08/18/2019 15:23:28</publishTime>
@@ -3772,13 +3772,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2019 10:55:24</publishTime>
     </File>
     <File Include="Views/Counter/SelectToEditDate.cshtml">
-      <publishTime>08/18/2019 15:48:15</publishTime>
+      <publishTime>12/04/2019 17:32:09</publishTime>
     </File>
     <File Include="Views/Customer/AssignedCustomer.cshtml">
       <publishTime>03/25/2019 17:01:46</publishTime>
     </File>
     <File Include="Views/Customer/Create.cshtml">
-      <publishTime>07/16/2019 09:02:18</publishTime>
+      <publishTime>12/10/2019 15:47:54</publishTime>
     </File>
     <File Include="Views/Customer/Delete.cshtml">
       <publishTime>08/26/2018 12:44:14</publishTime>
@@ -3820,7 +3820,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2018 17:50:58</publishTime>
     </File>
     <File Include="Views/Dashboard/Index.cshtml">
-      <publishTime>07/22/2019 18:58:17</publishTime>
+      <publishTime>09/20/2019 17:33:12</publishTime>
     </File>
     <File Include="Views/Dashboard/NormalCostumer.cshtml">
       <publishTime>09/23/2018 11:20:16</publishTime>
@@ -3841,7 +3841,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2019 16:48:16</publishTime>
     </File>
     <File Include="Views/DayWiseCount/Report.cshtml">
-      <publishTime>07/25/2019 10:40:21</publishTime>
+      <publishTime>11/27/2019 15:52:07</publishTime>
     </File>
     <File Include="Views/DayWiseCount/SelectSalesMan.cshtml">
       <publishTime>04/26/2019 17:17:48</publishTime>
@@ -3967,19 +3967,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2019 17:07:36</publishTime>
     </File>
     <File Include="Views/Report/AddedCustomerReport.cshtml">
-      <publishTime>05/10/2019 12:13:46</publishTime>
+      <publishTime>12/10/2019 15:47:09</publishTime>
     </File>
     <File Include="Views/Report/DistributorAddReport.cshtml">
       <publishTime>05/02/2019 15:01:02</publishTime>
     </File>
     <File Include="Views/Report/ExpiredCustomerBydate.cshtml">
-      <publishTime>05/10/2019 12:00:54</publishTime>
+      <publishTime>12/10/2019 15:48:55</publishTime>
     </File>
     <File Include="Views/Report/ExpiredReport.cshtml">
-      <publishTime>05/10/2019 12:09:18</publishTime>
+      <publishTime>12/10/2019 15:48:11</publishTime>
     </File>
     <File Include="Views/Report/Index.cshtml">
       <publishTime>08/26/2018 12:44:14</publishTime>
+    </File>
+    <File Include="Views/Report/RenewCustomerReport.cshtml">
+      <publishTime>12/10/2019 15:45:53</publishTime>
     </File>
     <File Include="Views/Report/SelectDate.cshtml">
       <publishTime>03/28/2019 18:10:36</publishTime>
@@ -3989,6 +3992,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Report/SelectNewspaper.cshtml">
       <publishTime>04/02/2019 18:51:40</publishTime>
+    </File>
+    <File Include="Views/Report/SelectRewNewspaper.cshtml">
+      <publishTime>11/27/2019 15:47:30</publishTime>
     </File>
     <File Include="Views/RouteReports/Create.cshtml">
       <publishTime>07/25/2019 11:57:07</publishTime>
@@ -4048,19 +4054,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/08/2019 15:39:48</publishTime>
     </File>
     <File Include="Views/SalesMan/Create.cshtml">
-      <publishTime>03/29/2019 16:52:08</publishTime>
+      <publishTime>09/24/2019 17:04:41</publishTime>
     </File>
     <File Include="Views/SalesMan/Delete.cshtml">
       <publishTime>08/26/2018 12:44:14</publishTime>
     </File>
     <File Include="Views/SalesMan/Details.cshtml">
-      <publishTime>08/16/2019 16:11:42</publishTime>
+      <publishTime>09/25/2019 11:50:35</publishTime>
     </File>
     <File Include="Views/SalesMan/Edit.cshtml">
-      <publishTime>03/29/2019 16:56:06</publishTime>
+      <publishTime>09/24/2019 17:06:20</publishTime>
     </File>
     <File Include="Views/SalesMan/Index.cshtml">
-      <publishTime>07/25/2019 13:30:04</publishTime>
+      <publishTime>11/07/2019 11:56:12</publishTime>
+    </File>
+    <File Include="Views/SalesMan/printallsalesman.cshtml">
+      <publishTime>11/07/2019 11:54:11</publishTime>
     </File>
     <File Include="Views/Service/Create.cshtml">
       <publishTime>06/30/2019 10:06:06</publishTime>
@@ -4080,11 +4089,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/ServiceAssigns/AllAssigned.cshtml">
       <publishTime>08/06/2019 17:02:28</publishTime>
     </File>
+    <File Include="Views/ServiceAssigns/ChangeSaleman.cshtml">
+      <publishTime>12/04/2019 15:59:19</publishTime>
+    </File>
     <File Include="Views/ServiceAssigns/Create.cshtml">
-      <publishTime>08/06/2019 16:32:30</publishTime>
+      <publishTime>12/01/2019 08:41:07</publishTime>
     </File>
     <File Include="Views/ServiceAssigns/CustomerDetail.cshtml">
-      <publishTime>05/20/2019 17:06:14</publishTime>
+      <publishTime>12/01/2019 08:54:12</publishTime>
     </File>
     <File Include="Views/ServiceAssigns/Delete.cshtml">
       <publishTime>03/03/2019 14:29:50</publishTime>
@@ -4096,7 +4108,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/03/2019 14:29:56</publishTime>
     </File>
     <File Include="Views/ServiceAssigns/Index.cshtml">
-      <publishTime>05/31/2019 16:47:48</publishTime>
+      <publishTime>11/28/2019 18:36:58</publishTime>
     </File>
     <File Include="Views/ServiceAssigns/Show.cshtml">
       <publishTime>07/10/2019 12:11:10</publishTime>
@@ -4132,7 +4144,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/05/2018 16:25:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/14/2019 14:40:09</publishTime>
+      <publishTime>12/04/2019 14:57:44</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -252,6 +252,10 @@
     <Compile Include="Migrations\201907180809295_newfis.Designer.cs">
       <DependentUpon>201907180809295_newfis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912031003148_type.cs" />
+    <Compile Include="Migrations\201912031003148_type.Designer.cs">
+      <DependentUpon>201912031003148_type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1588,6 +1592,10 @@
     <Content Include="Views\RouteReports\CreateByDate.cshtml" />
     <Content Include="Views\Counter\SelectToEditDate.cshtml" />
     <Content Include="Views\Counter\EditEndedDate.cshtml" />
+    <Content Include="Views\SalesMan\printallsalesman.cshtml" />
+    <Content Include="Views\Report\RenewCustomerReport.cshtml" />
+    <Content Include="Views\Report\SelectRewNewspaper.cshtml" />
+    <Content Include="Views\ServiceAssigns\ChangeSaleman.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1645,6 +1653,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907180809295_newfis.resx">
       <DependentUpon>201907180809295_newfis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912031003148_type.resx">
+      <DependentUpon>201912031003148_type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

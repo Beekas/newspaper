@@ -40,7 +40,7 @@
                             ठेगाना
                         </th>
                        
-                        <th>
+                        <th style="width:20px;">
                             फोन नं
                         </th>
 
@@ -57,22 +57,23 @@
                         <td class="nepalifont" style="font-size:20px;">
                             @item.CusId
                         </td>
-                        <td class="nepalifont" style="font-size:20px;">
+                        <td class="nepalifont" style="font-size:20px;width:300px;">
                             @item.CustomerName
                         </td>
-                        <td class="nepalifont" style="font-size:20px;">
+                        <td class="nepalifont" style="font-size:20px;width:220px;">
                             @item.Address
                         </td>
                        
-                        <td class="nepalifont" style="font-size:20px;">
+                        <td class="nepalifont" style="font-size:20px;width:10px;">
                             @item.phone
                         </td>
 
 
-
-                        <td>
-                            @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.CustomerId }, new { @class = "btn btn-success", title = "View Assigned Service Detail" }) |
-                            @Html.ActionLink("सेवा नियुक्त", "Create", new { id = item.CustomerId }, new { @class = "btn btn-primary", title = " Assigned new Service" })
+                        
+                        <td style="width:350px;">
+                            @Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.CustomerId }, new { @class = "btn btn-success btn-sm", title = "View Assigned Service Detail" }) |
+                            @Html.ActionLink("सेवा नियुक्त", "Create", new { id = item.CustomerId }, new { @class = "btn btn-primary btn-sm", title = " Assigned new Service" }) |
+                            @Html.ActionLink("वितरक परिबर्तन", "ChangeSaleman", new { id = item.CustomerId }, new { @class = "btn btn-info btn-sm", title = " Assigned new Service" })
 
                         </td>
                     </tr>

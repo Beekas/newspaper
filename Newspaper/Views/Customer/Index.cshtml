@@ -48,9 +48,11 @@
             </div>
 
             <div class="panel-body">
-                
-                    @Html.ActionLink("ग्राहक थप्नुहोस", "Create", "Customer", new { @class = "btn btn-primary", title = "Create new Customer" })
 
+                @Html.ActionLink("ग्राहक थप्नुहोस", "Create", "Customer", new { @class = "btn btn-primary", title = "Create new Customer" })
+                <label id="lblduration" class="row col-md-3" style="float:right;">
+                    @Html.DropDownList("PaymentType", new List<SelectListItem> { new SelectListItem { Text = "ग्राहक प्रकार छानुहोस", Value = "" }, new SelectListItem { Text = "एजेन्सी", Value = "एजेन्सी" }, new SelectListItem { Text = "नर्मल", Value = "नर्मल" }, new SelectListItem { Text = "स्टाफ", Value = "स्टाफ" }, new SelectListItem { Text = "रिटायर", Value = "रिटायर" }, new SelectListItem { Text = "कम्प्लिमेन्ट", Value = "कम्प्लिमेन्ट" }, new SelectListItem { Text = "नया वितरक", Value = "नया वितरक" } }, new { id = "ddlduration", @class = "form-control" })
+                </label>
                 <div style="padding-top:10px;">
                     <table class="table table-bordered" id="myTable">
                         <thead>
@@ -65,7 +67,9 @@
                                 <th>
                                     ठेगाना
                                 </th>
-
+                                <th>
+                                    ग्राहकको प्रकार
+                                </th>
                                 <th style="width:100px;">
                                     फोन नम्बर
                                 </th>
@@ -73,8 +77,8 @@
 
 
                                 @*<th>
-                                    Customer Info
-                                    </th>*@
+                        Customer Info
+                        </th>*@
                                 <th style="width:250px;">कार्य</th>
                             </tr>
                         </thead>
@@ -91,6 +95,9 @@
                                     </td>
                                     <td class="nepalifont" style="font-size:20px;">
                                         @item.Address
+                                    </td>
+                                    <td>
+                                        @item.CustomerType
                                     </td>
                                     <td class="nepalifont" style="font-size:20px;">
                                         @item.MPhone
@@ -235,36 +242,18 @@
                 ],
                 "pageLength": 50,
 
-                //'initComplete': function () {
-                //    var api = this.api();
-
-                //    // Populate a dataset for autocomplete functionality
-                //    // using data from first, second and third columns
-                //    api.cells('tr', [0, 1, 2]).every(function () {
-                //        // Get cell data as plain text
-                //        var data = $('<div>').html(this.data()).text();
-                //        if (dataSrc.indexOf(data) === -1) { dataSrc.push(data); }
-                //    });
-
-                //    // Sort dataset alphabetically
-                //    dataSrc.sort();
-
-                //    // Initialize Typeahead plug-in
-                //    $('.dataTables_filter input[type="search"]', api.table().container())
-                //        .typeahead({
-                //            source: dataSrc,
-                //            afterSelect: function (value) {
-                //                api.search(value).draw();
-                //            }
-                //        }
-                //        );
-                //}
+             
             });
+
+            $("#ddlduration").change(function () {
+                searchData(3, $(this).val());
+            })
         });
 
-
-
-
+        function searchData(col, value) {
+            var table = $("#myTable").DataTable();
+            table.column(col).search(value).draw();
+        }
     </script>
 }
 

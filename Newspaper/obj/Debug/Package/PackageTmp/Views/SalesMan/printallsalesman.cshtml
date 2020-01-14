@@ -1,0 +1,247 @@
+﻿@model IEnumerable<Newspaper.Models.SalesMan>
+@{
+    ViewBag.Title = "printallsalesman";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+
+
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #tdd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    .btn {
+        background-color: blue;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+
+        .btn:hover {
+            background-color: blue;
+        }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4> वितरक   </h4></center></h1>
+    </div>
+
+    <div class="panel-body">
+        <div id="ExpReport">
+            <br />
+            <table class="table table-bordered" id="myTable">
+                <thead>
+                    <tr>
+                        <th style="width:30px;">
+                            वितरक  नम्बर
+                        </th>
+                        <th style="width:150px;">
+                            वितरकको  नाम
+                        </th>
+                        <th style="width:250px;">कार्य क्षेत्र</th>
+                        @*<th>
+                            इमेल
+                        </th>*@
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.AltEmail)
+                        </th>*@
+                        <th>
+                            फोन नम्बर
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.Phone2)
+                        </th>*@
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(modelItem => item.SalesManId)
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(modelItem => item.AltEmail)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>*@
+
+                            <td class="nepalifont" style="font-size:20px;">
+                                @Html.DisplayFor(modelItem => item.Phone1)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Phone2)
+                            </td>*@
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+        <center><button class="btn" id="btnPrint"><i class="fa fa-print"></i> प्रिन्ट गर्नुहोस</button></center>
+    </div>
+</div>
+
+@helper StringToUnicode(string data)
+{
+    string uni = "";
+    foreach (char c in data)
+    {
+        var charCode = "U+" + ((int)c).ToString("X4");
+        switch (charCode)
+        {
+            case "U+0030":
+                uni += "०";
+                break;
+            case "U+0031":
+                uni += "१";
+                break;
+            case "U+0032":
+                uni += "२";
+                break;
+            case "U+0033":
+                uni += "३";
+                break;
+            case "U+0034":
+                uni += "४";
+                break;
+            case "U+0035":
+                uni += "५";
+                break;
+            case "U+0036":
+                uni += "६";
+                break;
+            case "U+0037":
+                uni += "७";
+                break;
+            case "U+0038":
+                uni += "८";
+                break;
+            case "U+0039":
+                uni += "९";
+                break;
+            default:
+                uni += c;
+                break;
+        }
+    }
+    @uni
+}
+@helper CheckZero(decimal data)
+{
+    if (data == 0)
+    {
+        @StringToUnicode("0.00")
+    }
+    else
+    {
+        @StringToUnicode(data.ToString())
+    }
+}
+
+
+
+
+
+@section Scripts {
+    <link rel=" stylesheet" href="~/Content/DataTables/css/jquery.dataTables.yadcf.css" />
+
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js">
+    </script>
+
+    <script src="~/Scripts/datatables/bootstrap3-typeahead.js"></script>
+
+
+    <script src="~/Content/DataTables/css/jquery.dataTables.yadcf.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body div.myTable input").addClass("nepalifont");
+            var dataSrc = [];
+
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+
+                ],
+
+
+                "lengthMenu": [[10, 50, 100, -1], [10, 50, 100, "All"]],
+                "pageLength": -1,
+
+
+            });
+            $("#ddlduration").change(function () {
+                searchData(8, $(this).val());
+            })
+
+
+            $("#btnPrint").click(function (e) {
+                PrintElem("ExpReport");
+            });
+
+
+        });
+
+
+        function PrintElem(elem) {
+            var mywindow = window.open('', 'PRINT', 'height=842,width=590');
+
+            mywindow.document.write('<html><head><style>#myTable_wrapper>.row:nth-child(odd){display:none} #lblduration{display:none} table#mytable tr td:last-child {display: none;} table#mytable tr th:last-child {display: none;} .nepalifont{font-family:Preeti} table {border-collapse: collapse;width: 100%;border: 1px solid ;}th, td {text-align: left;padding: 8px; border: 1px solid ;}tr:nth-child(even){background-color: #f2f2f2;}</style><title></title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(document.getElementById(elem).innerHTML);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+
+            mywindow.print();
+            mywindow.close();
+
+            return true;
+        }
+        function searchData(col, value) {
+            var table = $("#myTable").DataTable();
+            table.column(col).search(value).draw();
+        }
+
+
+
+
+    </script>
+}
+
+

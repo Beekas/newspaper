@@ -86,8 +86,9 @@
                         <div class="form-group">
                             <label>अवधि</label>
                             @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
-
-                            @Html.DropDownList("Duration", new List<SelectListItem>() { new SelectListItem() { Text = "--छान्नुहोस् --", Value = "" }, new SelectListItem() { Text = "मासिक ", Value = "30" }, new SelectListItem() { Text = "त्रेमासिक", Value = "90" }, new SelectListItem() { Text = "चौमासिक ", Value = "120" }, new SelectListItem() { Text = "अर्ध बार्षिक", Value = "183" }, new SelectListItem() { Text = "बार्षिक ", Value = "365" }, new SelectListItem() { Text = "२ बर्ष", Value = "730" }, new SelectListItem() { Text = "३ बर्ष", Value = "1095" }, new SelectListItem() { Text = "४ बर्ष", Value = "1460" }, new SelectListItem() { Text = "५ बर्ष", Value = "1825" } }, new { @class = "form-control", id = "ddlProvience" })
+                          
+                                @Html.DropDownList("Duration", new List<SelectListItem>() { new SelectListItem() { Text = "--छान्नुहोस् --", Value = "" }, new SelectListItem() { Text = "मासिक ", Value = "30" }, new SelectListItem() { Text = "त्रेमासिक", Value = "90" }, new SelectListItem() { Text = "चौमासिक ", Value = "120" }, new SelectListItem() { Text = "अर्ध बार्षिक", Value = "182" }, new SelectListItem() { Text = "बार्षिक ", Value = "365" }, new SelectListItem() { Text = "२ बर्ष", Value = "730" }, new SelectListItem() { Text = "३ बर्ष", Value = "1095" }, new SelectListItem() { Text = "४ बर्ष", Value = "1460" }, new SelectListItem() { Text = "५ बर्ष", Value = "1825" } }, new { @class = "form-control", id = "ddlProvience" })
+                            
                         </div>
                     </div>
                     @Html.HiddenFor(m => m.PaperDispatchDate, new { id = "txtPaperDispatchDate" })

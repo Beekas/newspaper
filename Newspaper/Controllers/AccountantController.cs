@@ -58,7 +58,6 @@ namespace Newspaper.Controllers
 
         }
 
-
         public ActionResult ViewAccount(int? id)
         {
             var cus = (from a in db.Account
@@ -81,8 +80,6 @@ namespace Newspaper.Controllers
                 return RedirectToAction("index");
             }
             List<AccountantVM> objConter = new List<AccountantVM>();
-
-
             foreach (var item in cus)
             {
                 AccountantVM counter = new AccountantVM();

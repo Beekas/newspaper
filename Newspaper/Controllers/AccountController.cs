@@ -156,7 +156,6 @@ namespace Newspaper.Controllers
         [Authorize]
         public ActionResult Logout()
         {
-
             Session.Abandon();
             return RedirectToAction("Login");
         }
@@ -226,17 +225,9 @@ namespace Newspaper.Controllers
                 TempData["Message"] = admin.Email;
                 TempData.Keep();
                 return RedirectToAction("conformation");
-
-
-
             }
-
-
-
             var errors = ModelState.Where(x => x.Value.Errors.Count > 0)
              .Select(x => new { x.Key, x.Value.Errors }).ToArray();
-
-
             return View();
 
 

@@ -14,7 +14,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>बिल न:</label>
-                    @Html.TextBox("BillNo", null, new { id = "txtBillNo", @class = "form-control nepalifont", style = "font-size:20px;" })
+                    @Html.TextBox("BillNo", null, new { id = "txtBillNo", @class = "form-control" })
                 </div>
             </div>
             <div class="col-md-2">
@@ -73,7 +73,7 @@
                         <tr>
                           
                             <td>
-                                <font class="nepalifont" style="font-size:20px;">    @Html.DisplayFor(modelItem => item.BillNo)</font>
+                                <font>    @Html.DisplayFor(modelItem => item.BillNo)</font>
                             </td>
                             <td>
                                 <font class="nepalifont" style="font-size:20px;">   @Html.DisplayFor(modelItem => item.CustomerId)</font>

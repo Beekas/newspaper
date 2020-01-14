@@ -49,6 +49,16 @@
 
                         </div>
                     </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>पैसा तिरेको मिति  </label> @*@Html.ValidationMessageFor(model => model.payment, "", new { @class = "text-danger" })*@
+
+                            <input type="text" class="form-control" name="paymentd" id="txtpayment">
+
+                        </div>
+                    </div>
+
                     <div class="col-md-2">
                         <div class="form-group">
                             <label>परिमाण </label>  @*@Html.ValidationMessageFor(model => model.NepaliDate, "", new { @class = "text-danger" })*@
@@ -56,10 +66,26 @@
 
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <label>payment method</label><br>
+                        <input type='radio' name='payment' value='True' checked="@Model.ServiceAssign.PaymentType"> नबिकरण<br>
+
+                        <input type='radio' name='payment' value='False' checked="@(!Model.ServiceAssign.PaymentType)"> बढ<br>
+                    </div>
+
+                    @*<div class="col-md-3">
+                <label>पेमेन्ट तरिका</label><br>
+                नबिकरण
+                @Html.RadioButtonFor(model => model.payment, "True") &nbsp;&nbsp;&nbsp;
+                बढ
+                @Html.RadioButtonFor(model => model.payment, "False")
+            </div>*@
 
 
                     <input type="hidden" class="form-control" name="PaperDispatchDate" id="txtPaperDispatchDate" value="@Model.ServiceAssign.PaperDispatchDate">
                     <input type="hidden" class="form-control" name="EndedDate" id="txtEndedDate" value="@Model.ServiceAssign.EndedDate">
+                    
+                    <input type="hidden" class="form-control" name="PaymentDate" value="@Model.ServiceAssign.UpdatedDate" id="txtPaymentDate">
                     <div class="form-group">
 
                         <div class="col-md-10 col-md-offset-5">
@@ -106,6 +132,16 @@
                 onChange: function () {
                     $('#txtNepaliDate2').val();
                     $('#txtEndedDate').val(BS2AD($('#txtNepaliDate2').val()));
+                },
+                npdMonth: true,
+                npdYear: true
+            }
+            );
+
+            $('#txtpayment', 'body').nepaliDatePicker({
+                onChange: function () {
+                    $('#txtpayment').val();
+                    $('#txtPaymentDate').val(BS2AD($('#txtpayment').val()));
                 },
                 npdMonth: true,
                 npdYear: true

@@ -403,6 +403,7 @@ D:\Company\Newspaper\Newspaper\obj\Debug\Newspaper.Migrations.fiscal.resources
 D:\Company\Newspaper\Newspaper\obj\Debug\Newspaper.Migrations.fiscal1.resources
 D:\Company\Newspaper\Newspaper\obj\Debug\Newspaper.Migrations.counterfiscal.resources
 D:\Company\Newspaper\Newspaper\obj\Debug\Newspaper.Migrations.newfis.resources
+D:\Company\Newspaper\Newspaper\obj\Debug\Newspaper.Migrations.type.resources
 D:\Company\Newspaper\Newspaper\obj\Debug\Newspaper.csproj.GenerateResource.cache
 D:\Company\Newspaper\Newspaper\obj\Debug\Newspaper.csproj.CoreCompileInputs.cache
 D:\Company\Newspaper\Newspaper\obj\Debug\Newspaper.csproj.CopyComplete

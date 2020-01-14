@@ -12,7 +12,9 @@ namespace Newspaper.Models.ViewModel
         public DateTime PaperDispatchDate { get; set;}
         public DateTime EndedDate { get; set; }
         public string endDate { get; set; }
+        public string CustomerType { get; set; }
         public string dispatch { get; set; }
+        public string timebase { get; set; }
         public string phone { get; set; }
         public string NepaliDate { get; set; }
         public string CreatedBy { get; set; }
@@ -37,6 +39,8 @@ namespace Newspaper.Models.ViewModel
         public IEnumerable< Customer> Customer { get; set; }
 
         public int NewspaperId { get; set; }
+        public int[] NewspaperIds { get; set; }
+
         public int  Duration { get; set; }
         public string custId { get; set; }
     }

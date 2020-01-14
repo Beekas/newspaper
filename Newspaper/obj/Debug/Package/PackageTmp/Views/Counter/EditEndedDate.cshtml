@@ -56,23 +56,37 @@
 
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <label>payment method</label><br>
+                        <input type='radio' name='payment' value='True' checked="@Model.ServiceAssign.PaymentType"> नबिकरण<br>
+
+                        <input type='radio' name='payment' value='False' checked="@(!Model.ServiceAssign.PaymentType)"> बढ<br>
+                        </div>
+
+                        @*<div class="col-md-3">
+            <label>पेमेन्ट तरिका</label><br>
+            नबिकरण
+            @Html.RadioButtonFor(model => model.payment, "True") &nbsp;&nbsp;&nbsp;
+            बढ
+            @Html.RadioButtonFor(model => model.payment, "False")
+        </div>*@
 
 
-                    <input type="hidden" class="form-control" name="PaperDispatchDate" id="txtPaperDispatchDate" value="@Model.ServiceAssign.PaperDispatchDate">
-                    <input type="hidden" class="form-control" name="EndedDate" id="txtEndedDate" value="@Model.ServiceAssign.EndedDate">
-                    <div class="form-group">
+                        <input type="hidden" class="form-control" name="PaperDispatchDate" id="txtPaperDispatchDate" value="@Model.ServiceAssign.PaperDispatchDate">
+                        <input type="hidden" class="form-control" name="EndedDate" id="txtEndedDate" value="@Model.ServiceAssign.EndedDate">
+                        <div class="form-group">
 
-                        <div class="col-md-10 col-md-offset-5">
-                            <input type="submit" value="अद्यावधिक " class="btn btn-info" id="btnSubmit" onclick="validate()" />
+                            <div class="col-md-10 col-md-offset-5">
+                                <input type="submit" value="अद्यावधिक " class="btn btn-info" id="btnSubmit" onclick="validate()" />
+
+                            </div>
 
                         </div>
 
+
+                        }
+
                     </div>
-
-
-                }
-
-            </div>
         </div>
     </div>
 </div>

@@ -63,37 +63,49 @@ namespace Newspaper.Controllers
             //                      into mygroup
             //                   select mygroup.FirstOrDefault();
 
-
-
-
-            List<SalesmanVM> objConter = new List<SalesmanVM>();
-
-
-            foreach (var item in cus)
+            ViewBag.Newspaper = new SelectList(db.Service.ToList(), "NewsPaperName", "NewspaperName");
+            if (!(cus.Count == 0))
             {
-                SalesmanVM counter = new SalesmanVM();
-                counter.salesman = salesman;
-                
-                counter.CustomerId =item.customer.CustomerId;
-                counter.CustomerName = item.customer.FirstName;
-                counter.Address = item.customer.Address;
-                counter.Phone = item.customer.MPhone;
-                counter.Newspaper = item.service.NewsPaperName;
-                counter.Quantity = Convert.ToInt32(item.ServiceAssign.Quantity).ToString();
-                counter.Ended = item.ServiceAssign.EndedDate;
-                counter.EndedDate = ADTOBS.EngToNep(item.ServiceAssign.EndedDate).ToString();
-                counter.Paperdispatchdate = ADTOBS.EngToNep(item.ServiceAssign.PaperDispatchDate).ToString();
 
-                objConter.Add(counter);
+                List<SalesmanVM> objConter = new List<SalesmanVM>();
 
+
+                foreach (var item in cus)
+                {
+                    SalesmanVM counter = new SalesmanVM();
+                    counter.salesman = salesman;
+                    counter.Customertype = item.customer.CustomerType;
+                    counter.CustomerId = item.customer.CustomerId;
+                    counter.CustomerName = item.customer.FirstName;
+                    counter.Address = item.customer.Address;
+                    counter.Phone = item.customer.MPhone;
+                    counter.Newspaper = item.service.NewsPaperName;
+                    counter.Quantity = Convert.ToInt32(item.ServiceAssign.Quantity).ToString();
+                    counter.Ended = item.ServiceAssign.EndedDate;
+                    counter.EndedDate = ADTOBS.EngToNep(item.ServiceAssign.EndedDate).ToString();
+                    counter.Paperdispatchdate = ADTOBS.EngToNep(item.ServiceAssign.PaperDispatchDate).ToString();
+
+                    objConter.Add(counter);
+
+                }
+                ViewBag.errmsg = "customer";
+
+                if (objConter.AsEnumerable() == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(objConter.AsEnumerable());
+            }
+            else {
+                SalesmanVM objsale = new SalesmanVM();
+                List<SalesmanVM> objConter = new List<SalesmanVM>();
+                objsale.salesman = salesman;
+
+                objConter.Add(objsale);
+                ViewBag.errmsg = "no cus";
+               return View(objConter.AsEnumerable());
             }
 
-
-            if (objConter.AsEnumerable() == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objConter.AsEnumerable());
 
 
             //if (salesman == null)
@@ -101,6 +113,12 @@ namespace Newspaper.Controllers
             //    return HttpNotFound();
             //}
             //return View(salesman);
+        }
+
+        public ActionResult printallsalesman()
+        {
+            var saleman = db.SalesMan.ToList();
+            return View(saleman.ToList());
         }
 
         // GET: /SalesMan/Create

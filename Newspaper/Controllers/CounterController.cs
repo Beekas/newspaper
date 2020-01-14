@@ -79,6 +79,7 @@ namespace Newspaper.Controllers
             var cus = (from s in db.ServiceAssign
                        from c in db.Customer
                        from n in db.Service
+                       
                        where s.NewspaperId == n.Id && s.CustomerId == c.Id && s.Id == id
                        select new
                        {
@@ -94,8 +95,11 @@ namespace Newspaper.Controllers
             if (cus.ToList().Any())
             {
                 counter.NewsPaper = cus.ToList().First().NewsPaper;
+                
                 counter.Customer = cus.ToList().First().Customer;
                 counter.ServiceAssign = cus.ToList().First().ServiceAssign;
+                counter.payment = counter.ServiceAssign.PaymentType;
+                counter.Billdate = ADTOBS.EngToNep(counter.ServiceAssign.UpdatedDate).ToString();
                 counter.Paperdispatch = ADTOBS.EngToNep(counter.ServiceAssign.PaperDispatchDate).ToString();
                 counter.enddate = ADTOBS.EngToNep(counter.ServiceAssign.EndedDate).ToString();
                 
@@ -105,12 +109,14 @@ namespace Newspaper.Controllers
 
         }
         [HttpPost]
-        public ActionResult EditEndedDate(DateTime PaperDispatchDate,DateTime EndedDate,int Quantity,int id)
+        public ActionResult EditEndedDate(DateTime PaperDispatchDate,DateTime EndedDate,bool payment,int Quantity,int id,DateTime PaymentDate)
         {
             ServiceAssign objserviceAssign = db.ServiceAssign.Find(id);
             objserviceAssign.PaperDispatchDate = PaperDispatchDate;
             objserviceAssign.EndedDate = EndedDate;
+            objserviceAssign.UpdatedDate = PaymentDate;
             objserviceAssign.Quantity = Quantity;
+            objserviceAssign.PaymentType = payment;
             db.SaveChanges();
             TempData["message"] = "EndedDate Edited Sucessfully";
             log.AddActivity("EndedDate is changed");
@@ -220,9 +226,11 @@ namespace Newspaper.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var list = new List<SelectListItem>
-                            {new SelectListItem{ Text = "--छान्नुहोस्-- ", Value = "" },new SelectListItem{ Text = "मासिक", Value = "30" },
-                                new SelectListItem{ Text = "चौ मासिक", Value = "90" },
-                               new SelectListItem { Text = "अर्ध  बार्षिक", Value = "183" },
+                            {new SelectListItem{ Text = "--छान्नुहोस्-- ", Value = "" },
+                            new SelectListItem{ Text = "मासिक", Value = "30" },
+                            new SelectListItem{ Text = "त्रेमासिक", Value = "90" },
+                            new SelectListItem{ Text = "चौ मासिक", Value = "120" },
+                            new SelectListItem { Text = "अर्ध  बार्षिक", Value = "182" },
                                         new SelectListItem{ Text = "बार्षिक", Value = "365" },
                                         new SelectListItem{ Text = "२ वर्ष", Value = "730" },
                                         new SelectListItem{ Text = "३ वर्ष", Value = "1095" },
@@ -264,7 +272,7 @@ namespace Newspaper.Controllers
         }
 
         [HttpPost]
-        public ActionResult CustomerActivate(string BillNo, string PaymentDate,string Duration,string NepaliDate1,DateTime PaperDispatchDate, string Nepalidate, string PaymentType, string BankName, string ACNumber, decimal Amount, decimal Discount, int id)
+        public ActionResult CustomerActivate(string BillNo, string PaymentDate,string Duration,string NepaliDate1,DateTime PaperDispatchDate, string Nepalidate, string PaymentType, string BankName, string ACNumber, decimal Amount,bool payment, decimal Discount, int id)
         {
             ServiceAssign objserviceAssign = db.ServiceAssign.Find(id);
             //int quant = objserviceAssign.Quantity;
@@ -283,6 +291,10 @@ namespace Newspaper.Controllers
             objserviceAssign.DiscountAmount =/*objserviceAssign.Quantity**/ AWithoutDis * (Discount / 100);
             objserviceAssign.GrandTotal = AWithoutDis - objserviceAssign.DiscountAmount;
             objserviceAssign.BillNo = BillNo;
+            objserviceAssign.PaymentType = payment;
+            //var date = DateTime.Now.ToShortDateString();
+            //objserviceAssign.UpdatedDate = Convert.ToDateTime(date);
+            objserviceAssign.UpdatedDate = Convert.ToDateTime(PaymentDate);
             if (objserviceAssign.status)
             {
                 objserviceAssign.EndedDate = objserviceAssign.PaperDispatchDate.AddDays(Convert.ToInt32(Duration));

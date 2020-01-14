@@ -27,26 +27,28 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h1 class="panel-title"><center><h4> वितरक   </h4></center></h1>
+        <h1 class="panel-title"><center><h4> वितरक </h4></center></h1>
     </div>
 
     <div class="panel-body">
         <div>
             @Html.ActionLink("नया  वितरक ", "Create", "SalesMan", FormMethod.Post, new { @class = "btn btn-primary", title = "Create New Distributor" })
+            @Html.ActionLink("सबै वितरक प्रिन्ट गर्नुहोस", "printallsalesman", "SalesMan", FormMethod.Post, new { @class = "btn btn-primary", title = "Print All distributor" })
         </div>
         <br />
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>
+                    <th style="width:30px;">
                         वितरक  नम्बर
                     </th>
-                    <th>
+                    <th style="width:150px;">
                         वितरकको  नाम
                     </th>
-                    <th>
+                    <th style="width:250px;">कार्य क्षेत्र</th>
+                    @*<th>
                         इमेल
-                    </th>
+                    </th>*@
                     @*<th>
                             @Html.DisplayNameFor(model => model.AltEmail)
                         </th>*@
@@ -56,39 +58,42 @@
                     @*<th>
                             @Html.DisplayNameFor(model => model.Phone2)
                         </th>*@
-                    <th>कार्य </th>
+                    <th style="width:160px;">कार्य </th>
                 </tr>
             </thead>
             <tbody>
 
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td class="nepalifont" style="font-size:20px;">
-                            @Html.DisplayFor(modelItem => item.SalesManId)
-                        </td>
-                        <td class="nepalifont" style="font-size:20px;">
-                            @Html.DisplayFor(modelItem => item.FullName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
+                <tr>
+                    <td class="nepalifont" style="font-size:20px;">
+                        @Html.DisplayFor(modelItem => item.SalesManId)
+                    </td>
+                    <td class="nepalifont" style="font-size:20px;">
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td class="nepalifont" style="font-size:20px;">
+                        @Html.DisplayFor(modelItem => item.AltEmail)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>*@
 
-                        <td class="nepalifont" style="font-size:20px;">
-                            @Html.DisplayFor(modelItem => item.Phone1)
-                        </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.Phone2)
-                            </td>*@
-                        <td>
-                            @Html.ActionLink("अद्यावधिक", "Edit", new { id = item.Id }, new { @class = "btn btn-success", title = "Edit Distributor" }) |
-                            @Html.ActionLink("पुरा हेर्नुहोस ", "Details", new { id = item.Id }, new { @class = "btn btn-warning", title = "Show Disributor Details" })
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "remove(" + item.Id + ");" })*@
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you wish to delete this article?');" })*@
+                    <td class="nepalifont" style="font-size:20px;">
+                        @Html.DisplayFor(modelItem => item.Phone1)
+                    </td>
+                    @*<td>
+            @Html.DisplayFor(modelItem => item.Phone2)
+        </td>*@
+                    <td>
+                        @Html.ActionLink("अद्यावधिक", "Edit", new { id = item.Id }, new { @class = "btn btn-success", title = "Edit Distributor" }) |
+                        @Html.ActionLink("पुरा हेर्नुहोस ", "Details", new { id = item.Id }, new { @class = "btn btn-warning", title = "Show Disributor Details" })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "remove(" + item.Id + ");" })*@
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you wish to delete this article?');" })*@
 
 
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 }
             </tbody>
 

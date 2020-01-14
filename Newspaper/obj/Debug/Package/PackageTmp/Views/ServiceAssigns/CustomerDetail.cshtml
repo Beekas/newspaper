@@ -11,7 +11,7 @@
     <div class="col-lg-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h1 class="panel-title"><center><h4> नियुक्त ग्राहकको बिभरण</h4></center></h1>
+                <h1 class="panel-title"><center><h4> नियुक्त ग्राहकको विवरण</h4></center></h1>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -72,7 +72,7 @@
                                 @if ((item.ServiceAssign.EndedDate - DateTime.Now).Days < 1)
                                 {
                                     <td class="danger">
-                                        @((DateTime.Now - item.ServiceAssign.EndedDate).Days) दिन आग्दी समाप्त भयो
+                                        @((DateTime.Now - item.ServiceAssign.EndedDate).Days) दिन अगाडि समाप्त भयो
                                     </td>
                                 }
                                 else if ((item.ServiceAssign.EndedDate - DateTime.Now).Days > 10)

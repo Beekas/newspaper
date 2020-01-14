@@ -49,14 +49,16 @@ namespace Newspaper.Controllers
                 ViewBag.message = num;
                 ViewBag.sellman = salesman;
             ViewBag.news = newspaper;
-                //int Cont = db.Customer.Count(t => (t.EndedDate > DateTime.Now));
-                //ViewBag.active = Cont;
-                //int Coot = db.Customer.Count(t => (t.EndedDate <= DateTime.Now));
-                //ViewBag.inactive = Coot;
+
+            ViewBag.Newspaper = new SelectList(db.Service.ToList(), "NewsPaperName", "NewspaperName");
+            //int Cont = db.Customer.Count(t => (t.EndedDate > DateTime.Now));
+            //ViewBag.active = Cont;
+            //int Coot = db.Customer.Count(t => (t.EndedDate <= DateTime.Now));
+            //ViewBag.inactive = Coot;
 
 
 
-                var cus = (from s in db.ServiceAssign
+            var cus = (from s in db.ServiceAssign
                            from c in db.Customer
                            from n in db.Service
                            from i in db.SalesMan
@@ -77,7 +79,7 @@ namespace Newspaper.Controllers
                 List<CounterVM> objConter = new List<CounterVM>();
 
 
-                foreach (var item in uniqCustomer)
+                foreach (var item in cus)
                 {
                     CounterVM counter = new CounterVM();
                     counter.NewsPaper = item.NewsPaper;

@@ -13,6 +13,7 @@ namespace Newspaper.Models.ViewModel
         public Service service { get; set; }
         public string CustomerId { get; set; }
         public string CustomerName { get; set; }
+        public string Customertype { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Newspaper { get; set; }

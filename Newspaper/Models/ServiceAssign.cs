@@ -19,6 +19,7 @@ namespace Newspaper.Models
         public string NepaliDate { get; set; }
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
+        public bool PaymentType { get; set; } = false;
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public bool status { get; set; }

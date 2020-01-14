@@ -22,10 +22,10 @@ namespace Newspaper.Controllers
 
         private NewspaperEntities db = new NewspaperEntities();
 
-        
+
         public ActionResult Show()
         {
-            
+
             return View(db.Customer.ToList());
         }
 
@@ -92,38 +92,39 @@ namespace Newspaper.Controllers
             //                          NewsPaper = n,
             //                          SalesMan = o
             //                      }).ToList();
-                    
+
 
             //var uniqCustomer =(from m in cus
             //    group m by new { m.Customer.CustomerId }
             //                       into mygroup
             //               select mygroup.FirstOrDefault()).ToList(); 
 
-              var cus = (from s in db.ServiceAssign
-                           from c in db.Customer
-                           from n in db.Service
-                           from i in db.SalesMan
-                           where s.NewspaperId == n.Id && s.CustomerId == c.Id && s.SalesManId == i.Id
-                           select new
-                           {
-                               Customer = c,
-                               ServiceAssign = s,
-                               NewsPaper = n,
-                               SalesMan = i
-                           }).ToList();
-                var uniqCustomer = from m in cus
-                                   group m by new { m.Customer.Id }
-                                   into mygroup
-                                   select mygroup.FirstOrDefault();
+            var cus = (from s in db.ServiceAssign
+                       from c in db.Customer
+                       from n in db.Service
+                       from i in db.SalesMan
+                       where s.NewspaperId == n.Id && s.CustomerId == c.Id && s.SalesManId == i.Id
+                       select new
+                       {
+                           Customer = c,
+                           ServiceAssign = s,
+                           NewsPaper = n,
+                           SalesMan = i
+                       }).ToList();
+            var uniqCustomer = from m in cus
+                               group m by new { m.Customer.Id }
+                               into mygroup
+                               select mygroup.FirstOrDefault();
 
             List<assignNewspaperVM> objConter = new List<assignNewspaperVM>();
-            
+
 
             foreach (var item in uniqCustomer)
             {
                 assignNewspaperVM counter = new assignNewspaperVM();
                 counter.Paper = item.NewsPaper.NewsPaperName;
                 counter.phone = item.Customer.MPhone;
+                counter.CustomerType = item.Customer.CustomerType;
                 counter.CustomerName = item.Customer.FirstName;
                 counter.Newspapername = item.NewsPaper.NewsPaperName;
                 counter.Address = item.Customer.Address;
@@ -131,7 +132,7 @@ namespace Newspaper.Controllers
                 counter.EndedDate = item.ServiceAssign.EndedDate;
                 counter.PaperDispatchDate = item.ServiceAssign.PaperDispatchDate;
 
-             
+
 
                 //var dispatch = item.ServiceAssign.PaperDispatchDate;
                 //counter.dispatch = ADTOBS.EngToNep(dispatch).ToString();
@@ -209,6 +210,72 @@ namespace Newspaper.Controllers
             return View(serviceAssign);
         }
 
+        public ActionResult ChangeSaleman(int? id)
+        {
+            var date = DateTime.Now;
+            assignNewspaperVM assignVM = new assignNewspaperVM();
+            assignVM.CustomerId = Convert.ToInt32(id);
+            var cus = (from s in db.ServiceAssign
+                       from c in db.Customer
+                       from n in db.Service
+                       where s.NewspaperId == n.Id && s.CustomerId == c.Id && s.CustomerId == id
+                       select new
+                       {
+                           n
+
+                       }).ToList();
+            List<Service> ser = new List<Service>();
+            foreach (var item in cus)
+            {
+                Service newSer = db.Service.Find(item.n.Id);
+                ser.Add(newSer);
+            }
+            assignVM.custId = db.Customer.Find(id).CustomerId;
+            assignVM.Newspapers = new SelectList(ser, "Id", "NewsPaperName");
+            assignVM.Salesmans = new SelectList(db.SalesMan, "Id", "FullName");
+            return View(assignVM);
+
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeSaleman(assignNewspaperVM serviceAssign)
+        {
+
+
+
+            if (db.ServiceAssign.Any(m => m.CustomerId == serviceAssign.CustomerId))
+            {
+                foreach (var item in serviceAssign.NewspaperIds)
+                {
+                    ServiceAssign objService = db.ServiceAssign.FirstOrDefault(m => m.CustomerId == serviceAssign.CustomerId && m.NewspaperId == item);
+
+
+                    objService.SalesManId = serviceAssign.SalesManId;
+
+
+                    log.AddActivity("Service assign to customer successfully");
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Newspaper Already Assigned.");
+                serviceAssign.Newspapers = new SelectList(db.Service, "Id", "NewsPaperName");
+                serviceAssign.Salesmans = new SelectList(db.SalesMan, "Id", "FullName");
+                return View(serviceAssign);
+            }
+
+
+
+        }
+
+
+
+
         // GET: ServiceAssigns/Create
         public ActionResult Create(int id)
         {
@@ -222,7 +289,7 @@ namespace Newspaper.Controllers
             assignVM.EndedDate = DateTime.Now;
             assignVM.CreatedBy = Session["userEmail"].ToString();
             assignVM.UpdatedBy = Session["userEmail"].ToString();
-            assignVM.UpdatedDate= DateTime.Now;
+            assignVM.UpdatedDate = DateTime.Now;
             assignVM.UpdatedDate = DateTime.Now;
             assignVM.status = true;
             assignVM.custId = db.Customer.Find(id).CustomerId;
@@ -238,14 +305,24 @@ namespace Newspaper.Controllers
         {
             if (!db.ServiceAssign.Any(m => m.NewspaperId == serviceAssign.NewspaperId && m.CustomerId == serviceAssign.CustomerId))
             {
-                serviceAssign.EndedDate = serviceAssign.PaperDispatchDate.AddDays(serviceAssign.Duration);
+                if (db.Service.Any(m => m.Id == serviceAssign.NewspaperId && m.TimeBase == "मासिक") && serviceAssign.Duration == 365)
+                {
+                    serviceAssign.EndedDate = serviceAssign.PaperDispatchDate.AddDays(serviceAssign.Duration - 30);
+
+                }
+                else
+                {
+                    serviceAssign.EndedDate = serviceAssign.PaperDispatchDate.AddDays(serviceAssign.Duration);
+
+                }
 
                 ServiceAssign objService = new ServiceAssign();
 
                 objService.NepaliDate = serviceAssign.NepaliDate;
                 objService.NewspaperId = serviceAssign.NewspaperId;
                 objService.SalesManId = serviceAssign.SalesManId;
-                objService.Duration = serviceAssign.Duration.ToString();
+
+
                 objService.PaperDispatchDate = Convert.ToDateTime(serviceAssign.PaperDispatchDate.ToShortDateString());
                 objService.status = true;
                 objService.UpdatedBy = serviceAssign.UpdatedBy;
@@ -262,13 +339,14 @@ namespace Newspaper.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            else {
+            else
+            {
                 ModelState.AddModelError("", "Newspaper Already Assigned.");
                 serviceAssign.Newspapers = new SelectList(db.Service, "Id", "NewsPaperName");
                 serviceAssign.Salesmans = new SelectList(db.SalesMan, "Id", "FullName");
                 return View(serviceAssign);
             }
-            
+
         }
 
         // GET: ServiceAssigns/Edit/5

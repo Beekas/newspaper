@@ -19,6 +19,7 @@ namespace Newspaper.Models.ViewModel
         public string NepaliDate { get; set; }
         public DateTime EndedDate { get; set; }
         public string enddate { get; set; }
+        public string quantity { get; set; }
         public string dispatch { get; set; }
         public string SalesMan { get; set; }
         public string branch { get; set; }

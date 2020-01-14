@@ -52,24 +52,30 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td class="nepalifont" style="font-size:20px;">
-                                    @item.NewsPaper.NewsPaperName
-                                </td>
-                                <td class="nepalifont" style="font-size:20px;">
-                                    @item.Customer.FirstName
-                                </td>
-                                <td class="nepalifont" style="font-size:20px;">
-                                    @*@Html.ActionLink(item.Customer.CustomerId, "CustomerDetail", new { id = item.Customer.Id })*@
-                                    @item.Customer.Address
+                        <tr>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.NewsPaper.NewsPaperName
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.Customer.FirstName
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @*@Html.ActionLink(item.Customer.CustomerId, "CustomerDetail", new { id = item.Customer.Id })*@
+                                @item.Customer.Address
 
+                            </td>
+                            <td class="nepalifont" style="font-size:20px;">
+                                @item.Customer.MPhone
+                            </td>
+                            @if (item.Customer.CustomerType != "नर्मल")
+                            {
+                                <td class="success">
+                                    भुक्तानी भएका
                                 </td>
-                                <td class="nepalifont" style="font-size:20px;">
-                                    @item.Customer.MPhone
-                                </td>
-
-
-                                @if (item.ServiceAssign.BillNo == null)
+                            }
+                            else
+                            {
+                                if (item.ServiceAssign.BillNo == null)
                                 {
                                     <td class="danger">
                                         भुक्तानी गर्न बाँकी
@@ -102,15 +108,16 @@
                                         @StringToUnicode(((item.ServiceAssign.EndedDate - DateTime.Now).Days).ToString()) दिन बाँकी
                                     </td>
                                 }
+                            }
 
-                                @*@Html.ActionLink("Activate", "Activate", new { id=item.ServiceAssign.Id }, new { @class = "btn btn-primary", title = "Activate Customer" }) |
-                        @Html.ActionLink("Renew", "Renew", new { id=item.ServiceAssign.Id }, new { @class = "btn btn-info", title = "Renew Customer" })*@
+                            @*@Html.ActionLink("Activate", "Activate", new { id=item.ServiceAssign.Id }, new { @class = "btn btn-primary", title = "Activate Customer" }) |
+        @Html.ActionLink("Renew", "Renew", new { id=item.ServiceAssign.Id }, new { @class = "btn btn-info", title = "Renew Customer" })*@
 
-                                <td>
-                                    @Html.ActionLink("तिर्नुहोस ", "CustomerActivate", new { id = item.ServiceAssign.Id }, new { @class = "btn btn-success", title = "Payment Option" })
-                                    @*@Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.Customer.Id }, new { @class = "btn btn-success", title = "View Assign Customer" })*@
-                                </td>
-                            </tr>
+                            <td>
+                                @Html.ActionLink("तिर्नुहोस ", "CustomerActivate", new { id = item.ServiceAssign.Id }, new { @class = "btn btn-success", title = "Payment Option" })
+                                @*@Html.ActionLink("पुरा हेर्नुहोस ", "CustomerDetail", new { id = item.Customer.Id }, new { @class = "btn btn-success", title = "View Assign Customer" })*@
+                            </td>
+                        </tr>
                         }
                     </tbody>
 

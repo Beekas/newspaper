@@ -54,7 +54,7 @@
 
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h1 class="panel-title"><center><h4>वितरक विवरण  </h4></center></h1>
+                <h1 class="panel-title"><center><h4>वितरक विवरण      </h4></center></h1>
             </div>
 
             <div class="panel-body">
@@ -77,212 +77,231 @@
                             @Model.FirstOrDefault().salesman.Phone1
                         </font><br />
 
-                        <label> बैकल्पिक फोन नम्बर</label> :@Model.FirstOrDefault().salesman.Phone2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <label> बैकल्पिक फोन नम्बर</label> :<font class="nepalifont" style="font-size:20px;">
+                            @Model.FirstOrDefault().salesman.Phone2
+                        </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <br>
+                        <label>कार्य क्षेत्र</label>  : <font class="nepalifont" style="font-size:20px;">
+                            @Model.FirstOrDefault().salesman.AltEmail
+                        </font>
                         @*<label>ग्राहकको प्रकार</label> : @Model.FirstOrDefault().Customer.CustomerType<br />
 
 
-        <label>ठेगाना</label> :<font class="nepalifont" style="font-size:20px;"> @Model.Select(m => (m.Customer.Address + ", " + m.Customer.Tole)).FirstOrDefault()</font>*@
-                        
+                            <label>ठेगाना</label> :<font class="nepalifont" style="font-size:20px;"> @Model.Select(m => (m.Customer.Address + ", " + m.Customer.Tole)).FirstOrDefault()</font>*@
+
                     </div>
-                   
+
 
 
                     @*<div style="overflow-x:auto;">
-            <table class="table table-bordered">
-                <tr>
-                    <th>
-                        वितरकको नम्बर
-                    </th>
-
-                    <td class="nepalifont" style="font-size:20px;">
-                        @Html.DisplayFor(model => model.SalesManId)
-                    </td>
-                </tr>
-
-                <tr>
-
-                    <th>
-                        वितरकको नाम
-                    </th>
-
-                    <td class="nepalifont" style="font-size:20px;">
-                        @Html.DisplayFor(model => model.FullName)
-                    </td>
-
-                </tr>
-                <tr>
-                    <th>
-                        इमेल
-                    </th>
-
-                    <td>
-                        @Html.DisplayFor(model => model.Email)
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <th>
-
-                        वितरकको नम्बर
-                    </th>
-                    <td class="nepalifont" style="font-size:20px;">
-                        @Html.DisplayFor(model => model.Phone1)
-                    </td>
-
-                </tr>
-                <tr>
-                    <th>
-                        बैकल्पिक फोन नम्बर
-                    </th>
-
-                    <td class="nepalifont" style="font-size:20px;">
-                        @Html.DisplayFor(model => model.Phone2)
-                    </td>
-                </tr>
-            </table>
-        </div>*@
-
-                    <div style="overflow-x:auto;" class="panel-body">
-                        <label id="lblduration" class="row col-md-3" style="float:right;">
-                            @Html.DropDownList("PaymentType", new List<SelectListItem> { new SelectListItem { Text = "आबधि छानुहोस", Value = "" }, new SelectListItem { Text = "समय अबधि बाकी ", Value = "दिन बाकी" }, new SelectListItem { Text = "समय अबधि समाप्त", Value = "समाप्त" } }, new { id = "ddlduration", @class = "form-control" })
-                        </label>
-                        <table class="table table-bordered" id="myTable">
-                            <thead>
+                            <table class="table table-bordered">
                                 <tr>
-                                    <th style="10px">
-                                        ग्रा न:
-                                    </th>
-                                    <th style="100px;">
-                                        ग्राहकको पुरानाम
-                                    </th>
-                                    <th style="30px;">
-                                        पत्रिका
-                                    </th>
-                                    <th style="30px;">
-                                        परिमाण
+                                    <th>
+                                        वितरकको नम्बर
                                     </th>
 
-                                    <th style="70px;">
-                                        फोन नम्बर
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(model => model.SalesManId)
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <th>
+                                        वितरकको नाम
                                     </th>
 
-                                    <th style="90px;">
-                                        ठेगाना
-                                    </th>
-                                    <th style="30px;">
-                                        सुरु
-                                    </th>
-                                    <th style="30px;">
-                                        अन्तिम
-                                    </th>
-                                    <th style="30px;">
-                                        अबधि
-                                    </th>
-
-
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(model => model.FullName)
+                                    </td>
 
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    if ((item.Ended - DateTime.Now).Days < 1)
+                                <tr>
+                                    <th>
+                                        इमेल
+                                    </th>
+
+                                    <td>
+                                        @Html.DisplayFor(model => model.Email)
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <th>
+
+                                        वितरकको नम्बर
+                                    </th>
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(model => model.Phone1)
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>
+                                        बैकल्पिक फोन नम्बर
+                                    </th>
+
+                                    <td class="nepalifont" style="font-size:20px;">
+                                        @Html.DisplayFor(model => model.Phone2)
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>*@
+                    @if (ViewBag.errmsg == "no cus")
+                    {
+
+                    }
+                    else
+                    {
+                        <div style="overflow-x:auto;" class="panel-body">
+                            <label id="lblduration" class="row col-md-3" style="float:right;">
+                                @Html.DropDownList("PaymentType", new List<SelectListItem> { new SelectListItem { Text = "आबधि छानुहोस", Value = "" }, new SelectListItem { Text = "समय अबधि बाकी ", Value = "दिन बाकी" }, new SelectListItem { Text = "समय अबधि समाप्त", Value = "समाप्त" } }, new { id = "ddlduration", @class = "form-control" })
+                            </label>
+                            <table class="table table-bordered" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width:5px;">
+                                        
+                                            ग्रा न:
+                                        </th>
+                                        <th style="width:100px;">
+                                            ग्राहकको पुरानाम
+                                        </th>
+                                        <th style="width:30px;">
+                                            पत्रिका
+                                        </th>
+                                        <th style="width:30px;">
+                                            परिमाण
+                                        </th>
+
+                                        <th style="width:40px;">
+                                            फोन नम्बर
+                                        </th>
+
+                                        <th style="width:250px;">
+                                            ठेगाना
+                                        </th>
+                                        <th style="width:30px;">
+                                            सुरु
+                                        </th>
+                                        <th style="width:30px;">
+                                            अन्तिम
+                                        </th>
+                                        <th style="width:30px;">
+                                            अबधि
+                                        </th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
                                     {
-                                        <tr class="danger">
+                                        if ((item.Ended - DateTime.Now).Days < 1)
+                                        {
+                                            <tr class="danger">
 
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.CustomerId
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.CustomerId
 
-                                            </td>
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.CustomerName
-                                            </td>
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.Newspaper
-                                            </td>
-                                            <td>
-                                                @StringToUnicode(item.Quantity.ToString())
-                                            </td>
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.Phone
-                                            </td>
-
-
-
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.Address
-                                            </td>
-                                            <td>
-                                                @StringToUnicode(item.Paperdispatchdate.ToString())
-                                            </td>
-                                            <td>
-                                                @StringToUnicode(item.EndedDate.ToString())
-                                            </td>
-                                            <td>
-                                                @StringToUnicode(((DateTime.Now - item.Ended).Days).ToString()) समाप्त
-                                            </td>
+                                                </td>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.CustomerName
+                                                </td>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Newspaper
+                                                </td>
+                                                <td>
+                                                    @StringToUnicode(item.Quantity.ToString())
+                                                </td>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Phone
+                                                </td>
 
 
 
-                                        </tr>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Address
+                                                </td>
+                                                <td>
+                                                    @StringToUnicode(item.Paperdispatchdate.ToString())
+                                                </td>
+                                                <td>
+                                                    @StringToUnicode(item.EndedDate.ToString())
+                                                </td>
+                                                <td>
+                                                    @StringToUnicode(((DateTime.Now - item.Ended).Days).ToString()) समाप्त
+                                                </td>
+
+
+
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr class="success">
+
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.CustomerId
+
+                                                </td>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.CustomerName
+                                                </td>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Newspaper
+                                                </td>
+                                                <td>
+                                                    @StringToUnicode(item.Quantity.ToString())
+                                                </td>
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Phone
+                                                </td>
+
+
+
+                                                <td class="nepalifont" style="font-size:20px;">
+                                                    @item.Address
+                                                </td>
+                                                <td>
+                                                    @StringToUnicode(item.Paperdispatchdate.ToString())
+                                                </td>
+                                                <td>
+                                                    @StringToUnicode(item.EndedDate.ToString())
+                                                </td>
+                                                <td>
+                                                    @StringToUnicode(((item.Ended - DateTime.Now).Days).ToString()) दिन बाकी
+                                                </td>
+
+
+
+                                            </tr>
+                                        }
+
                                     }
-                                    else
-                                    {
-                                        <tr class="success">
+                                </tbody>
 
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.CustomerId
-
-                                            </td>
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.CustomerName
-                                            </td>
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.Newspaper
-                                            </td>
-                                            <td>
-                                                @StringToUnicode(item.Quantity.ToString())
-                                            </td>
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.Phone
-                                            </td>
+                            </table>
 
 
 
-                                            <td class="nepalifont" style="font-size:20px;">
-                                                @item.Address
-                                            </td>
-                                            <td>
-                                                @StringToUnicode(item.Paperdispatchdate.ToString())
-                                            </td>
-                                            <td>
-                                                @StringToUnicode(item.EndedDate.ToString())
-                                            </td>
-                                            <td>
-                                                @StringToUnicode(((item.Ended - DateTime.Now).Days).ToString()) दिन बाकी
-                                            </td>
+                        </div>
 
-
-
-                                        </tr>
-                                    }
-
-                                }
-                            </tbody>
-
-                        </table>
-
-
-
-                    </div>
-
-
+                    }
 
                 </div>
                 <br />
-                <center><button class="btn" id="btnPrint"><i class="fa fa-print"></i> प्रिन्ट गर्नुहोस</button></center>
+                @if (ViewBag.errmsg == "no cus")
+                {
 
+                }
+                else
+                {
+                    <center><button class="btn" id="btnPrint"><i class="fa fa-print"></i> प्रिन्ट गर्नुहोस</button></center>
+                }
 
 
             </div>
@@ -376,11 +395,11 @@
                     { "orderable": false, "targets": 3 }
 
                 ],
-                
+
 
                 "lengthMenu": [[10, 50, 100, -1], [10, 50, 100, "All"]],
                 "pageLength": -1,
-                
+
 
             });
             $("#ddlduration").change(function () {

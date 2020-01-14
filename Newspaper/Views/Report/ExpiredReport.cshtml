@@ -75,22 +75,26 @@
                 <th width:5>क.स</th>
                 <th> ग्राहकको नाम , ठेगाना , फोन न: </th>
                 <th width:15>कार्ड न:</th>
+                <th width:15>फोन न:</th>
+                <th width:15>परिमाण</th>
                 <th width:55>पत्रीकाको नाम</th>
                 <th width:30>समाप्त मिति </th>
                 <th width:55>कैफियत</th>
             </tr>
             @foreach (var item in Model)
             {
-                <tr>
+            <tr>
 
-                    <td style="width:10px;" font-size="5px">@StringToUnicode(i.ToString())</td>
-                    <td style="width:200px;font-size:20px;" class="nepalifont">@item.Customer.FirstName &nbsp; ,&nbsp;@item.Customer.Address,&nbsp; @item.Customer.MPhone</td>
-                    <td style="width:25px;font-size:20px;" class="nepalifont">@item.Customer.CustomerId</td>
-                    <td style="width:55px;font-size:20px" class="nepalifont">@item.NewsPaper.NewsPaperName</td>
+                <td style="width:10px;" font-size="5px">@StringToUnicode(i.ToString())</td>
+                <td style="width:200px;font-size:20px;" class="nepalifont">@item.Customer.FirstName &nbsp; ,&nbsp;@item.Customer.Address,&nbsp; @item.Customer.MPhone</td>
+                <td style="width:25px;font-size:20px;" class="nepalifont">@item.Customer.CustomerId</td>
+                <td style="width:25px;font-size:20px;" class="nepalifont">@item.Customer.MPhone</td>
+                <td style="width:25px;font-size:20px;" class="nepalifont">@item.ServiceAssign.Quantity</td>
+                <td style="width:55px;font-size:20px" class="nepalifont">@item.NewsPaper.NewsPaperName</td>
 
-                    <td style="width:50px"> @StringToUnicode(item.enddate.ToString()) </td>
-                    <td style="width:60px;font-size:20px;" class="nepalifont">@item.SalesMan.FullName</td>
-                </tr>
+                <td style="width:50px"> @StringToUnicode(item.enddate.ToString()) </td>
+                <td style="width:60px;font-size:20px;" class="nepalifont">@item.SalesMan.FullName</td>
+            </tr>
                 i = i + 1;
             }
 
